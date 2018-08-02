@@ -73,7 +73,7 @@ class Rtt
             return false;
         }
         try {
-            $className = 'Vendor\\Packege\\Model\\' . Rtt::types[$jsonObj->rtt];
+            $className = 'PubliqAPI\\Model\\' . Rtt::types[$jsonObj->rtt];
             /**
             * @var ValidatorInterface $class
             */
