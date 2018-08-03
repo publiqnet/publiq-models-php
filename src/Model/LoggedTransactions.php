@@ -21,6 +21,7 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
           foreach ($data->actions as $actionsItem) { 
               $actionsItemObj = new LoggedTransaction(); 
               $actionsItemObj->validate($actionsItem); 
-              $this->actions[] = $actionsItemObj           } 
+              $this->actions[] = $actionsItemObj;
+           } 
     } 
 } 

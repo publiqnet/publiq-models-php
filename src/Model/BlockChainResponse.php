@@ -21,6 +21,7 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
           foreach ($data->signed_blocks as $signed_blocksItem) { 
               $signed_blocksItemObj = new SignedBlock(); 
               $signed_blocksItemObj->validate($signed_blocksItem); 
-              $this->signed_blocks[] = $signed_blocksItemObj           } 
+              $this->signed_blocks[] = $signed_blocksItemObj;
+           } 
     } 
 } 
