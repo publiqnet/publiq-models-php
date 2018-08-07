@@ -50,6 +50,6 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
           $this->setPublic_key($data->public_key); 
           $this->setSignature($data->signature); 
-            Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
 } 

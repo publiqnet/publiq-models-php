@@ -66,6 +66,6 @@ class Transaction implements ValidatorInterface, \JsonSerializable
           $this->setCreation($data->creation); 
           $this->setExpiry($data->expiry); 
           $this->setFee($data->fee); 
-            Rtt::validate($data->action);
+          $this->action = Rtt::validate($data->action);
     } 
 } 

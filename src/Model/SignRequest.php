@@ -34,6 +34,6 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
           $this->setPrivate_key($data->private_key); 
-            Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
 } 

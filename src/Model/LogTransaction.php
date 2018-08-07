@@ -18,6 +18,6 @@ class LogTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-            Rtt::validate($data->action);
+          $this->action = Rtt::validate($data->action);
     } 
 } 

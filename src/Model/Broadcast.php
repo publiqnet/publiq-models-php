@@ -34,6 +34,6 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
           $this->setEchoes($data->echoes); 
-            Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
 } 

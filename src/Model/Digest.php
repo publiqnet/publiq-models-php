@@ -34,6 +34,6 @@ class Digest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
           $this->setBase58_hash($data->base58_hash); 
-            Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
 } 
