@@ -18,6 +18,6 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-            Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
 } 

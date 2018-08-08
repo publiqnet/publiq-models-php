@@ -29,6 +29,6 @@ class TransactionFileData implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        Rtt::validate($data->actions);
+    $this->actions =    Rtt::validate($data->actions);
     } 
 } 

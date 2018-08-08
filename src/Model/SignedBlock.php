@@ -50,6 +50,6 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     { 
           $this->setAuthority($data->authority); 
           $this->setSignature($data->signature); 
-            Rtt::validate($data->block_details);
+          $this->block_details = Rtt::validate($data->block_details);
     } 
 } 
