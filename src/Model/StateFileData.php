@@ -19,20 +19,9 @@ class StateFileData implements ValidatorInterface, \JsonSerializable
     /**
     * @param string  $accountsKey
     */
-    public function setaccountsKey(string $accountsKey)
+    public function setaccountsKey(string  $accountsKey)
     {
         $this->accountsKey = $accountsKey;
-    }
-    /**
-    * @var int
-    */
-    private $accountsValue;
-    /**
-    * @param int $accountsValue
-    */
-    public function setaccountsValue(int $value)
-    {
-        $this->accountsValue = $value;
     }
     public function getAccounts() 
     {
@@ -40,9 +29,10 @@ class StateFileData implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        foreach ($data->hash as $key => $value) {
+        foreach ($data->accounts as $key => $value) {
             $this->setaccountsKey($key);
-            $this->setaccountsValue($value);
-        }
+            $hashItemObj = new Coin();
+            $hashItemObj->validate($value);
+            $this->accounts[] = $accountsItemObj         }
     } 
 } 

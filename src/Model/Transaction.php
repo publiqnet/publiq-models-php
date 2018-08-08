@@ -17,7 +17,7 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $expiry;
     /**
-    * @var int
+    * @var Coin
     */ 
     private $fee;
     /**
@@ -38,13 +38,6 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     { 
             $this->expiry = strtotime($expiry); 
     } 
-    /** 
-    * @param int $fee
-    */ 
-    public function setFee(int $fee) 
-    { 
-            $this->fee = $fee; 
-    } 
     public function getCreation() 
     {
         return $this->creation;
@@ -63,9 +56,10 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->fee = new Coin();
+        $this->fee -> validate($data-> fee);
           $this->setCreation($data->creation); 
           $this->setExpiry($data->expiry); 
-          $this->setFee($data->fee); 
           $this->action = Rtt::validate($data->action);
     } 
 } 

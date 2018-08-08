@@ -17,7 +17,7 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     */ 
     private $to;
     /**
-    * @var int
+    * @var Coin
     */ 
     private $amount;
     /** 
@@ -34,13 +34,6 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     { 
             $this->to = $to; 
     } 
-    /** 
-    * @param int $amount
-    */ 
-    public function setAmount(int $amount) 
-    { 
-            $this->amount = $amount; 
-    } 
     public function getFrom() 
     {
         return $this->from;
@@ -55,8 +48,9 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->amount = new Coin();
+        $this->amount -> validate($data-> amount);
           $this->setFrom($data->from); 
           $this->setTo($data->to); 
-          $this->setAmount($data->amount); 
     } 
 } 

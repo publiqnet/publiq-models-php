@@ -29,6 +29,9 @@ class BlockchainFileData implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-    $this->blocks =    Rtt::validate($data->blocks);
+        foreach ($data->blocks as $key => $value) {
+            $this->setblocksKey($key);
+            $this->blocks = Rtt::validate($data->blocks);
+         }
     } 
 } 

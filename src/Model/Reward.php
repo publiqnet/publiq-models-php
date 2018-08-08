@@ -9,20 +9,13 @@ class Reward implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var int
+    * @var Coin
     */ 
     private $amount;
     /**
     * @var string
     */ 
     private $to;
-    /** 
-    * @param int $amount
-    */ 
-    public function setAmount(int $amount) 
-    { 
-            $this->amount = $amount; 
-    } 
     /** 
     * @param string $to
     */ 
@@ -40,7 +33,8 @@ class Reward implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAmount($data->amount); 
+        $this->amount = new Coin();
+        $this->amount -> validate($data-> amount);
           $this->setTo($data->to); 
     } 
 } 
