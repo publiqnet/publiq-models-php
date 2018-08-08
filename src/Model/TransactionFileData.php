@@ -11,7 +11,7 @@ class TransactionFileData implements ValidatorInterface, \JsonSerializable
     /**
     * @var array 
     */ 
-    private $actions;
+    private $actions = [];
     /**
     * @var string
     */

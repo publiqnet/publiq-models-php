@@ -11,7 +11,7 @@ class BlockchainFileData implements ValidatorInterface, \JsonSerializable
     /**
     * @var array 
     */ 
-    private $blocks;
+    private $blocks = [];
     /**
     * @var string
     */

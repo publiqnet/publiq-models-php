@@ -13,9 +13,9 @@ class Page implements ValidatorInterface, \JsonSerializable
     */ 
     private $channel;
     /**
-    * @var array
+    * @var array 
     */ 
-    private $file_uris;
+    private $file_uris = [];
     /** 
     * @param string $channel
     */ 

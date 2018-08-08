@@ -9,9 +9,9 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array
+    * @var array 
     */ 
-    private $signed_blocks;
+    private $signed_blocks = [];
     public function getSigned_blocks() 
     {
         return $this->signed_blocks;

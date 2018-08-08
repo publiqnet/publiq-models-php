@@ -11,7 +11,7 @@ class StateFileData implements ValidatorInterface, \JsonSerializable
     /**
     * @var array 
     */ 
-    private $accounts;
+    private $accounts = [];
     /**
     * @var string
     */

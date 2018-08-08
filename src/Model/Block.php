@@ -13,13 +13,13 @@ class Block implements ValidatorInterface, \JsonSerializable
     */ 
     private $header;
     /**
-    * @var array
+    * @var array 
     */ 
-    private $rewards;
+    private $rewards = [];
     /**
-    * @var array
+    * @var array 
     */ 
-    private $signed_transactions;
+    private $signed_transactions = [];
     public function getHeader() 
     {
         return $this->header;

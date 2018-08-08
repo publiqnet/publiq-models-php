@@ -9,9 +9,9 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array
+    * @var array 
     */ 
-    private $block_headers;
+    private $block_headers = [];
     public function getBlock_headers() 
     {
         return $this->block_headers;
