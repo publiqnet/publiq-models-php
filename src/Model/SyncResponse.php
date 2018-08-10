@@ -11,36 +11,36 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     /**
     * @var int
     */ 
-    private $block_number;
+    private $blockNumber;
     /**
     * @var int
     */ 
-    private $consensus_sum;
+    private $consensusSum;
     /** 
-    * @param int $block_number
+    * @param int $blockNumber
     */ 
-    public function setBlock_number(int $block_number) 
+    public function setBlockNumber(int $blockNumber) 
     { 
-            $this->block_number = $block_number; 
+            $this->blockNumber = $blockNumber; 
     } 
     /** 
-    * @param int $consensus_sum
+    * @param int $consensusSum
     */ 
-    public function setConsensus_sum(int $consensus_sum) 
+    public function setConsensusSum(int $consensusSum) 
     { 
-            $this->consensus_sum = $consensus_sum; 
+            $this->consensusSum = $consensusSum; 
     } 
-    public function getBlock_number() 
+    public function getBlockNumber() 
     {
-        return $this->block_number;
+        return $this->blockNumber;
     }
-    public function getConsensus_sum() 
+    public function getConsensusSum() 
     {
-        return $this->consensus_sum;
+        return $this->consensusSum;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlock_number($data->block_number); 
-          $this->setConsensus_sum($data->consensus_sum); 
+          $this->setBlockNumber($data->blockNumber); 
+          $this->setConsensusSum($data->consensusSum); 
     } 
 } 

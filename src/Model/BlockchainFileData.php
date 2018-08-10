@@ -9,7 +9,7 @@ class BlockchainFileData implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array 
+    * @var array
     */ 
     private $blocks = [];
     /**

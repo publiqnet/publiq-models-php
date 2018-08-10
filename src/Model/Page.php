@@ -13,9 +13,9 @@ class Page implements ValidatorInterface, \JsonSerializable
     */ 
     private $channel;
     /**
-    * @var array 
+    * @var array
     */ 
-    private $file_uris = [];
+    private $fileUris = [];
     /** 
     * @param string $channel
     */ 
@@ -27,22 +27,22 @@ class Page implements ValidatorInterface, \JsonSerializable
     {
         return $this->channel;
     }
-    public function getFile_uris() 
+    public function getFileUris() 
     {
-        return $this->file_uris;
+        return $this->fileUris;
     }
     /**
-    * @param string $file_urisItem
+    * @param string $fileUrisItem
     */
-    public function addFile_uris(string $file_urisItem)
+    public function addFileUris(string $fileUrisItem)
     {
-        $this->file_uris[] = $file_urisItem;
+        $this->fileUris[] = $fileUrisItem;
     }
     public function validate(\stdClass $data) 
     { 
           $this->setChannel($data->channel); 
-          foreach ($data->file_uris as $file_urisItem) { 
-            $this->addFile_uris($file_urisItem);
+          foreach ($data->fileUris as $fileUrisItem) { 
+            $this->addFileUris($fileUrisItem);
            } 
     } 
 } 

@@ -11,20 +11,20 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $public_key;
+    private $publicKey;
     /** 
-    * @param string $public_key
+    * @param string $publicKey
     */ 
-    public function setPublic_key(string $public_key) 
+    public function setPublicKey(string $publicKey) 
     { 
-            $this->public_key = $public_key; 
+            $this->publicKey = $publicKey; 
     } 
-    public function getPublic_key() 
+    public function getPublicKey() 
     {
-        return $this->public_key;
+        return $this->publicKey;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPublic_key($data->public_key); 
+          $this->setPublicKey($data->publicKey); 
     } 
 } 

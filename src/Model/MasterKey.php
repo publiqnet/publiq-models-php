@@ -11,20 +11,20 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $master_key;
+    private $masterKey;
     /** 
-    * @param string $master_key
+    * @param string $masterKey
     */ 
-    public function setMaster_key(string $master_key) 
+    public function setMasterKey(string $masterKey) 
     { 
-            $this->master_key = $master_key; 
+            $this->masterKey = $masterKey; 
     } 
-    public function getMaster_key() 
+    public function getMasterKey() 
     {
-        return $this->master_key;
+        return $this->masterKey;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMaster_key($data->master_key); 
+          $this->setMasterKey($data->masterKey); 
     } 
 } 

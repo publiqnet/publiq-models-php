@@ -9,19 +9,19 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array 
+    * @var array
     */ 
-    private $block_headers = [];
-    public function getBlock_headers() 
+    private $blockHeaders = [];
+    public function getBlockHeaders() 
     {
-        return $this->block_headers;
+        return $this->blockHeaders;
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->block_headers as $block_headersItem) { 
-              $block_headersItemObj = new BlockHeader(); 
-              $block_headersItemObj->validate($block_headersItem); 
-              $this->block_headers[] = $block_headersItemObj;
+          foreach ($data->blockHeaders as $blockHeadersItem) { 
+              $blockHeadersItemObj = new BlockHeader(); 
+              $blockHeadersItemObj->validate($blockHeadersItem); 
+              $this->blockHeaders[] = $blockHeadersItemObj;
            } 
     } 
 } 

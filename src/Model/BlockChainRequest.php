@@ -11,36 +11,36 @@ class BlockChainRequest implements ValidatorInterface, \JsonSerializable
     /**
     * @var int
     */ 
-    private $blocks_from;
+    private $blocksFrom;
     /**
     * @var int
     */ 
-    private $blocks_to;
+    private $blocksTo;
     /** 
-    * @param int $blocks_from
+    * @param int $blocksFrom
     */ 
-    public function setBlocks_from(int $blocks_from) 
+    public function setBlocksFrom(int $blocksFrom) 
     { 
-            $this->blocks_from = $blocks_from; 
+            $this->blocksFrom = $blocksFrom; 
     } 
     /** 
-    * @param int $blocks_to
+    * @param int $blocksTo
     */ 
-    public function setBlocks_to(int $blocks_to) 
+    public function setBlocksTo(int $blocksTo) 
     { 
-            $this->blocks_to = $blocks_to; 
+            $this->blocksTo = $blocksTo; 
     } 
-    public function getBlocks_from() 
+    public function getBlocksFrom() 
     {
-        return $this->blocks_from;
+        return $this->blocksFrom;
     }
-    public function getBlocks_to() 
+    public function getBlocksTo() 
     {
-        return $this->blocks_to;
+        return $this->blocksTo;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlocks_from($data->blocks_from); 
-          $this->setBlocks_to($data->blocks_to); 
+          $this->setBlocksFrom($data->blocksFrom); 
+          $this->setBlocksTo($data->blocksTo); 
     } 
 } 

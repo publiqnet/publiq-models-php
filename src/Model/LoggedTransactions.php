@@ -9,7 +9,7 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array 
+    * @var array
     */ 
     private $actions = [];
     public function getActions() 

@@ -11,100 +11,100 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     /**
     * @var int
     */ 
-    private $block_number;
+    private $blockNumber;
     /**
     * @var int
     */ 
-    private $consensus_const;
+    private $consensusConst;
     /**
     * @var int
     */ 
-    private $consensus_delta;
+    private $consensusDelta;
     /**
     * @var int
     */ 
-    private $consensus_sum;
+    private $consensusSum;
     /**
     * @var string
     */ 
-    private $previous_hash;
+    private $previousHash;
     /**
     * @var integer
     */ 
-    private $sign_time;
+    private $signTime;
     /** 
-    * @param int $block_number
+    * @param int $blockNumber
     */ 
-    public function setBlock_number(int $block_number) 
+    public function setBlockNumber(int $blockNumber) 
     { 
-            $this->block_number = $block_number; 
+            $this->blockNumber = $blockNumber; 
     } 
     /** 
-    * @param int $consensus_const
+    * @param int $consensusConst
     */ 
-    public function setConsensus_const(int $consensus_const) 
+    public function setConsensusConst(int $consensusConst) 
     { 
-            $this->consensus_const = $consensus_const; 
+            $this->consensusConst = $consensusConst; 
     } 
     /** 
-    * @param int $consensus_delta
+    * @param int $consensusDelta
     */ 
-    public function setConsensus_delta(int $consensus_delta) 
+    public function setConsensusDelta(int $consensusDelta) 
     { 
-            $this->consensus_delta = $consensus_delta; 
+            $this->consensusDelta = $consensusDelta; 
     } 
     /** 
-    * @param int $consensus_sum
+    * @param int $consensusSum
     */ 
-    public function setConsensus_sum(int $consensus_sum) 
+    public function setConsensusSum(int $consensusSum) 
     { 
-            $this->consensus_sum = $consensus_sum; 
+            $this->consensusSum = $consensusSum; 
     } 
     /** 
-    * @param string $previous_hash
+    * @param string $previousHash
     */ 
-    public function setPrevious_hash(string $previous_hash) 
+    public function setPreviousHash(string $previousHash) 
     { 
-            $this->previous_hash = $previous_hash; 
+            $this->previousHash = $previousHash; 
     } 
     /** 
-    * @param int $sign_time
+    * @param int $signTime
     */ 
-    public function setSign_time(int $sign_time) 
+    public function setSignTime(int $signTime) 
     { 
-            $this->sign_time = strtotime($sign_time); 
+            $this->signTime = strtotime($signTime); 
     } 
-    public function getBlock_number() 
+    public function getBlockNumber() 
     {
-        return $this->block_number;
+        return $this->blockNumber;
     }
-    public function getConsensus_const() 
+    public function getConsensusConst() 
     {
-        return $this->consensus_const;
+        return $this->consensusConst;
     }
-    public function getConsensus_delta() 
+    public function getConsensusDelta() 
     {
-        return $this->consensus_delta;
+        return $this->consensusDelta;
     }
-    public function getConsensus_sum() 
+    public function getConsensusSum() 
     {
-        return $this->consensus_sum;
+        return $this->consensusSum;
     }
-    public function getPrevious_hash() 
+    public function getPreviousHash() 
     {
-        return $this->previous_hash;
+        return $this->previousHash;
     }
-    public function getSign_time() 
+    public function getSignTime() 
     {
-        return $this->sign_time;
+        return $this->signTime;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlock_number($data->block_number); 
-          $this->setConsensus_const($data->consensus_const); 
-          $this->setConsensus_delta($data->consensus_delta); 
-          $this->setConsensus_sum($data->consensus_sum); 
-          $this->setPrevious_hash($data->previous_hash); 
-          $this->setSign_time($data->sign_time); 
+          $this->setBlockNumber($data->blockNumber); 
+          $this->setConsensusConst($data->consensusConst); 
+          $this->setConsensusDelta($data->consensusDelta); 
+          $this->setConsensusSum($data->consensusSum); 
+          $this->setPreviousHash($data->previousHash); 
+          $this->setSignTime($data->signTime); 
     } 
 } 

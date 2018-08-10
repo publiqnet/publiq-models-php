@@ -11,20 +11,20 @@ class InvalidPrivateKey implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $private_key;
+    private $privateKey;
     /** 
-    * @param string $private_key
+    * @param string $privateKey
     */ 
-    public function setPrivate_key(string $private_key) 
+    public function setPrivateKey(string $privateKey) 
     { 
-            $this->private_key = $private_key; 
+            $this->privateKey = $privateKey; 
     } 
-    public function getPrivate_key() 
+    public function getPrivateKey() 
     {
-        return $this->private_key;
+        return $this->privateKey;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPrivate_key($data->private_key); 
+          $this->setPrivateKey($data->privateKey); 
     } 
 } 

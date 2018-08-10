@@ -11,17 +11,17 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $mime_type;
+    private $mimeType;
     /**
     * @var string
     */ 
     private $data;
     /** 
-    * @param string $mime_type
+    * @param string $mimeType
     */ 
-    public function setMime_type(string $mime_type) 
+    public function setMimeType(string $mimeType) 
     { 
-            $this->mime_type = $mime_type; 
+            $this->mimeType = $mimeType; 
     } 
     /** 
     * @param string $data
@@ -30,9 +30,9 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     { 
             $this->data = $data; 
     } 
-    public function getMime_type() 
+    public function getMimeType() 
     {
-        return $this->mime_type;
+        return $this->mimeType;
     }
     public function getData() 
     {
@@ -40,7 +40,7 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMime_type($data->mime_type); 
+          $this->setMimeType($data->mimeType); 
           $this->setData($data->data); 
     } 
 } 

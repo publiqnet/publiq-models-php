@@ -11,7 +11,7 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     /**
     * @var mixed 
     */ 
-    private $block_details;
+    private $blockDetails;
     /**
     * @var string
     */ 
@@ -34,9 +34,9 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     { 
             $this->signature = $signature; 
     } 
-    public function getBlock_details() 
+    public function getBlockDetails() 
     {
-        return $this->block_details;
+        return $this->blockDetails;
     }
     public function getAuthority() 
     {
@@ -50,6 +50,6 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     { 
           $this->setAuthority($data->authority); 
           $this->setSignature($data->signature); 
-          $this->block_details = Rtt::validate($data->block_details);
+          $this->blockDetails = Rtt::validate($data->block_details);
     } 
 } 

@@ -11,7 +11,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     /**
     * @var bool
     */ 
-    private $applied_reverted;
+    private $appliedReverted;
     /**
     * @var int
     */ 
@@ -21,11 +21,11 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $action;
     /** 
-    * @param bool $applied_reverted
+    * @param bool $appliedReverted
     */ 
-    public function setApplied_reverted(bool $applied_reverted) 
+    public function setAppliedReverted(bool $appliedReverted) 
     { 
-            $this->applied_reverted = $applied_reverted; 
+            $this->appliedReverted = $appliedReverted; 
     } 
     /** 
     * @param int $index
@@ -34,9 +34,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
             $this->index = $index; 
     } 
-    public function getApplied_reverted() 
+    public function getAppliedReverted() 
     {
-        return $this->applied_reverted;
+        return $this->appliedReverted;
     }
     public function getIndex() 
     {
@@ -48,7 +48,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setApplied_reverted($data->applied_reverted); 
+          $this->setAppliedReverted($data->appliedReverted); 
           $this->setIndex($data->index); 
           $this->action = Rtt::validate($data->action);
     } 

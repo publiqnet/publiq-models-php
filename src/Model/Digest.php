@@ -11,21 +11,21 @@ class Digest implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $base58_hash;
+    private $base58Hash;
     /**
     * @var mixed 
     */ 
     private $package;
     /** 
-    * @param string $base58_hash
+    * @param string $base58Hash
     */ 
-    public function setBase58_hash(string $base58_hash) 
+    public function setBase58Hash(string $base58Hash) 
     { 
-            $this->base58_hash = $base58_hash; 
+            $this->base58Hash = $base58Hash; 
     } 
-    public function getBase58_hash() 
+    public function getBase58Hash() 
     {
-        return $this->base58_hash;
+        return $this->base58Hash;
     }
     public function getPackage() 
     {
@@ -33,7 +33,7 @@ class Digest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBase58_hash($data->base58_hash); 
+          $this->setBase58Hash($data->base58Hash); 
           $this->package = Rtt::validate($data->package);
     } 
 } 

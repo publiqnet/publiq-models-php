@@ -11,7 +11,7 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     /**
     * @var Transaction
     */ 
-    private $transaction_details;
+    private $transactionDetails;
     /**
     * @var string
     */ 
@@ -34,9 +34,9 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     { 
             $this->signature = $signature; 
     } 
-    public function getTransaction_details() 
+    public function getTransactionDetails() 
     {
-        return $this->transaction_details;
+        return $this->transactionDetails;
     }
     public function getAuthority() 
     {
@@ -48,8 +48,8 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->transaction_details = new Transaction();
-        $this->transaction_details -> validate($data-> transaction_details);
+        $this->transactionDetails = new Transaction();
+        $this->transactionDetails -> validate($data-> transactionDetails);
           $this->setAuthority($data->authority); 
           $this->setSignature($data->signature); 
     } 

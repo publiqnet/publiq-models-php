@@ -9,19 +9,19 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
     /**
-    * @var array 
+    * @var array
     */ 
-    private $signed_blocks = [];
-    public function getSigned_blocks() 
+    private $signedBlocks = [];
+    public function getSignedBlocks() 
     {
-        return $this->signed_blocks;
+        return $this->signedBlocks;
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->signed_blocks as $signed_blocksItem) { 
-              $signed_blocksItemObj = new SignedBlock(); 
-              $signed_blocksItemObj->validate($signed_blocksItem); 
-              $this->signed_blocks[] = $signed_blocksItemObj;
+          foreach ($data->signedBlocks as $signedBlocksItem) { 
+              $signedBlocksItemObj = new SignedBlock(); 
+              $signedBlocksItemObj->validate($signedBlocksItem); 
+              $this->signedBlocks[] = $signedBlocksItemObj;
            } 
     } 
 } 

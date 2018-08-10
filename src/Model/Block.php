@@ -13,13 +13,13 @@ class Block implements ValidatorInterface, \JsonSerializable
     */ 
     private $header;
     /**
-    * @var array 
+    * @var array
     */ 
     private $rewards = [];
     /**
-    * @var array 
+    * @var array
     */ 
-    private $signed_transactions = [];
+    private $signedTransactions = [];
     public function getHeader() 
     {
         return $this->header;
@@ -28,9 +28,9 @@ class Block implements ValidatorInterface, \JsonSerializable
     {
         return $this->rewards;
     }
-    public function getSigned_transactions() 
+    public function getSignedTransactions() 
     {
-        return $this->signed_transactions;
+        return $this->signedTransactions;
     }
     public function validate(\stdClass $data) 
     { 
@@ -41,10 +41,10 @@ class Block implements ValidatorInterface, \JsonSerializable
               $rewardsItemObj->validate($rewardsItem); 
               $this->rewards[] = $rewardsItemObj;
            } 
-          foreach ($data->signed_transactions as $signed_transactionsItem) { 
-              $signed_transactionsItemObj = new SignedTransaction(); 
-              $signed_transactionsItemObj->validate($signed_transactionsItem); 
-              $this->signed_transactions[] = $signed_transactionsItemObj;
+          foreach ($data->signedTransactions as $signedTransactionsItem) { 
+              $signedTransactionsItemObj = new SignedTransaction(); 
+              $signedTransactionsItemObj->validate($signedTransactionsItem); 
+              $this->signedTransactions[] = $signedTransactionsItemObj;
            } 
     } 
 } 

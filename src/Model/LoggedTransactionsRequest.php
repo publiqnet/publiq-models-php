@@ -11,20 +11,20 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     /**
     * @var int
     */ 
-    private $start_index;
+    private $startIndex;
     /** 
-    * @param int $start_index
+    * @param int $startIndex
     */ 
-    public function setStart_index(int $start_index) 
+    public function setStartIndex(int $startIndex) 
     { 
-            $this->start_index = $start_index; 
+            $this->startIndex = $startIndex; 
     } 
-    public function getStart_index() 
+    public function getStartIndex() 
     {
-        return $this->start_index;
+        return $this->startIndex;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setStart_index($data->start_index); 
+          $this->setStartIndex($data->startIndex); 
     } 
 } 

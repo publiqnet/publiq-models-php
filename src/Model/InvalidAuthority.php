@@ -11,36 +11,36 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $authority_provided;
+    private $authorityProvided;
     /**
     * @var string
     */ 
-    private $authority_required;
+    private $authorityRequired;
     /** 
-    * @param string $authority_provided
+    * @param string $authorityProvided
     */ 
-    public function setAuthority_provided(string $authority_provided) 
+    public function setAuthorityProvided(string $authorityProvided) 
     { 
-            $this->authority_provided = $authority_provided; 
+            $this->authorityProvided = $authorityProvided; 
     } 
     /** 
-    * @param string $authority_required
+    * @param string $authorityRequired
     */ 
-    public function setAuthority_required(string $authority_required) 
+    public function setAuthorityRequired(string $authorityRequired) 
     { 
-            $this->authority_required = $authority_required; 
+            $this->authorityRequired = $authorityRequired; 
     } 
-    public function getAuthority_provided() 
+    public function getAuthorityProvided() 
     {
-        return $this->authority_provided;
+        return $this->authorityProvided;
     }
-    public function getAuthority_required() 
+    public function getAuthorityRequired() 
     {
-        return $this->authority_required;
+        return $this->authorityRequired;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthority_provided($data->authority_provided); 
-          $this->setAuthority_required($data->authority_required); 
+          $this->setAuthorityProvided($data->authorityProvided); 
+          $this->setAuthorityRequired($data->authorityRequired); 
     } 
 } 

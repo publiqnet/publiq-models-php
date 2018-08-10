@@ -11,7 +11,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $public_key;
+    private $publicKey;
     /**
     * @var string
     */ 
@@ -21,11 +21,11 @@ class Signature implements ValidatorInterface, \JsonSerializable
     */ 
     private $package;
     /** 
-    * @param string $public_key
+    * @param string $publicKey
     */ 
-    public function setPublic_key(string $public_key) 
+    public function setPublicKey(string $publicKey) 
     { 
-            $this->public_key = $public_key; 
+            $this->publicKey = $publicKey; 
     } 
     /** 
     * @param string $signature
@@ -34,9 +34,9 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
             $this->signature = $signature; 
     } 
-    public function getPublic_key() 
+    public function getPublicKey() 
     {
-        return $this->public_key;
+        return $this->publicKey;
     }
     public function getSignature() 
     {
@@ -48,7 +48,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPublic_key($data->public_key); 
+          $this->setPublicKey($data->publicKey); 
           $this->setSignature($data->signature); 
           $this->package = Rtt::validate($data->package);
     } 

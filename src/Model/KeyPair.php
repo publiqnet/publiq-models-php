@@ -11,7 +11,7 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $master_key;
+    private $masterKey;
     /**
     * @var int
     */ 
@@ -19,17 +19,17 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $public_key;
+    private $publicKey;
     /**
     * @var string
     */ 
-    private $private_key;
+    private $privateKey;
     /** 
-    * @param string $master_key
+    * @param string $masterKey
     */ 
-    public function setMaster_key(string $master_key) 
+    public function setMasterKey(string $masterKey) 
     { 
-            $this->master_key = $master_key; 
+            $this->masterKey = $masterKey; 
     } 
     /** 
     * @param int $index
@@ -39,40 +39,40 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
             $this->index = $index; 
     } 
     /** 
-    * @param string $public_key
+    * @param string $publicKey
     */ 
-    public function setPublic_key(string $public_key) 
+    public function setPublicKey(string $publicKey) 
     { 
-            $this->public_key = $public_key; 
+            $this->publicKey = $publicKey; 
     } 
     /** 
-    * @param string $private_key
+    * @param string $privateKey
     */ 
-    public function setPrivate_key(string $private_key) 
+    public function setPrivateKey(string $privateKey) 
     { 
-            $this->private_key = $private_key; 
+            $this->privateKey = $privateKey; 
     } 
-    public function getMaster_key() 
+    public function getMasterKey() 
     {
-        return $this->master_key;
+        return $this->masterKey;
     }
     public function getIndex() 
     {
         return $this->index;
     }
-    public function getPublic_key() 
+    public function getPublicKey() 
     {
-        return $this->public_key;
+        return $this->publicKey;
     }
-    public function getPrivate_key() 
+    public function getPrivateKey() 
     {
-        return $this->private_key;
+        return $this->privateKey;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMaster_key($data->master_key); 
+          $this->setMasterKey($data->masterKey); 
           $this->setIndex($data->index); 
-          $this->setPublic_key($data->public_key); 
-          $this->setPrivate_key($data->private_key); 
+          $this->setPublicKey($data->publicKey); 
+          $this->setPrivateKey($data->privateKey); 
     } 
 } 
