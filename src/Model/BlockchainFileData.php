@@ -8,6 +8,11 @@ class BlockchainFileData implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'blocks' => 'blocks',
+    ];
+
     /**
     * @var array
     */ 
@@ -34,4 +39,8 @@ class BlockchainFileData implements ValidatorInterface, \JsonSerializable
             $this->blocks = Rtt::validate($data->blocks);
          }
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

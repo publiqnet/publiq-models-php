@@ -8,6 +8,13 @@ class Signature implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'public_key' => 'publicKey',
+        'signature' => 'signature',
+        'package' => 'package',
+    ];
+
     /**
     * @var string
     */ 
@@ -52,4 +59,8 @@ class Signature implements ValidatorInterface, \JsonSerializable
           $this->setSignature($data->signature); 
           $this->package = Rtt::validate($data->package);
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

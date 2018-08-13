@@ -8,6 +8,11 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'actions' => 'actions',
+    ];
+
     /**
     * @var array
     */ 
@@ -24,4 +29,8 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
               $this->actions[] = $actionsItemObj;
            } 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

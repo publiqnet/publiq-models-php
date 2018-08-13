@@ -8,6 +8,11 @@ class StorageFileAddress implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'uri' => 'uri',
+    ];
+
     /**
     * @var string
     */ 
@@ -27,4 +32,8 @@ class StorageFileAddress implements ValidatorInterface, \JsonSerializable
     { 
           $this->setUri($data->uri); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

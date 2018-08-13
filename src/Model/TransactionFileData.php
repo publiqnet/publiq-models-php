@@ -8,6 +8,11 @@ class TransactionFileData implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'actions' => 'actions',
+    ];
+
     /**
     * @var array
     */ 
@@ -34,4 +39,8 @@ class TransactionFileData implements ValidatorInterface, \JsonSerializable
             $this->actions = Rtt::validate($data->actions);
          }
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

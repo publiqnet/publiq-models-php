@@ -8,6 +8,11 @@ class LogTransaction implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'action' => 'action',
+    ];
+
     /**
     * @var mixed 
     */ 
@@ -20,4 +25,8 @@ class LogTransaction implements ValidatorInterface, \JsonSerializable
     { 
           $this->action = Rtt::validate($data->action);
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

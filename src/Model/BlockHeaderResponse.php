@@ -8,6 +8,11 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'block_headers' => 'blockHeaders',
+    ];
+
     /**
     * @var array
     */ 
@@ -24,4 +29,8 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
               $this->blockHeaders[] = $blockHeadersItemObj;
            } 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

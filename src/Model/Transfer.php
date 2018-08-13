@@ -8,6 +8,13 @@ class Transfer implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'from' => 'from',
+        'to' => 'to',
+        'amount' => 'amount',
+    ];
+
     /**
     * @var string
     */ 
@@ -53,4 +60,8 @@ class Transfer implements ValidatorInterface, \JsonSerializable
           $this->setFrom($data->from); 
           $this->setTo($data->to); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

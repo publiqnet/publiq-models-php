@@ -8,6 +8,14 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'master_key' => 'masterKey',
+        'index' => 'index',
+        'public_key' => 'publicKey',
+        'private_key' => 'privateKey',
+    ];
+
     /**
     * @var string
     */ 
@@ -75,4 +83,8 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
           $this->setPublicKey($data->publicKey); 
           $this->setPrivateKey($data->privateKey); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

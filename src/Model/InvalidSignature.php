@@ -8,6 +8,11 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'details' => 'details',
+    ];
+
     /**
     * @var Signature
     */ 
@@ -21,4 +26,8 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
         $this->details = new Signature();
         $this->details -> validate($data-> details);
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

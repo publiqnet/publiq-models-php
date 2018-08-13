@@ -8,6 +8,11 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'package' => 'package',
+    ];
+
     /**
     * @var mixed 
     */ 
@@ -20,4 +25,8 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     { 
           $this->package = Rtt::validate($data->package);
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

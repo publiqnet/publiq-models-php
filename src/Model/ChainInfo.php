@@ -8,6 +8,11 @@ class ChainInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'length' => 'length',
+    ];
+
     /**
     * @var int
     */ 
@@ -27,4 +32,8 @@ class ChainInfo implements ValidatorInterface, \JsonSerializable
     { 
           $this->setLength($data->length); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

@@ -8,6 +8,12 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'authority_provided' => 'authorityProvided',
+        'authority_required' => 'authorityRequired',
+    ];
+
     /**
     * @var string
     */ 
@@ -43,4 +49,8 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
           $this->setAuthorityProvided($data->authorityProvided); 
           $this->setAuthorityRequired($data->authorityRequired); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

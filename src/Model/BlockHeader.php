@@ -8,6 +8,16 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'block_number' => 'blockNumber',
+        'consensus_const' => 'consensusConst',
+        'consensus_delta' => 'consensusDelta',
+        'consensus_sum' => 'consensusSum',
+        'previous_hash' => 'previousHash',
+        'sign_time' => 'signTime',
+    ];
+
     /**
     * @var int
     */ 
@@ -107,4 +117,8 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
           $this->setPreviousHash($data->previousHash); 
           $this->setSignTime($data->signTime); 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 

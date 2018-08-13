@@ -8,6 +8,12 @@ class Page implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST memberNames = [
+        'channel' => 'channel',
+        'file_uris' => 'fileUris',
+    ];
+
     /**
     * @var string
     */ 
@@ -45,4 +51,8 @@ class Page implements ValidatorInterface, \JsonSerializable
             $this->addFileUris($fileUrisItem);
            } 
     } 
+    public function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, $this->$memberNames);
+    }
 } 
