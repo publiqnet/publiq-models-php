@@ -9,7 +9,7 @@ class BlockChainRequest implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'blocks_from' => 'blocksFrom',
         'blocks_to' => 'blocksTo',
     ];
@@ -49,8 +49,8 @@ class BlockChainRequest implements ValidatorInterface, \JsonSerializable
           $this->setBlocksFrom($data->blocksFrom); 
           $this->setBlocksTo($data->blocksTo); 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

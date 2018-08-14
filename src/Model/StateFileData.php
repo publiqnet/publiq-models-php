@@ -9,7 +9,7 @@ class StateFileData implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'accounts' => 'accounts',
     ];
 
@@ -40,8 +40,8 @@ class StateFileData implements ValidatorInterface, \JsonSerializable
             $hashItemObj->validate($value);
             $this->accounts[] = $accountsItemObj         }
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

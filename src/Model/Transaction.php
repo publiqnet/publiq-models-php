@@ -9,7 +9,7 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'creation' => 'creation',
         'expiry' => 'expiry',
         'fee' => 'fee',
@@ -70,8 +70,8 @@ class Transaction implements ValidatorInterface, \JsonSerializable
           $this->setExpiry($data->expiry); 
           $this->action = Rtt::validate($data->action);
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

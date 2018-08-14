@@ -9,7 +9,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'block_number' => 'blockNumber',
         'consensus_sum' => 'consensusSum',
     ];
@@ -49,8 +49,8 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
           $this->setBlockNumber($data->blockNumber); 
           $this->setConsensusSum($data->consensusSum); 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

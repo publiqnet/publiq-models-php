@@ -9,7 +9,7 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'echoes' => 'echoes',
         'package' => 'package',
     ];
@@ -42,8 +42,8 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
           $this->setEchoes($data->echoes); 
           $this->package = Rtt::validate($data->package);
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

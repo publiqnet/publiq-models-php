@@ -13,8 +13,12 @@ trait RttSerializableTrait
            if (!$className) {
                throw new \Exception("Cannot find class in rtt list");
            }
-           $vars['rtt'] = array_search($className, Rtt::types);
+           $vars2['rtt'] = array_search($className, Rtt::types);
 
-           return $vars;
+           foreach ($vars as  $name => $value)
+           {
+              $vars2[$name] = $className::getMemberName($name);
+           }
+           return $vars2;
        }
     }

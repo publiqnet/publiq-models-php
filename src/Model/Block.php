@@ -9,7 +9,7 @@ class Block implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'header' => 'header',
         'rewards' => 'rewards',
         'signed_transactions' => 'signedTransactions',
@@ -54,8 +54,8 @@ class Block implements ValidatorInterface, \JsonSerializable
               $this->signedTransactions[] = $signedTransactionsItemObj;
            } 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

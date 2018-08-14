@@ -9,7 +9,7 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'public_key' => 'publicKey',
     ];
 
@@ -32,8 +32,8 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     { 
           $this->setPublicKey($data->publicKey); 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

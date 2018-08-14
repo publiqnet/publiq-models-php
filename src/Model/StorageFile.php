@@ -9,7 +9,7 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'mime_type' => 'mimeType',
         'data' => 'data',
     ];
@@ -49,8 +49,8 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
           $this->setMimeType($data->mimeType); 
           $this->setData($data->data); 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 

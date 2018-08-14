@@ -9,7 +9,7 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST memberNames = [
+    CONST static memberNames = [
         'message' => 'message',
     ];
 
@@ -32,8 +32,8 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     { 
           $this->setMessage($data->message); 
     } 
-    public function getMemberName(string $camelCaseName)
+    public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, $this->$memberNames);
+        return array_search($camelCaseName, self::$memberNames);
     }
 } 
