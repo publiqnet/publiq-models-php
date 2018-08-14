@@ -17,7 +17,7 @@ trait RttSerializableTrait
 
            foreach ($vars as  $name => $value)
            {
-              $vars2[$name] = $className::getMemberName($name);
+              $vars2[$className::getMemberName($name)] = $value;
            }
            return $vars2;
        }
