@@ -9,7 +9,7 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'actions' => 'actions',
     ];
 

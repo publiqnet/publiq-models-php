@@ -9,7 +9,7 @@ class BlockHeaderRequest implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'blocks_from' => 'blocksFrom',
         'blocks_to' => 'blocksTo',
     ];

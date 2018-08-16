@@ -9,7 +9,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'block_number' => 'blockNumber',
         'consensus_sum' => 'consensusSum',
     ];

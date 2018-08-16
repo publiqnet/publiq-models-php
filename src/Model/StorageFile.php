@@ -9,7 +9,7 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'mime_type' => 'mimeType',
         'data' => 'data',
     ];

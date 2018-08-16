@@ -9,7 +9,7 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'transaction_details' => 'transactionDetails',
         'authority' => 'authority',
         'signature' => 'signature',

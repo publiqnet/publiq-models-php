@@ -9,7 +9,7 @@ class Page implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'channel' => 'channel',
         'file_uris' => 'fileUris',
     ];

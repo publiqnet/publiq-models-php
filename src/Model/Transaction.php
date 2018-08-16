@@ -9,7 +9,7 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'creation' => 'creation',
         'expiry' => 'expiry',
         'fee' => 'fee',

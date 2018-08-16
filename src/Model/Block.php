@@ -9,7 +9,7 @@ class Block implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'header' => 'header',
         'rewards' => 'rewards',
         'signed_transactions' => 'signedTransactions',

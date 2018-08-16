@@ -9,7 +9,7 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'signed_blocks' => 'signedBlocks',
     ];
 

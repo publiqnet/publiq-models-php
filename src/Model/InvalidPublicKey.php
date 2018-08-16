@@ -9,7 +9,7 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     use RttSerializableTrait;
     use RttToJsonTrait;
  
-    CONST static memberNames = [
+    CONST  memberNames = [
         'public_key' => 'publicKey',
     ];
 
