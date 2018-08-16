@@ -8,12 +8,6 @@ class File implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'author' => 'author',
-        'uri' => 'uri',
-    ];
-
     /**
     * @var string
     */ 
@@ -49,8 +43,11 @@ class File implements ValidatorInterface, \JsonSerializable
           $this->setAuthor($data->author); 
           $this->setUri($data->uri); 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'author' => 'author',
+        'uri' => 'uri',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

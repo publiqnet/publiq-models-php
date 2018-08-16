@@ -8,13 +8,6 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'transaction_details' => 'transactionDetails',
-        'authority' => 'authority',
-        'signature' => 'signature',
-    ];
-
     /**
     * @var Transaction
     */ 
@@ -60,8 +53,12 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
           $this->setAuthority($data->authority); 
           $this->setSignature($data->signature); 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'transaction_details' => 'transactionDetails',
+        'authority' => 'authority',
+        'signature' => 'signature',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

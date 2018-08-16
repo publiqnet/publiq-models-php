@@ -8,12 +8,6 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'block_number' => 'blockNumber',
-        'consensus_sum' => 'consensusSum',
-    ];
-
     /**
     * @var int
     */ 
@@ -49,8 +43,11 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
           $this->setBlockNumber($data->blockNumber); 
           $this->setConsensusSum($data->consensusSum); 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'block_number' => 'blockNumber',
+        'consensus_sum' => 'consensusSum',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

@@ -8,15 +8,12 @@ class MasterKeyRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-    ];
-
     public function validate(\stdClass $data) 
     { 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

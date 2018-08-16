@@ -8,12 +8,6 @@ class Reward implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'amount' => 'amount',
-        'to' => 'to',
-    ];
-
     /**
     * @var Coin
     */ 
@@ -43,8 +37,11 @@ class Reward implements ValidatorInterface, \JsonSerializable
         $this->amount -> validate($data-> amount);
           $this->setTo($data->to); 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'amount' => 'amount',
+        'to' => 'to',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

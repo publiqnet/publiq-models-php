@@ -8,11 +8,6 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'signed_blocks' => 'signedBlocks',
-    ];
-
     /**
     * @var array
     */ 
@@ -29,8 +24,10 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
               $this->signedBlocks[] = $signedBlocksItemObj;
            } 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'signed_blocks' => 'signedBlocks',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

@@ -8,11 +8,6 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'start_index' => 'startIndex',
-    ];
-
     /**
     * @var int
     */ 
@@ -32,8 +27,10 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     { 
           $this->setStartIndex($data->startIndex); 
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'start_index' => 'startIndex',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 

@@ -8,13 +8,6 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
- 
-    CONST  memberNames = [
-        'block_details' => 'blockDetails',
-        'authority' => 'authority',
-        'signature' => 'signature',
-    ];
-
     /**
     * @var mixed 
     */ 
@@ -59,8 +52,12 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
           $this->setSignature($data->signature); 
           $this->blockDetails = Rtt::validate($data->block_details);
     } 
-    public static function getMemberName(string $camelCaseName)
-    {
-        return array_search($camelCaseName, self::$memberNames);
-    }
+    public static function getMemberName(string $camelCaseName)     {
+
+        $memberNames = [
+        'block_details' => 'blockDetails',
+        'authority' => 'authority',
+        'signature' => 'signature',
+        ];
+        return array_search($camelCaseName, $memberNames);    }
 } 
