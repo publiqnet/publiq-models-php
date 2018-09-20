@@ -5,4 +5,3 @@ interface ValidatorInterface
 {
     public function validate(\stdClass $data);
 }
-                

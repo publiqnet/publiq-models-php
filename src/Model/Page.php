@@ -8,6 +8,12 @@ class Page implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST  memberNames = [
+        'channel' => 'channel',
+        'file_uris' => 'fileUris',
+    ];
+
     /**
     * @var string
     */ 
@@ -45,11 +51,10 @@ class Page implements ValidatorInterface, \JsonSerializable
             $this->addFileUris($fileUrisItem);
            } 
     } 
-    public static function getMemberName(string $camelCaseName)     {
 
-        $memberNames = [
-        'channel' => 'channel',
-        'file_uris' => 'fileUris',
-        ];
-        return array_search($camelCaseName, $memberNames);    }
+    public static function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, self::$memberNames);
+    }
+
 } 

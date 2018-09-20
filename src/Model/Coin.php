@@ -8,6 +8,12 @@ class Coin implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST  memberNames = [
+        'whole' => 'whole',
+        'fraction' => 'fraction',
+    ];
+
     /**
     * @var int
     */ 
@@ -43,11 +49,10 @@ class Coin implements ValidatorInterface, \JsonSerializable
           $this->setWhole($data->whole); 
           $this->setFraction($data->fraction); 
     } 
-    public static function getMemberName(string $camelCaseName)     {
 
-        $memberNames = [
-        'whole' => 'whole',
-        'fraction' => 'fraction',
-        ];
-        return array_search($camelCaseName, $memberNames);    }
+    public static function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, self::$memberNames);
+    }
+
 } 

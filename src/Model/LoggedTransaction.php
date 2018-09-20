@@ -8,6 +8,13 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST  memberNames = [
+        'applied_reverted' => 'appliedReverted',
+        'index' => 'index',
+        'action' => 'action',
+    ];
+
     /**
     * @var bool
     */ 
@@ -52,12 +59,10 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
           $this->setIndex($data->index); 
           $this->action = Rtt::validate($data->action);
     } 
-    public static function getMemberName(string $camelCaseName)     {
 
-        $memberNames = [
-        'applied_reverted' => 'appliedReverted',
-        'index' => 'index',
-        'action' => 'action',
-        ];
-        return array_search($camelCaseName, $memberNames);    }
+    public static function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, self::$memberNames);
+    }
+
 } 

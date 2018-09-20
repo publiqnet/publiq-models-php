@@ -8,6 +8,16 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST  memberNames = [
+        'block_number' => 'blockNumber',
+        'delta' => 'delta',
+        'c_sum' => 'cSum',
+        'c_const' => 'cConst',
+        'prev_hash' => 'prevHash',
+        'sign_time' => 'signTime',
+    ];
+
     /**
     * @var int
     */ 
@@ -15,19 +25,19 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     /**
     * @var int
     */ 
-    private $consensusConst;
+    private $delta;
     /**
     * @var int
     */ 
-    private $consensusDelta;
+    private $cSum;
     /**
     * @var int
     */ 
-    private $consensusSum;
+    private $cConst;
     /**
     * @var string
     */ 
-    private $previousHash;
+    private $prevHash;
     /**
     * @var integer
     */ 
@@ -40,32 +50,32 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
             $this->blockNumber = $blockNumber; 
     } 
     /** 
-    * @param int $consensusConst
+    * @param int $delta
     */ 
-    public function setConsensusConst(int $consensusConst) 
+    public function setDelta(int $delta) 
     { 
-            $this->consensusConst = $consensusConst; 
+            $this->delta = $delta; 
     } 
     /** 
-    * @param int $consensusDelta
+    * @param int $cSum
     */ 
-    public function setConsensusDelta(int $consensusDelta) 
+    public function setCSum(int $cSum) 
     { 
-            $this->consensusDelta = $consensusDelta; 
+            $this->cSum = $cSum; 
     } 
     /** 
-    * @param int $consensusSum
+    * @param int $cConst
     */ 
-    public function setConsensusSum(int $consensusSum) 
+    public function setCConst(int $cConst) 
     { 
-            $this->consensusSum = $consensusSum; 
+            $this->cConst = $cConst; 
     } 
     /** 
-    * @param string $previousHash
+    * @param string $prevHash
     */ 
-    public function setPreviousHash(string $previousHash) 
+    public function setPrevHash(string $prevHash) 
     { 
-            $this->previousHash = $previousHash; 
+            $this->prevHash = $prevHash; 
     } 
     /** 
     * @param int $signTime
@@ -78,21 +88,21 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     {
         return $this->blockNumber;
     }
-    public function getConsensusConst() 
+    public function getDelta() 
     {
-        return $this->consensusConst;
+        return $this->delta;
     }
-    public function getConsensusDelta() 
+    public function getCSum() 
     {
-        return $this->consensusDelta;
+        return $this->cSum;
     }
-    public function getConsensusSum() 
+    public function getCConst() 
     {
-        return $this->consensusSum;
+        return $this->cConst;
     }
-    public function getPreviousHash() 
+    public function getPrevHash() 
     {
-        return $this->previousHash;
+        return $this->prevHash;
     }
     public function getSignTime() 
     {
@@ -101,21 +111,16 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
           $this->setBlockNumber($data->blockNumber); 
-          $this->setConsensusConst($data->consensusConst); 
-          $this->setConsensusDelta($data->consensusDelta); 
-          $this->setConsensusSum($data->consensusSum); 
-          $this->setPreviousHash($data->previousHash); 
+          $this->setDelta($data->delta); 
+          $this->setCSum($data->cSum); 
+          $this->setCConst($data->cConst); 
+          $this->setPrevHash($data->prevHash); 
           $this->setSignTime($data->signTime); 
     } 
-    public static function getMemberName(string $camelCaseName)     {
 
-        $memberNames = [
-        'block_number' => 'blockNumber',
-        'consensus_const' => 'consensusConst',
-        'consensus_delta' => 'consensusDelta',
-        'consensus_sum' => 'consensusSum',
-        'previous_hash' => 'previousHash',
-        'sign_time' => 'signTime',
-        ];
-        return array_search($camelCaseName, $memberNames);    }
+    public static function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, self::$memberNames);
+    }
+
 } 

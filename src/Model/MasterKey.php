@@ -8,6 +8,11 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
+ 
+    CONST  memberNames = [
+        'master_key' => 'masterKey',
+    ];
+
     /**
     * @var string
     */ 
@@ -27,10 +32,10 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     { 
           $this->setMasterKey($data->masterKey); 
     } 
-    public static function getMemberName(string $camelCaseName)     {
 
-        $memberNames = [
-        'master_key' => 'masterKey',
-        ];
-        return array_search($camelCaseName, $memberNames);    }
+    public static function getMemberName(string $camelCaseName)
+    {
+        return array_search($camelCaseName, self::$memberNames);
+    }
+
 } 
