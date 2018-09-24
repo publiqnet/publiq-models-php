@@ -110,12 +110,12 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlockNumber($data->blockNumber); 
+          $this->setBlockNumber($data->block_number); 
           $this->setDelta($data->delta); 
-          $this->setCSum($data->cSum); 
-          $this->setCConst($data->cConst); 
-          $this->setPrevHash($data->prevHash); 
-          $this->setSignTime($data->signTime); 
+          $this->setCSum($data->c_sum); 
+          $this->setCConst($data->c_const); 
+          $this->setPrevHash($data->prev_hash); 
+          $this->setSignTime($data->sign_time); 
     } 
 
     public static function getMemberName(string $camelCaseName)

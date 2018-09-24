@@ -46,7 +46,7 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->masterKey); 
+          $this->setMasterKey($data->master_key); 
           $this->setIndex($data->index); 
     } 
 

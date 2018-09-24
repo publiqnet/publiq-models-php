@@ -30,7 +30,7 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPublicKey($data->publicKey); 
+          $this->setPublicKey($data->public_key); 
     } 
 
     public static function getMemberName(string $camelCaseName)

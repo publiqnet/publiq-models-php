@@ -78,10 +78,10 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->masterKey); 
+          $this->setMasterKey($data->master_key); 
           $this->setIndex($data->index); 
-          $this->setPublicKey($data->publicKey); 
-          $this->setPrivateKey($data->privateKey); 
+          $this->setPublicKey($data->public_key); 
+          $this->setPrivateKey($data->private_key); 
     } 
 
     public static function getMemberName(string $camelCaseName)

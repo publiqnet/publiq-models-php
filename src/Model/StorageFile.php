@@ -46,7 +46,7 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMimeType($data->mimeType); 
+          $this->setMimeType($data->mime_type); 
           $this->setData($data->data); 
     } 
 

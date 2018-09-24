@@ -46,8 +46,8 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlockNumber($data->blockNumber); 
-          $this->setConsensusSum($data->consensusSum); 
+          $this->setBlockNumber($data->block_number); 
+          $this->setConsensusSum($data->consensus_sum); 
     } 
 
     public static function getMemberName(string $camelCaseName)

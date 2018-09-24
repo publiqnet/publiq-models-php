@@ -46,8 +46,8 @@ class BlockChainRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlocksFrom($data->blocksFrom); 
-          $this->setBlocksTo($data->blocksTo); 
+          $this->setBlocksFrom($data->blocks_from); 
+          $this->setBlocksTo($data->blocks_to); 
     } 
 
     public static function getMemberName(string $camelCaseName)

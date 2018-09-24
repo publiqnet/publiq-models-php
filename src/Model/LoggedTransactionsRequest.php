@@ -30,7 +30,7 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setStartIndex($data->startIndex); 
+          $this->setStartIndex($data->start_index); 
     } 
 
     public static function getMemberName(string $camelCaseName)

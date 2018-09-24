@@ -30,7 +30,7 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->masterKey); 
+          $this->setMasterKey($data->master_key); 
     } 
 
     public static function getMemberName(string $camelCaseName)

@@ -46,8 +46,8 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthorityProvided($data->authorityProvided); 
-          $this->setAuthorityRequired($data->authorityRequired); 
+          $this->setAuthorityProvided($data->authority_provided); 
+          $this->setAuthorityRequired($data->authority_required); 
     } 
 
     public static function getMemberName(string $camelCaseName)

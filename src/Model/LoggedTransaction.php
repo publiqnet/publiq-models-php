@@ -55,7 +55,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAppliedReverted($data->appliedReverted); 
+          $this->setAppliedReverted($data->applied_reverted); 
           $this->setIndex($data->index); 
           $this->action = Rtt::validate($data->action);
     } 

@@ -56,7 +56,7 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->transactionDetails = new Transaction();
-        $this->transactionDetails -> validate($data-> transactionDetails);
+        $this->transactionDetails -> validate($data-> transaction_details);
           $this->setAuthority($data->authority); 
           $this->setSignature($data->signature); 
     } 
