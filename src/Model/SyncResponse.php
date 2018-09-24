@@ -10,44 +10,54 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_number' => 'blockNumber',
-        'consensus_sum' => 'consensusSum',
+        'number' => 'number',
+        'c_sum' => 'cSum',
+        'sync_info' => 'syncInfo',
     ];
 
     /**
     * @var int
     */ 
-    private $blockNumber;
+    private $number;
     /**
     * @var int
     */ 
-    private $consensusSum;
-    /** 
-    * @param int $blockNumber
+    private $cSum;
+    /**
+    * @var mixed 
     */ 
-    public function setBlockNumber(int $blockNumber) 
+    private $syncInfo;
+    /** 
+    * @param int $number
+    */ 
+    public function setNumber(int $number) 
     { 
-            $this->blockNumber = $blockNumber; 
+            $this->number = $number; 
     } 
     /** 
-    * @param int $consensusSum
+    * @param int $cSum
     */ 
-    public function setConsensusSum(int $consensusSum) 
+    public function setCSum(int $cSum) 
     { 
-            $this->consensusSum = $consensusSum; 
+            $this->cSum = $cSum; 
     } 
-    public function getBlockNumber() 
+    public function getNumber() 
     {
-        return $this->blockNumber;
+        return $this->number;
     }
-    public function getConsensusSum() 
+    public function getCSum() 
     {
-        return $this->consensusSum;
+        return $this->cSum;
+    }
+    public function getSyncInfo() 
+    {
+        return $this->syncInfo;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlockNumber($data->block_number); 
-          $this->setConsensusSum($data->consensus_sum); 
+          $this->setNumber($data->number); 
+          $this->setCSum($data->c_sum); 
+          $this->syncInfo = Rtt::validate($data->sync_info);
     } 
 
     public static function getMemberName(string $camelCaseName)
