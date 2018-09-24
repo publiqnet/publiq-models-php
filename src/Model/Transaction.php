@@ -73,7 +73,7 @@ class Transaction implements ValidatorInterface, \JsonSerializable
 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::$memberNames);
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 
