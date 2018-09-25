@@ -11,12 +11,17 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'start_index' => 'startIndex',
+        'max_count' => 'maxCount',
     ];
 
     /**
     * @var int
     */ 
     private $startIndex;
+    /**
+    * @var int
+    */ 
+    private $maxCount;
     /** 
     * @param int $startIndex
     */ 
@@ -24,13 +29,25 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     { 
             $this->startIndex = $startIndex; 
     } 
+    /** 
+    * @param int $maxCount
+    */ 
+    public function setMaxCount(int $maxCount) 
+    { 
+            $this->maxCount = $maxCount; 
+    } 
     public function getStartIndex() 
     {
         return $this->startIndex;
     }
+    public function getMaxCount() 
+    {
+        return $this->maxCount;
+    }
     public function validate(\stdClass $data) 
     { 
           $this->setStartIndex($data->start_index); 
+          $this->setMaxCount($data->max_count); 
     } 
 
     public static function getMemberName(string $camelCaseName)
