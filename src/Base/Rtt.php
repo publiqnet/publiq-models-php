@@ -78,4 +78,3 @@ public static function validate($jsonObj)
         }
     }
 }
-         
