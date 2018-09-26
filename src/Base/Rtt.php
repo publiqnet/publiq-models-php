@@ -40,9 +40,11 @@ class Rtt
 	33 => 'InvalidAuthority',
 	34 => 'FileNotFound',
 	35 => 'RemoteError',
-	36 => 'LogTransaction',
-	37 => 'StorageFile',
-	38 => 'StorageFileAddress',
+	36 => 'BlockInfo',
+	37 => 'RewardInfo',
+	38 => 'TransactionInfo',
+	39 => 'StorageFile',
+	40 => 'StorageFileAddress',
   ];
 
 /**
