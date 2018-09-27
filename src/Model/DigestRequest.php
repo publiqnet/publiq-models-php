@@ -10,7 +10,7 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'package' => 'package',
+        'package' => '['name' => 'package', 'convertToDate' => false],
     ];
 
     /**

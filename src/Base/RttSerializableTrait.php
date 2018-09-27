@@ -7,7 +7,6 @@ trait RttSerializableTrait
     {
         $vars = get_object_vars($this);
 
-
         $path = explode('\\', static::class);
         $className = array_pop($path);
         if (!$className) {
@@ -17,7 +16,12 @@ trait RttSerializableTrait
 
         foreach ($vars as  $name => $value)
         {
-            $vars2[(static::class)::getMemberName($name)] = $value;
+            $member = (static::class)::getMemberName($name);
+            if ($member['convertToDate']) {
+                $vars2[(static::class)::getMemberName($name)] = date("Y-m-d H:i:s", $value);
+            } else {
+                $vars2[(static::class)::getMemberName($name)] = $value;
+            }
         }
         return $vars2;
     }

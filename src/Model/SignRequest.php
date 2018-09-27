@@ -10,8 +10,8 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => 'privateKey',
-        'package' => 'package',
+        'private_key' => '['name' => 'privateKey', 'convertToDate' => false],
+        'package' => '['name' => 'package', 'convertToDate' => false],
     ];
 
     /**

@@ -10,10 +10,10 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => 'masterKey',
-        'index' => 'index',
-        'public_key' => 'publicKey',
-        'private_key' => 'privateKey',
+        'master_key' => '['name' => 'masterKey', 'convertToDate' => false],
+        'index' => '['name' => 'index', 'convertToDate' => false],
+        'public_key' => '['name' => 'publicKey', 'convertToDate' => false],
+        'private_key' => '['name' => 'privateKey', 'convertToDate' => false],
     ];
 
     /**

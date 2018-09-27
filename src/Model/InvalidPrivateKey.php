@@ -10,7 +10,7 @@ class InvalidPrivateKey implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => 'privateKey',
+        'private_key' => '['name' => 'privateKey', 'convertToDate' => false],
     ];
 
     /**

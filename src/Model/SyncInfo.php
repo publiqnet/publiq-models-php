@@ -10,8 +10,8 @@ class SyncInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'number' => 'number',
-        'c_sum' => 'cSum',
+        'number' => '['name' => 'number', 'convertToDate' => false],
+        'c_sum' => '['name' => 'cSum', 'convertToDate' => false],
     ];
 
     /**

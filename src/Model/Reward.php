@@ -10,8 +10,8 @@ class Reward implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'amount' => 'amount',
-        'to' => 'to',
+        'amount' => '['name' => 'amount', 'convertToDate' => false],
+        'to' => '['name' => 'to', 'convertToDate' => false],
     ];
 
     /**

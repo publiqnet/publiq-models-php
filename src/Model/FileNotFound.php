@@ -10,7 +10,7 @@ class FileNotFound implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => 'uri',
+        'uri' => '['name' => 'uri', 'convertToDate' => false],
     ];
 
     /**

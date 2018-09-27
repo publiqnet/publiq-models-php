@@ -10,7 +10,7 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'details' => 'details',
+        'details' => '['name' => 'details', 'convertToDate' => false],
     ];
 
     /**
