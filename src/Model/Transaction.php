@@ -37,15 +37,15 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     */ 
     public function setCreation(int $creation) 
     { 
-            $this->creation = strtotime($creation); 
-    } 
+       $this->creation = $creation;
+    }
     /** 
     * @param int $expiry
     */ 
     public function setExpiry(int $expiry) 
     { 
-            $this->expiry = strtotime($expiry); 
-    } 
+       $this->expiry = $expiry;
+    }
     public function getCreation() 
     {
         return $this->creation;
@@ -66,11 +66,10 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->fee = new Coin();
         $this->fee -> validate($data-> fee);
-          $this->setCreation($data->creation); 
-          $this->setExpiry($data->expiry); 
           $this->action = Rtt::validate($data->action);
+        $this->setCreation(strtotime($data->creation)); 
+        $this->setExpiry(strtotime($data->expiry)); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

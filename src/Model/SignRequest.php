@@ -27,8 +27,8 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     */ 
     public function setPrivateKey(string $privateKey) 
     { 
-            $this->privateKey = $privateKey; 
-    } 
+       $this->privateKey = $privateKey;
+    }
     public function getPrivateKey() 
     {
         return $this->privateKey;
@@ -39,10 +39,9 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPrivateKey($data->private_key); 
+        $this->setPrivateKey($data->private_key); 
           $this->package = Rtt::validate($data->package);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

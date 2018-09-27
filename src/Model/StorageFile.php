@@ -27,15 +27,15 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     */ 
     public function setMimeType(string $mimeType) 
     { 
-            $this->mimeType = $mimeType; 
-    } 
+       $this->mimeType = $mimeType;
+    }
     /** 
     * @param string $data
     */ 
     public function setData(string $data) 
     { 
-            $this->data = $data; 
-    } 
+       $this->data = $data;
+    }
     public function getMimeType() 
     {
         return $this->mimeType;
@@ -46,10 +46,9 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMimeType($data->mime_type); 
-          $this->setData($data->data); 
+        $this->setMimeType($data->mime_type); 
+        $this->setData($data->data); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

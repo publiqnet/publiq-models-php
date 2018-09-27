@@ -27,15 +27,15 @@ class BlockHeaderRequest implements ValidatorInterface, \JsonSerializable
     */ 
     public function setBlocksFrom(int $blocksFrom) 
     { 
-            $this->blocksFrom = $blocksFrom; 
-    } 
+       $this->blocksFrom = $blocksFrom;
+    }
     /** 
     * @param int $blocksTo
     */ 
     public function setBlocksTo(int $blocksTo) 
     { 
-            $this->blocksTo = $blocksTo; 
-    } 
+       $this->blocksTo = $blocksTo;
+    }
     public function getBlocksFrom() 
     {
         return $this->blocksFrom;
@@ -46,10 +46,9 @@ class BlockHeaderRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlocksFrom($data->blocks_from); 
-          $this->setBlocksTo($data->blocks_to); 
+        $this->setBlocksFrom($data->blocks_from); 
+        $this->setBlocksTo($data->blocks_to); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

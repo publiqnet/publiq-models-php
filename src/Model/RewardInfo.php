@@ -32,15 +32,15 @@ class RewardInfo implements ValidatorInterface, \JsonSerializable
     */ 
     public function setTo(string $to) 
     { 
-            $this->to = $to; 
-    } 
+       $this->to = $to;
+    }
     /** 
     * @param string $blockHash
     */ 
     public function setBlockHash(string $blockHash) 
     { 
-            $this->blockHash = $blockHash; 
-    } 
+       $this->blockHash = $blockHash;
+    }
     public function getAmount() 
     {
         return $this->amount;
@@ -57,10 +57,9 @@ class RewardInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->amount = new Coin();
         $this->amount -> validate($data-> amount);
-          $this->setTo($data->to); 
-          $this->setBlockHash($data->block_hash); 
+        $this->setTo($data->to); 
+        $this->setBlockHash($data->block_hash); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

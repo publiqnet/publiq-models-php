@@ -22,17 +22,16 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     */ 
     public function setMessage(string $message) 
     { 
-            $this->message = $message; 
-    } 
+       $this->message = $message;
+    }
     public function getMessage() 
     {
         return $this->message;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMessage($data->message); 
+        $this->setMessage($data->message); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

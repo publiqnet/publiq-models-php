@@ -37,15 +37,15 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     */ 
     public function setCreationTime(int $creationTime) 
     { 
-            $this->creationTime = strtotime($creationTime); 
-    } 
+       $this->creationTime = $creationTime;
+    }
     /** 
     * @param string $transactionHash
     */ 
     public function setTransactionHash(string $transactionHash) 
     { 
-            $this->transactionHash = $transactionHash; 
-    } 
+       $this->transactionHash = $transactionHash;
+    }
     public function getFee() 
     {
         return $this->fee;
@@ -66,11 +66,10 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->fee = new Coin();
         $this->fee -> validate($data-> fee);
-          $this->setCreationTime($data->creation_time); 
-          $this->setTransactionHash($data->transaction_hash); 
+        $this->setTransactionHash($data->transaction_hash); 
           $this->action = Rtt::validate($data->action);
+        $this->setCreationTime(strtotime($data->creation_time)); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

@@ -54,7 +54,6 @@ class Block implements ValidatorInterface, \JsonSerializable
               $this->signedTransactions[] = $signedTransactionsItemObj;
            } 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

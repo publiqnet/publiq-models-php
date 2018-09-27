@@ -32,22 +32,22 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     */ 
     public function setAuthority(string $authority) 
     { 
-            $this->authority = $authority; 
-    } 
+       $this->authority = $authority;
+    }
     /** 
     * @param string $blockHash
     */ 
     public function setBlockHash(string $blockHash) 
     { 
-            $this->blockHash = $blockHash; 
-    } 
+       $this->blockHash = $blockHash;
+    }
     /** 
     * @param int $signTime
     */ 
     public function setSignTime(int $signTime) 
     { 
-            $this->signTime = strtotime($signTime); 
-    } 
+       $this->signTime = $signTime;
+    }
     public function getAuthority() 
     {
         return $this->authority;
@@ -62,11 +62,10 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthority($data->authority); 
-          $this->setBlockHash($data->block_hash); 
-          $this->setSignTime($data->sign_time); 
+        $this->setAuthority($data->authority); 
+        $this->setBlockHash($data->block_hash); 
+        $this->setSignTime(strtotime($data->sign_time)); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

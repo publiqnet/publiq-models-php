@@ -22,17 +22,16 @@ class FileNotFound implements ValidatorInterface, \JsonSerializable
     */ 
     public function setUri(string $uri) 
     { 
-            $this->uri = $uri; 
-    } 
+       $this->uri = $uri;
+    }
     public function getUri() 
     {
         return $this->uri;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setUri($data->uri); 
+        $this->setUri($data->uri); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

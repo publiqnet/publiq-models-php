@@ -29,7 +29,6 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
               $this->blockHeaders[] = $blockHeadersItemObj;
            } 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

@@ -27,15 +27,15 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     */ 
     public function setMasterKey(string $masterKey) 
     { 
-            $this->masterKey = $masterKey; 
-    } 
+       $this->masterKey = $masterKey;
+    }
     /** 
     * @param int $index
     */ 
     public function setIndex(int $index) 
     { 
-            $this->index = $index; 
-    } 
+       $this->index = $index;
+    }
     public function getMasterKey() 
     {
         return $this->masterKey;
@@ -46,10 +46,9 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->master_key); 
-          $this->setIndex($data->index); 
+        $this->setMasterKey($data->master_key); 
+        $this->setIndex($data->index); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

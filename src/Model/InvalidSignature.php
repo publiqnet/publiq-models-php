@@ -26,7 +26,6 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
         $this->details = new Signature();
         $this->details -> validate($data-> details);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

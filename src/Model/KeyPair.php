@@ -37,29 +37,29 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     */ 
     public function setMasterKey(string $masterKey) 
     { 
-            $this->masterKey = $masterKey; 
-    } 
+       $this->masterKey = $masterKey;
+    }
     /** 
     * @param int $index
     */ 
     public function setIndex(int $index) 
     { 
-            $this->index = $index; 
-    } 
+       $this->index = $index;
+    }
     /** 
     * @param string $publicKey
     */ 
     public function setPublicKey(string $publicKey) 
     { 
-            $this->publicKey = $publicKey; 
-    } 
+       $this->publicKey = $publicKey;
+    }
     /** 
     * @param string $privateKey
     */ 
     public function setPrivateKey(string $privateKey) 
     { 
-            $this->privateKey = $privateKey; 
-    } 
+       $this->privateKey = $privateKey;
+    }
     public function getMasterKey() 
     {
         return $this->masterKey;
@@ -78,12 +78,11 @@ class KeyPair implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->master_key); 
-          $this->setIndex($data->index); 
-          $this->setPublicKey($data->public_key); 
-          $this->setPrivateKey($data->private_key); 
+        $this->setMasterKey($data->master_key); 
+        $this->setIndex($data->index); 
+        $this->setPublicKey($data->public_key); 
+        $this->setPrivateKey($data->private_key); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

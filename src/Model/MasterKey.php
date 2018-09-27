@@ -22,17 +22,16 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     */ 
     public function setMasterKey(string $masterKey) 
     { 
-            $this->masterKey = $masterKey; 
-    } 
+       $this->masterKey = $masterKey;
+    }
     public function getMasterKey() 
     {
         return $this->masterKey;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setMasterKey($data->master_key); 
+        $this->setMasterKey($data->master_key); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

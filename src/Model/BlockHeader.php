@@ -47,43 +47,43 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     */ 
     public function setBlockNumber(int $blockNumber) 
     { 
-            $this->blockNumber = $blockNumber; 
-    } 
+       $this->blockNumber = $blockNumber;
+    }
     /** 
     * @param int $delta
     */ 
     public function setDelta(int $delta) 
     { 
-            $this->delta = $delta; 
-    } 
+       $this->delta = $delta;
+    }
     /** 
     * @param int $cSum
     */ 
     public function setCSum(int $cSum) 
     { 
-            $this->cSum = $cSum; 
-    } 
+       $this->cSum = $cSum;
+    }
     /** 
     * @param int $cConst
     */ 
     public function setCConst(int $cConst) 
     { 
-            $this->cConst = $cConst; 
-    } 
+       $this->cConst = $cConst;
+    }
     /** 
     * @param string $prevHash
     */ 
     public function setPrevHash(string $prevHash) 
     { 
-            $this->prevHash = $prevHash; 
-    } 
+       $this->prevHash = $prevHash;
+    }
     /** 
     * @param int $signTime
     */ 
     public function setSignTime(int $signTime) 
     { 
-            $this->signTime = strtotime($signTime); 
-    } 
+       $this->signTime = $signTime;
+    }
     public function getBlockNumber() 
     {
         return $this->blockNumber;
@@ -110,14 +110,13 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setBlockNumber($data->block_number); 
-          $this->setDelta($data->delta); 
-          $this->setCSum($data->c_sum); 
-          $this->setCConst($data->c_const); 
-          $this->setPrevHash($data->prev_hash); 
-          $this->setSignTime($data->sign_time); 
+        $this->setBlockNumber($data->block_number); 
+        $this->setDelta($data->delta); 
+        $this->setCSum($data->c_sum); 
+        $this->setCConst($data->c_const); 
+        $this->setPrevHash($data->prev_hash); 
+        $this->setSignTime(strtotime($data->sign_time)); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

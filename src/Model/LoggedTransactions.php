@@ -29,7 +29,6 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
               $this->actions[] = $actionsItemObj;
            } 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

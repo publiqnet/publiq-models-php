@@ -27,8 +27,8 @@ class Page implements ValidatorInterface, \JsonSerializable
     */ 
     public function setChannel(string $channel) 
     { 
-            $this->channel = $channel; 
-    } 
+       $this->channel = $channel;
+    }
     public function getChannel() 
     {
         return $this->channel;
@@ -46,12 +46,11 @@ class Page implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setChannel($data->channel); 
+        $this->setChannel($data->channel); 
           foreach ($data->fileUris as $fileUrisItem) { 
             $this->addFileUris($fileUrisItem);
            } 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

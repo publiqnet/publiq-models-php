@@ -27,15 +27,15 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     */ 
     public function setAuthorityProvided(string $authorityProvided) 
     { 
-            $this->authorityProvided = $authorityProvided; 
-    } 
+       $this->authorityProvided = $authorityProvided;
+    }
     /** 
     * @param string $authorityRequired
     */ 
     public function setAuthorityRequired(string $authorityRequired) 
     { 
-            $this->authorityRequired = $authorityRequired; 
-    } 
+       $this->authorityRequired = $authorityRequired;
+    }
     public function getAuthorityProvided() 
     {
         return $this->authorityProvided;
@@ -46,10 +46,9 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthorityProvided($data->authority_provided); 
-          $this->setAuthorityRequired($data->authority_required); 
+        $this->setAuthorityProvided($data->authority_provided); 
+        $this->setAuthorityRequired($data->authority_required); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

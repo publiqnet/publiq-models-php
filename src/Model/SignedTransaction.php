@@ -32,15 +32,15 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     public function setAuthority(string $authority) 
     { 
-            $this->authority = $authority; 
-    } 
+       $this->authority = $authority;
+    }
     /** 
     * @param string $signature
     */ 
     public function setSignature(string $signature) 
     { 
-            $this->signature = $signature; 
-    } 
+       $this->signature = $signature;
+    }
     public function getTransactionDetails() 
     {
         return $this->transactionDetails;
@@ -57,10 +57,9 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->transactionDetails = new Transaction();
         $this->transactionDetails -> validate($data-> transaction_details);
-          $this->setAuthority($data->authority); 
-          $this->setSignature($data->signature); 
+        $this->setAuthority($data->authority); 
+        $this->setSignature($data->signature); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

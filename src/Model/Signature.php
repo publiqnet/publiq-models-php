@@ -32,15 +32,15 @@ class Signature implements ValidatorInterface, \JsonSerializable
     */ 
     public function setPublicKey(string $publicKey) 
     { 
-            $this->publicKey = $publicKey; 
-    } 
+       $this->publicKey = $publicKey;
+    }
     /** 
     * @param string $signature
     */ 
     public function setSignature(string $signature) 
     { 
-            $this->signature = $signature; 
-    } 
+       $this->signature = $signature;
+    }
     public function getPublicKey() 
     {
         return $this->publicKey;
@@ -55,11 +55,10 @@ class Signature implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setPublicKey($data->public_key); 
-          $this->setSignature($data->signature); 
+        $this->setPublicKey($data->public_key); 
+        $this->setSignature($data->signature); 
           $this->package = Rtt::validate($data->package);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

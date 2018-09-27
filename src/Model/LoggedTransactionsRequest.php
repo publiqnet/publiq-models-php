@@ -27,15 +27,15 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     */ 
     public function setStartIndex(int $startIndex) 
     { 
-            $this->startIndex = $startIndex; 
-    } 
+       $this->startIndex = $startIndex;
+    }
     /** 
     * @param int $maxCount
     */ 
     public function setMaxCount(int $maxCount) 
     { 
-            $this->maxCount = $maxCount; 
-    } 
+       $this->maxCount = $maxCount;
+    }
     public function getStartIndex() 
     {
         return $this->startIndex;
@@ -46,10 +46,9 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setStartIndex($data->start_index); 
-          $this->setMaxCount($data->max_count); 
+        $this->setStartIndex($data->start_index); 
+        $this->setMaxCount($data->max_count); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

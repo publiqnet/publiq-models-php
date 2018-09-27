@@ -32,15 +32,15 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     */ 
     public function setFrom(string $from) 
     { 
-            $this->from = $from; 
-    } 
+       $this->from = $from;
+    }
     /** 
     * @param string $to
     */ 
     public function setTo(string $to) 
     { 
-            $this->to = $to; 
-    } 
+       $this->to = $to;
+    }
     public function getFrom() 
     {
         return $this->from;
@@ -57,10 +57,9 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     { 
         $this->amount = new Coin();
         $this->amount -> validate($data-> amount);
-          $this->setFrom($data->from); 
-          $this->setTo($data->to); 
+        $this->setFrom($data->from); 
+        $this->setTo($data->to); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

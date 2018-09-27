@@ -27,15 +27,15 @@ class File implements ValidatorInterface, \JsonSerializable
     */ 
     public function setAuthor(string $author) 
     { 
-            $this->author = $author; 
-    } 
+       $this->author = $author;
+    }
     /** 
     * @param string $uri
     */ 
     public function setUri(string $uri) 
     { 
-            $this->uri = $uri; 
-    } 
+       $this->uri = $uri;
+    }
     public function getAuthor() 
     {
         return $this->author;
@@ -46,10 +46,9 @@ class File implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthor($data->author); 
-          $this->setUri($data->uri); 
+        $this->setAuthor($data->author); 
+        $this->setUri($data->uri); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

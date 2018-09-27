@@ -32,15 +32,15 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     */ 
     public function setAuthority(string $authority) 
     { 
-            $this->authority = $authority; 
-    } 
+       $this->authority = $authority;
+    }
     /** 
     * @param string $signature
     */ 
     public function setSignature(string $signature) 
     { 
-            $this->signature = $signature; 
-    } 
+       $this->signature = $signature;
+    }
     public function getBlockDetails() 
     {
         return $this->blockDetails;
@@ -55,11 +55,10 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setAuthority($data->authority); 
-          $this->setSignature($data->signature); 
+        $this->setAuthority($data->authority); 
+        $this->setSignature($data->signature); 
           $this->blockDetails = Rtt::validate($data->block_details);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

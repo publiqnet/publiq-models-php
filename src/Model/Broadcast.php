@@ -27,8 +27,8 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     */ 
     public function setEchoes(int $echoes) 
     { 
-            $this->echoes = $echoes; 
-    } 
+       $this->echoes = $echoes;
+    }
     public function getEchoes() 
     {
         return $this->echoes;
@@ -39,10 +39,9 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setEchoes($data->echoes); 
+        $this->setEchoes($data->echoes); 
           $this->package = Rtt::validate($data->package);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

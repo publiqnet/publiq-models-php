@@ -29,7 +29,6 @@ class BlockChainResponse implements ValidatorInterface, \JsonSerializable
               $this->signedBlocks[] = $signedBlocksItemObj;
            } 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

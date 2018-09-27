@@ -27,8 +27,8 @@ class Reward implements ValidatorInterface, \JsonSerializable
     */ 
     public function setTo(string $to) 
     { 
-            $this->to = $to; 
-    } 
+       $this->to = $to;
+    }
     public function getAmount() 
     {
         return $this->amount;
@@ -41,9 +41,8 @@ class Reward implements ValidatorInterface, \JsonSerializable
     { 
         $this->amount = new Coin();
         $this->amount -> validate($data-> amount);
-          $this->setTo($data->to); 
+        $this->setTo($data->to); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

@@ -27,15 +27,15 @@ class Coin implements ValidatorInterface, \JsonSerializable
     */ 
     public function setWhole(int $whole) 
     { 
-            $this->whole = $whole; 
-    } 
+       $this->whole = $whole;
+    }
     /** 
     * @param int $fraction
     */ 
     public function setFraction(int $fraction) 
     { 
-            $this->fraction = $fraction; 
-    } 
+       $this->fraction = $fraction;
+    }
     public function getWhole() 
     {
         return $this->whole;
@@ -46,10 +46,9 @@ class Coin implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setWhole($data->whole); 
-          $this->setFraction($data->fraction); 
+        $this->setWhole($data->whole); 
+        $this->setFraction($data->fraction); 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

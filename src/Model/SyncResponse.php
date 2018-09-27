@@ -32,15 +32,15 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     */ 
     public function setNumber(int $number) 
     { 
-            $this->number = $number; 
-    } 
+       $this->number = $number;
+    }
     /** 
     * @param int $cSum
     */ 
     public function setCSum(int $cSum) 
     { 
-            $this->cSum = $cSum; 
-    } 
+       $this->cSum = $cSum;
+    }
     public function getNumber() 
     {
         return $this->number;
@@ -55,11 +55,10 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          $this->setNumber($data->number); 
-          $this->setCSum($data->c_sum); 
+        $this->setNumber($data->number); 
+        $this->setCSum($data->c_sum); 
           $this->syncInfo = Rtt::validate($data->sync_info);
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);

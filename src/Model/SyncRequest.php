@@ -15,7 +15,6 @@ class SyncRequest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
     } 
-
     public static function getMemberName(string $camelCaseName)
     {
         return array_search($camelCaseName, self::memberNames);
