@@ -61,7 +61,14 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+            if ($value['name'] == $camelCaseName) {
+                $value['key'] = $key;
+                return $value;
+            }
+        }
+
+        return null;
     }
 
 } 
