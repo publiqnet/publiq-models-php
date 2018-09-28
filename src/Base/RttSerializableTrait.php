@@ -1,9 +1,6 @@
 <?php
 namespace PubliqAPI\Base;
 
-<?php
-namespace PubliqAPI\Base;
-
 trait RttSerializableTrait
 {
     public function jsonSerialize()
