@@ -40,9 +40,9 @@ class Rtt
 	33 => 'InvalidAuthority',
 	34 => 'FileNotFound',
 	35 => 'RemoteError',
-	36 => 'BlockInfo',
-	37 => 'RewardInfo',
-	38 => 'TransactionInfo',
+	36 => 'RewardInfo',
+	37 => 'TransactionInfo',
+	38 => 'BlockInfo',
 	39 => 'StorageFile',
 	40 => 'StorageFileAddress',
   ];

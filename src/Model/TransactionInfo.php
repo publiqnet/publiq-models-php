@@ -12,8 +12,8 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'fee' => '['name' => 'fee', 'convertToDate' => false],
         'action' => '['name' => 'action', 'convertToDate' => false],
-        'creation_time' => '['name' => 'creationTime', 'convertToDate' => true],
         'transaction_hash' => '['name' => 'transactionHash', 'convertToDate' => false],
+        'sign_time' => '['name' => 'signTime', 'convertToDate' => true],
     ];
 
     /**
@@ -25,26 +25,26 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $action;
     /**
-    * @var integer
-    */ 
-    private $creationTime;
-    /**
     * @var string
     */ 
     private $transactionHash;
-    /** 
-    * @param int $creationTime
+    /**
+    * @var integer
     */ 
-    public function setCreationTime(int $creationTime) 
-    { 
-       $this->creationTime = $creationTime;
-    }
+    private $signTime;
     /** 
     * @param string $transactionHash
     */ 
     public function setTransactionHash(string $transactionHash) 
     { 
        $this->transactionHash = $transactionHash;
+    }
+    /** 
+    * @param int $signTime
+    */ 
+    public function setSignTime(int $signTime) 
+    { 
+       $this->signTime = $signTime;
     }
     public function getFee() 
     {
@@ -54,20 +54,20 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->action;
     }
-    public function getCreationTime() 
-    {
-        return $this->creationTime;
-    }
     public function getTransactionHash() 
     {
         return $this->transactionHash;
+    }
+    public function getSignTime() 
+    {
+        return $this->signTime;
     }
     public function validate(\stdClass $data) 
     { 
         $this->fee = new Coin();
         $this->fee -> validate($data-> fee);
-        $this->setCreationTime(strtotime($data->creation_time)); 
         $this->setTransactionHash($data->transaction_hash); 
+        $this->setSignTime(strtotime($data->sign_time)); 
           $this->action = Rtt::validate($data->action);
     } 
     public static function getMemberName(string $camelCaseName)

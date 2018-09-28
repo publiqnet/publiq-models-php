@@ -13,6 +13,8 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
         'authority' => '['name' => 'authority', 'convertToDate' => false],
         'block_hash' => '['name' => 'blockHash', 'convertToDate' => false],
         'sign_time' => '['name' => 'signTime', 'convertToDate' => true],
+        'rewards' => '['name' => 'rewards', 'convertToDate' => false],
+        'transactions' => '['name' => 'transactions', 'convertToDate' => false],
     ];
 
     /**
@@ -27,6 +29,14 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     * @var integer
     */ 
     private $signTime;
+    /**
+    * @var array
+    */ 
+    private $rewards = [];
+    /**
+    * @var array
+    */ 
+    private $transactions = [];
     /** 
     * @param string $authority
     */ 
@@ -60,11 +70,29 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->signTime;
     }
+    public function getRewards() 
+    {
+        return $this->rewards;
+    }
+    public function getTransactions() 
+    {
+        return $this->transactions;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->setAuthority($data->authority); 
         $this->setBlockHash($data->block_hash); 
         $this->setSignTime(strtotime($data->sign_time)); 
+          foreach ($data->rewards as $rewardsItem) { 
+              $rewardsItemObj = new RewardInfo(); 
+              $rewardsItemObj->validate($rewardsItem); 
+              $this->rewards[] = $rewardsItemObj;
+           } 
+          foreach ($data->transactions as $transactionsItem) { 
+              $transactionsItemObj = new TransactionInfo(); 
+              $transactionsItemObj->validate($transactionsItem); 
+              $this->transactions[] = $transactionsItemObj;
+           } 
     } 
     public static function getMemberName(string $camelCaseName)
     {
