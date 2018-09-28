@@ -10,9 +10,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'applied_reverted' => '['name' => 'appliedReverted', 'convertToDate' => false],
-        'index' => '['name' => 'index', 'convertToDate' => false],
-        'action' => '['name' => 'action', 'convertToDate' => false],
+        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false],
+        'index' => ['name' => 'index', 'convertToDate' => false],
+        'action' => ['name' => 'action', 'convertToDate' => false],
     ];
 
     /**
@@ -57,7 +57,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
-          $this->action = Rtt::validate($data->action);
+        $this->action = Rtt::validate($data->action);
     } 
     public static function getMemberName(string $camelCaseName)
     {

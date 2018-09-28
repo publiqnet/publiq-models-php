@@ -10,7 +10,7 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'actions' => '['name' => 'actions', 'convertToDate' => false],
+        'actions' => ['name' => 'actions', 'convertToDate' => false],
     ];
 
     /**

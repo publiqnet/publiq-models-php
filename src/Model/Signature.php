@@ -10,9 +10,9 @@ class Signature implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => '['name' => 'publicKey', 'convertToDate' => false],
-        'signature' => '['name' => 'signature', 'convertToDate' => false],
-        'package' => '['name' => 'package', 'convertToDate' => false],
+        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
@@ -57,7 +57,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
         $this->setPublicKey($data->public_key); 
         $this->setSignature($data->signature); 
-          $this->package = Rtt::validate($data->package);
+        $this->package = Rtt::validate($data->package);
     } 
     public static function getMemberName(string $camelCaseName)
     {

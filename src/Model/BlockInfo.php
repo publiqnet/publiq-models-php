@@ -10,11 +10,11 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority' => '['name' => 'authority', 'convertToDate' => false],
-        'block_hash' => '['name' => 'blockHash', 'convertToDate' => false],
-        'sign_time' => '['name' => 'signTime', 'convertToDate' => true],
-        'rewards' => '['name' => 'rewards', 'convertToDate' => false],
-        'transactions' => '['name' => 'transactions', 'convertToDate' => false],
+        'authority' => ['name' => 'authority', 'convertToDate' => false],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
+        'sign_time' => ['name' => 'signTime', 'convertToDate' => true],
+        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
+        'transactions' => ['name' => 'transactions', 'convertToDate' => false],
     ];
 
     /**

@@ -10,8 +10,8 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority_provided' => '['name' => 'authorityProvided', 'convertToDate' => false],
-        'authority_required' => '['name' => 'authorityRequired', 'convertToDate' => false],
+        'authority_provided' => ['name' => 'authorityProvided', 'convertToDate' => false],
+        'authority_required' => ['name' => 'authorityRequired', 'convertToDate' => false],
     ];
 
     /**

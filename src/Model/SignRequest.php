@@ -10,8 +10,8 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => '['name' => 'privateKey', 'convertToDate' => false],
-        'package' => '['name' => 'package', 'convertToDate' => false],
+        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
@@ -40,7 +40,7 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setPrivateKey($data->private_key); 
-          $this->package = Rtt::validate($data->package);
+        $this->package = Rtt::validate($data->package);
     } 
     public static function getMemberName(string $camelCaseName)
     {

@@ -10,10 +10,10 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'creation' => '['name' => 'creation', 'convertToDate' => true],
-        'expiry' => '['name' => 'expiry', 'convertToDate' => true],
-        'fee' => '['name' => 'fee', 'convertToDate' => false],
-        'action' => '['name' => 'action', 'convertToDate' => false],
+        'creation' => ['name' => 'creation', 'convertToDate' => true],
+        'expiry' => ['name' => 'expiry', 'convertToDate' => true],
+        'fee' => ['name' => 'fee', 'convertToDate' => false],
+        'action' => ['name' => 'action', 'convertToDate' => false],
     ];
 
     /**
@@ -68,7 +68,7 @@ class Transaction implements ValidatorInterface, \JsonSerializable
         $this->fee -> validate($data-> fee);
         $this->setCreation(strtotime($data->creation)); 
         $this->setExpiry(strtotime($data->expiry)); 
-          $this->action = Rtt::validate($data->action);
+        $this->action = Rtt::validate($data->action);
     } 
     public static function getMemberName(string $camelCaseName)
     {

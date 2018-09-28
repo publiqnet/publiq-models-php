@@ -10,9 +10,9 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'number' => '['name' => 'number', 'convertToDate' => false],
-        'c_sum' => '['name' => 'cSum', 'convertToDate' => false],
-        'sync_info' => '['name' => 'syncInfo', 'convertToDate' => false],
+        'number' => ['name' => 'number', 'convertToDate' => false],
+        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
+        'sync_info' => ['name' => 'syncInfo', 'convertToDate' => false],
     ];
 
     /**
@@ -57,7 +57,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     { 
         $this->setNumber($data->number); 
         $this->setCSum($data->c_sum); 
-          $this->syncInfo = Rtt::validate($data->sync_info);
+        $this->syncInfo = Rtt::validate($data->sync_info);
     } 
     public static function getMemberName(string $camelCaseName)
     {

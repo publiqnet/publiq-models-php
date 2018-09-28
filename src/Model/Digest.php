@@ -10,8 +10,8 @@ class Digest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'base58_hash' => '['name' => 'base58Hash', 'convertToDate' => false],
-        'package' => '['name' => 'package', 'convertToDate' => false],
+        'base58_hash' => ['name' => 'base58Hash', 'convertToDate' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
@@ -40,7 +40,7 @@ class Digest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setBase58Hash($data->base58_hash); 
-          $this->package = Rtt::validate($data->package);
+        $this->package = Rtt::validate($data->package);
     } 
     public static function getMemberName(string $camelCaseName)
     {
