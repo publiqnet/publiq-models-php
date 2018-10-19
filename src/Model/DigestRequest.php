@@ -10,7 +10,7 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'package' => '['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
@@ -23,18 +23,11 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->package = Rtt::validate($data->package);
+          $this->package = Rtt::validate($data->package);
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

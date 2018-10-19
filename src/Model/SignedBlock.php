@@ -10,13 +10,13 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false],
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'block_details' => '['name' => 'blockDetails', 'convertToDate' => false],
+        'authority' => '['name' => 'authority', 'convertToDate' => false],
+        'signature' => '['name' => 'signature', 'convertToDate' => false],
     ];
 
     /**
-    * @var mixed 
+    * @var Block
     */ 
     private $blockDetails;
     /**
@@ -55,20 +55,14 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->blockDetails = new Block();
+        $this->blockDetails -> validate($data-> block_details);
         $this->setAuthority($data->authority); 
         $this->setSignature($data->signature); 
-        $this->blockDetails = Rtt::validate($data->block_details);
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

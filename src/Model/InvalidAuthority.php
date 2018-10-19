@@ -10,8 +10,8 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority_provided' => ['name' => 'authorityProvided', 'convertToDate' => false],
-        'authority_required' => ['name' => 'authorityRequired', 'convertToDate' => false],
+        'authority_provided' => '['name' => 'authorityProvided', 'convertToDate' => false],
+        'authority_required' => '['name' => 'authorityRequired', 'convertToDate' => false],
     ];
 
     /**
@@ -51,14 +51,7 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

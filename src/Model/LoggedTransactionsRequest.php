@@ -10,8 +10,8 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'start_index' => ['name' => 'startIndex', 'convertToDate' => false],
-        'max_count' => ['name' => 'maxCount', 'convertToDate' => false],
+        'start_index' => '['name' => 'startIndex', 'convertToDate' => false],
+        'max_count' => '['name' => 'maxCount', 'convertToDate' => false],
     ];
 
     /**
@@ -51,14 +51,7 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

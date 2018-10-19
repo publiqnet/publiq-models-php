@@ -10,7 +10,7 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'message' => ['name' => 'message', 'convertToDate' => false],
+        'message' => '['name' => 'message', 'convertToDate' => false],
     ];
 
     /**
@@ -34,14 +34,7 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

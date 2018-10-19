@@ -10,8 +10,8 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
-        'index' => ['name' => 'index', 'convertToDate' => false],
+        'master_key' => '['name' => 'masterKey', 'convertToDate' => false],
+        'index' => '['name' => 'index', 'convertToDate' => false],
     ];
 
     /**
@@ -51,14 +51,7 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

@@ -10,12 +10,12 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
-        'delta' => ['name' => 'delta', 'convertToDate' => false],
-        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
-        'c_const' => ['name' => 'cConst', 'convertToDate' => false],
-        'prev_hash' => ['name' => 'prevHash', 'convertToDate' => false],
-        'sign_time' => ['name' => 'signTime', 'convertToDate' => true],
+        'block_number' => '['name' => 'blockNumber', 'convertToDate' => false],
+        'delta' => '['name' => 'delta', 'convertToDate' => false],
+        'c_sum' => '['name' => 'cSum', 'convertToDate' => false],
+        'c_const' => '['name' => 'cConst', 'convertToDate' => false],
+        'prev_hash' => '['name' => 'prevHash', 'convertToDate' => false],
+        'time_signed' => '['name' => 'timeSigned', 'convertToDate' => true],
     ];
 
     /**
@@ -41,7 +41,7 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     /**
     * @var integer
     */ 
-    private $signTime;
+    private $timeSigned;
     /** 
     * @param int $blockNumber
     */ 
@@ -78,11 +78,11 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
        $this->prevHash = $prevHash;
     }
     /** 
-    * @param int $signTime
+    * @param int $timeSigned
     */ 
-    public function setSignTime(int $signTime) 
+    public function setTimeSigned(int $timeSigned) 
     { 
-       $this->signTime = $signTime;
+       $this->timeSigned = $timeSigned;
     }
     public function getBlockNumber() 
     {
@@ -104,9 +104,9 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
     {
         return $this->prevHash;
     }
-    public function getSignTime() 
+    public function getTimeSigned() 
     {
-        return $this->signTime;
+        return $this->timeSigned;
     }
     public function validate(\stdClass $data) 
     { 
@@ -115,18 +115,11 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
         $this->setCSum($data->c_sum); 
         $this->setCConst($data->c_const); 
         $this->setPrevHash($data->prev_hash); 
-        $this->setSignTime(strtotime($data->sign_time)); 
+        $this->setTimeSigned(strtotime($data->time_signed)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

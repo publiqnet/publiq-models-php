@@ -4,33 +4,33 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class MasterKey implements ValidatorInterface, \JsonSerializable
+class TransactionDone implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => '['name' => 'masterKey', 'convertToDate' => false],
+        'tx_hash' => '['name' => 'txHash', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $masterKey;
+    private $txHash;
     /** 
-    * @param string $masterKey
+    * @param string $txHash
     */ 
-    public function setMasterKey(string $masterKey) 
+    public function setTxHash(string $txHash) 
     { 
-       $this->masterKey = $masterKey;
+       $this->txHash = $txHash;
     }
-    public function getMasterKey() 
+    public function getTxHash() 
     {
-        return $this->masterKey;
+        return $this->txHash;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setMasterKey($data->master_key); 
+        $this->setTxHash($data->tx_hash); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

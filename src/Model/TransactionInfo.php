@@ -10,10 +10,10 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'fee' => ['name' => 'fee', 'convertToDate' => false],
-        'action' => ['name' => 'action', 'convertToDate' => false],
-        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
-        'sign_time' => ['name' => 'signTime', 'convertToDate' => true],
+        'fee' => '['name' => 'fee', 'convertToDate' => false],
+        'action' => '['name' => 'action', 'convertToDate' => false],
+        'transaction_hash' => '['name' => 'transactionHash', 'convertToDate' => false],
+        'time_signed' => '['name' => 'timeSigned', 'convertToDate' => true],
     ];
 
     /**
@@ -31,7 +31,7 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var integer
     */ 
-    private $signTime;
+    private $timeSigned;
     /** 
     * @param string $transactionHash
     */ 
@@ -40,11 +40,11 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
        $this->transactionHash = $transactionHash;
     }
     /** 
-    * @param int $signTime
+    * @param int $timeSigned
     */ 
-    public function setSignTime(int $signTime) 
+    public function setTimeSigned(int $timeSigned) 
     { 
-       $this->signTime = $signTime;
+       $this->timeSigned = $timeSigned;
     }
     public function getFee() 
     {
@@ -58,28 +58,21 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->transactionHash;
     }
-    public function getSignTime() 
+    public function getTimeSigned() 
     {
-        return $this->signTime;
+        return $this->timeSigned;
     }
     public function validate(\stdClass $data) 
     { 
         $this->fee = new Coin();
         $this->fee -> validate($data-> fee);
         $this->setTransactionHash($data->transaction_hash); 
-        $this->setSignTime(strtotime($data->sign_time)); 
-        $this->action = Rtt::validate($data->action);
+        $this->setTimeSigned(strtotime($data->time_signed)); 
+          $this->action = Rtt::validate($data->action);
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 

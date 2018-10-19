@@ -10,11 +10,11 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
-        'sign_time' => ['name' => 'signTime', 'convertToDate' => true],
-        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
-        'transactions' => ['name' => 'transactions', 'convertToDate' => false],
+        'authority' => '['name' => 'authority', 'convertToDate' => false],
+        'block_hash' => '['name' => 'blockHash', 'convertToDate' => false],
+        'time_signed' => '['name' => 'timeSigned', 'convertToDate' => true],
+        'rewards' => '['name' => 'rewards', 'convertToDate' => false],
+        'transactions' => '['name' => 'transactions', 'convertToDate' => false],
     ];
 
     /**
@@ -28,7 +28,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var integer
     */ 
-    private $signTime;
+    private $timeSigned;
     /**
     * @var array
     */ 
@@ -52,11 +52,11 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
        $this->blockHash = $blockHash;
     }
     /** 
-    * @param int $signTime
+    * @param int $timeSigned
     */ 
-    public function setSignTime(int $signTime) 
+    public function setTimeSigned(int $timeSigned) 
     { 
-       $this->signTime = $signTime;
+       $this->timeSigned = $timeSigned;
     }
     public function getAuthority() 
     {
@@ -66,9 +66,9 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->blockHash;
     }
-    public function getSignTime() 
+    public function getTimeSigned() 
     {
-        return $this->signTime;
+        return $this->timeSigned;
     }
     public function getRewards() 
     {
@@ -82,7 +82,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->setAuthority($data->authority); 
         $this->setBlockHash($data->block_hash); 
-        $this->setSignTime(strtotime($data->sign_time)); 
+        $this->setTimeSigned(strtotime($data->time_signed)); 
           foreach ($data->rewards as $rewardsItem) { 
               $rewardsItemObj = new RewardInfo(); 
               $rewardsItemObj->validate($rewardsItem); 
@@ -96,14 +96,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        foreach (self::memberNames as $key => $value) {
-            if ($value['name'] == $camelCaseName) {
-                $value['key'] = $key;
-                return $value;
-            }
-        }
-
-        return null;
+        return array_search($camelCaseName, self::memberNames);
     }
 
 } 
