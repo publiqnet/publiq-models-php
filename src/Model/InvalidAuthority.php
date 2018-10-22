@@ -57,6 +57,7 @@ class InvalidAuthority implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

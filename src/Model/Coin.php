@@ -57,6 +57,7 @@ class Coin implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

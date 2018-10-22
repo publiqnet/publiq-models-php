@@ -17,13 +17,20 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     * @var mixed 
     */ 
     private $package;
+    /** 
+    * @param mixed $package
+    */ 
+    public function setPackage( $package) 
+    { 
+       $this->package = $package;
+    }
     public function getPackage() 
     {
         return $this->package;
     }
     public function validate(\stdClass $data) 
     { 
-          $this->package = Rtt::validate($data->package);
+        $this->setPackage$data->package); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -33,6 +40,7 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

@@ -125,6 +125,7 @@ class BlockHeader implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

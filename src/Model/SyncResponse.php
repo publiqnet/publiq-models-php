@@ -41,6 +41,13 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     { 
        $this->cSum = $cSum;
     }
+    /** 
+    * @param mixed $syncInfo
+    */ 
+    public function setSyncInfo( $syncInfo) 
+    { 
+       $this->syncInfo = $syncInfo;
+    }
     public function getNumber() 
     {
         return $this->number;
@@ -57,7 +64,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     { 
         $this->setNumber($data->number); 
         $this->setCSum($data->c_sum); 
-          $this->syncInfo = Rtt::validate($data->sync_info);
+        $this->setSyncInfo$data->sync_info); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -67,6 +74,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

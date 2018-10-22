@@ -33,6 +33,20 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $timeSigned;
     /** 
+    * @param Coin $fee
+    */ 
+    public function setFee(Coin $fee) 
+    { 
+       $this->fee = $fee;
+    }
+    /** 
+    * @param mixed $action
+    */ 
+    public function setAction( $action) 
+    { 
+       $this->action = $action;
+    }
+    /** 
     * @param string $transactionHash
     */ 
     public function setTransactionHash(string $transactionHash) 
@@ -68,7 +82,7 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
         $this->fee -> validate($data-> fee);
         $this->setTransactionHash($data->transaction_hash); 
         $this->setTimeSigned(strtotime($data->time_signed)); 
-          $this->action = Rtt::validate($data->action);
+        $this->setAction$data->action); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -78,6 +92,7 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

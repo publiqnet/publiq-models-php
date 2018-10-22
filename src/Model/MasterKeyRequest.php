@@ -23,6 +23,7 @@ class MasterKeyRequest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

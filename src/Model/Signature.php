@@ -41,6 +41,13 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
        $this->signature = $signature;
     }
+    /** 
+    * @param mixed $package
+    */ 
+    public function setPackage( $package) 
+    { 
+       $this->package = $package;
+    }
     public function getPublicKey() 
     {
         return $this->publicKey;
@@ -57,7 +64,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
         $this->setPublicKey($data->public_key); 
         $this->setSignature($data->signature); 
-          $this->package = Rtt::validate($data->package);
+        $this->setPackage$data->package); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -67,6 +74,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

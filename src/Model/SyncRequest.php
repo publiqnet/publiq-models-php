@@ -23,6 +23,7 @@ class SyncRequest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

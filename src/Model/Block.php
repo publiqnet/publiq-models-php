@@ -27,6 +27,13 @@ class Block implements ValidatorInterface, \JsonSerializable
     * @var array
     */ 
     private $signedTransactions = [];
+    /** 
+    * @param BlockHeader $header
+    */ 
+    public function setHeader(BlockHeader $header) 
+    { 
+       $this->header = $header;
+    }
     public function getHeader() 
     {
         return $this->header;
@@ -62,6 +69,7 @@ class Block implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

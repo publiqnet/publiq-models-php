@@ -23,6 +23,13 @@ class Reward implements ValidatorInterface, \JsonSerializable
     */ 
     private $to;
     /** 
+    * @param Coin $amount
+    */ 
+    public function setAmount(Coin $amount) 
+    { 
+       $this->amount = $amount;
+    }
+    /** 
     * @param string $to
     */ 
     public function setTo(string $to) 
@@ -51,6 +58,7 @@ class Reward implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

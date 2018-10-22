@@ -41,6 +41,13 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->index = $index;
     }
+    /** 
+    * @param mixed $action
+    */ 
+    public function setAction( $action) 
+    { 
+       $this->action = $action;
+    }
     public function getAppliedReverted() 
     {
         return $this->appliedReverted;
@@ -57,7 +64,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
-          $this->action = Rtt::validate($data->action);
+        $this->setAction$data->action); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -67,6 +74,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

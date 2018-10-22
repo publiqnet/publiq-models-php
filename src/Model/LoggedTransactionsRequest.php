@@ -57,6 +57,7 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

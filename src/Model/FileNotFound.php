@@ -40,6 +40,7 @@ class FileNotFound implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

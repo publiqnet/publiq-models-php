@@ -28,6 +28,13 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     */ 
     private $signature;
     /** 
+    * @param Block $blockDetails
+    */ 
+    public function setBlockDetails(Block $blockDetails) 
+    { 
+       $this->blockDetails = $blockDetails;
+    }
+    /** 
     * @param string $authority
     */ 
     public function setAuthority(string $authority) 
@@ -68,6 +75,7 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

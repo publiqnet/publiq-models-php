@@ -17,6 +17,13 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
     * @var Signature
     */ 
     private $details;
+    /** 
+    * @param Signature $details
+    */ 
+    public function setDetails(Signature $details) 
+    { 
+       $this->details = $details;
+    }
     public function getDetails() 
     {
         return $this->details;
@@ -34,6 +41,7 @@ class InvalidSignature implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

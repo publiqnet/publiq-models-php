@@ -41,11 +41,12 @@ class Rtt
 	34 => 'InvalidPrivateKey',
 	35 => 'InvalidSignature',
 	36 => 'InvalidAuthority',
-	37 => 'TransactionDone',
-	38 => 'FileNotFound',
-	39 => 'RemoteError',
-	40 => 'StorageFile',
-	41 => 'StorageFileAddress',
+	37 => 'NotEnoughBalance',
+	38 => 'TransactionDone',
+	39 => 'FileNotFound',
+	40 => 'RemoteError',
+	41 => 'StorageFile',
+	42 => 'StorageFileAddress',
   ];
 
 /**

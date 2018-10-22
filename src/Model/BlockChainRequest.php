@@ -57,6 +57,7 @@ class BlockChainRequest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

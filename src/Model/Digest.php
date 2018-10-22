@@ -29,6 +29,13 @@ class Digest implements ValidatorInterface, \JsonSerializable
     { 
        $this->base58Hash = $base58Hash;
     }
+    /** 
+    * @param mixed $package
+    */ 
+    public function setPackage( $package) 
+    { 
+       $this->package = $package;
+    }
     public function getBase58Hash() 
     {
         return $this->base58Hash;
@@ -40,7 +47,7 @@ class Digest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setBase58Hash($data->base58_hash); 
-          $this->package = Rtt::validate($data->package);
+        $this->setPackage$data->package); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
@@ -50,6 +57,7 @@ class Digest implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

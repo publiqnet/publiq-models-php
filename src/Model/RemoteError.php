@@ -40,6 +40,7 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 

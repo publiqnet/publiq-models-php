@@ -57,6 +57,7 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
                    return $value;
                }
        }
+       return null;
     }
 
 } 
