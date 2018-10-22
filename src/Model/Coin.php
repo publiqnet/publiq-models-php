@@ -10,8 +10,8 @@ class Coin implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'whole' => '['name' => 'whole', 'convertToDate' => false],
-        'fraction' => '['name' => 'fraction', 'convertToDate' => false],
+        'whole' => ['name' => 'whole', 'convertToDate' => false],
+        'fraction' => ['name' => 'fraction', 'convertToDate' => false],
     ];
 
     /**
@@ -51,7 +51,12 @@ class Coin implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+               if ($value['name'] == $camelCaseName) {
+                   $value['key'] = $key;
+                   return $value;
+               }
+       }
     }
 
 } 

@@ -10,11 +10,11 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority' => '['name' => 'authority', 'convertToDate' => false],
-        'block_hash' => '['name' => 'blockHash', 'convertToDate' => false],
-        'time_signed' => '['name' => 'timeSigned', 'convertToDate' => true],
-        'rewards' => '['name' => 'rewards', 'convertToDate' => false],
-        'transactions' => '['name' => 'transactions', 'convertToDate' => false],
+        'authority' => ['name' => 'authority', 'convertToDate' => false],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
+        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
+        'transactions' => ['name' => 'transactions', 'convertToDate' => false],
     ];
 
     /**
@@ -96,7 +96,12 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+               if ($value['name'] == $camelCaseName) {
+                   $value['key'] = $key;
+                   return $value;
+               }
+       }
     }
 
 } 

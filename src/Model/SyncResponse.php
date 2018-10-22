@@ -10,9 +10,9 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'number' => '['name' => 'number', 'convertToDate' => false],
-        'c_sum' => '['name' => 'cSum', 'convertToDate' => false],
-        'sync_info' => '['name' => 'syncInfo', 'convertToDate' => false],
+        'number' => ['name' => 'number', 'convertToDate' => false],
+        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
+        'sync_info' => ['name' => 'syncInfo', 'convertToDate' => false],
     ];
 
     /**
@@ -61,7 +61,12 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+               if ($value['name'] == $camelCaseName) {
+                   $value['key'] = $key;
+                   return $value;
+               }
+       }
     }
 
 } 

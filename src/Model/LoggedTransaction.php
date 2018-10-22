@@ -10,9 +10,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'applied_reverted' => '['name' => 'appliedReverted', 'convertToDate' => false],
-        'index' => '['name' => 'index', 'convertToDate' => false],
-        'action' => '['name' => 'action', 'convertToDate' => false],
+        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false],
+        'index' => ['name' => 'index', 'convertToDate' => false],
+        'action' => ['name' => 'action', 'convertToDate' => false],
     ];
 
     /**
@@ -61,7 +61,12 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+               if ($value['name'] == $camelCaseName) {
+                   $value['key'] = $key;
+                   return $value;
+               }
+       }
     }
 
 } 

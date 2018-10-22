@@ -18,9 +18,9 @@ trait RttSerializableTrait
         {
             $member = (static::class)::getMemberName($name);
             if ($member['convertToDate']) {
-                $vars2[(static::class)::getMemberName($name)] = date("Y-m-d H:i:s", $value);
+                $vars2[$member['key']] = date("Y-m-d H:i:s", $value);
             } else {
-                $vars2[(static::class)::getMemberName($name)] = $value;
+                $vars2[$member['key']] = $value;
             }
         }
         return $vars2;

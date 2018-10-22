@@ -10,7 +10,7 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => '['name' => 'masterKey', 'convertToDate' => false],
+        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
     ];
 
     /**
@@ -34,7 +34,12 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     } 
     public static function getMemberName(string $camelCaseName)
     {
-        return array_search($camelCaseName, self::memberNames);
+        foreach (self::memberNames as $key => $value) {
+               if ($value['name'] == $camelCaseName) {
+                   $value['key'] = $key;
+                   return $value;
+               }
+       }
     }
 
 } 
