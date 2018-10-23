@@ -47,7 +47,7 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setEchoes($data->echoes); 
-        $this->package = Rtt::validate($data->package);
+        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

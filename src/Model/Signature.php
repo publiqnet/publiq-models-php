@@ -64,7 +64,7 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
         $this->setPublicKey($data->public_key); 
         $this->setSignature($data->signature); 
-        $this->package = Rtt::validate($data->package);
+        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

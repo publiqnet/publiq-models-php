@@ -47,7 +47,7 @@ class Digest implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setBase58Hash($data->base58_hash); 
-        $this->package = Rtt::validate($data->package);
+        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
