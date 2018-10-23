@@ -64,7 +64,7 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     { 
         $this->setNumber($data->number); 
         $this->setCSum($data->c_sum); 
-        $this->setSyncInfo($data->sync_info); 
+        $this->syncInfo = Rtt::validate($data->sync_info);
     } 
     public static function getMemberName(string $camelCaseName)
     {

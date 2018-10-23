@@ -30,7 +30,7 @@ class DigestRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPackage($data->package); 
+        $this->package = Rtt::validate($data->package);
     } 
     public static function getMemberName(string $camelCaseName)
     {
