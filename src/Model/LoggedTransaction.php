@@ -64,7 +64,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
-        $this->setAction$data->action); 
+        $this->setAction($data->action); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
