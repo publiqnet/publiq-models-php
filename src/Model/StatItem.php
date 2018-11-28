@@ -10,10 +10,10 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_name' => ['name' => 'nodeName', 'convertToDate' => false],
-        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false],
-        'pass_count' => ['name' => 'passCount', 'convertToDate' => false],
-        'fail_count' => ['name' => 'failCount', 'convertToDate' => false],
+        'node_name' => ['name' => 'nodeName', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'pass_count' => ['name' => 'passCount', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'fail_count' => ['name' => 'failCount', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

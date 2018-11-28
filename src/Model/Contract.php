@@ -10,8 +10,8 @@ class Contract implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'owner' => ['name' => 'owner', 'convertToDate' => false],
-        'role' => ['name' => 'role', 'convertToDate' => false],
+        'owner' => ['name' => 'owner', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'role' => ['name' => 'role', 'convertToDate' => false,'isEnum' => 'NodeType'],
     ];
 
     /**
@@ -19,7 +19,7 @@ class Contract implements ValidatorInterface, \JsonSerializable
     */ 
     private $owner;
     /**
-    * @var NodeType
+    * @var int 
     */ 
     private $role;
     /** 
@@ -30,9 +30,9 @@ class Contract implements ValidatorInterface, \JsonSerializable
        $this->owner = $owner;
     }
     /** 
-    * @param NodeType $role
+    * @param int $role
     */ 
-    public function setRole(NodeType $role) 
+    public function setRole(int $role) 
     { 
        $this->role = $role;
     }
@@ -47,7 +47,7 @@ class Contract implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setOwner($data->owner); 
-        $this->setRole(toEnum($data->role)); 
+        $this->setRole(NodeType.toInt($data->role)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

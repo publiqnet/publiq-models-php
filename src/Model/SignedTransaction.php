@@ -10,9 +10,9 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false],
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'authority' => ['name' => 'authority', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'signature' => ['name' => 'signature', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

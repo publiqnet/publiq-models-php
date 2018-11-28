@@ -10,8 +10,8 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'owner' => ['name' => 'owner', 'convertToDate' => false],
-        'public_address' => ['name' => 'publicAddress', 'convertToDate' => false],
+        'owner' => ['name' => 'owner', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'public_address' => ['name' => 'publicAddress', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

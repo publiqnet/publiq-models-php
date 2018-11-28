@@ -10,8 +10,8 @@ class Digest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'base58_hash' => ['name' => 'base58Hash', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'base58_hash' => ['name' => 'base58Hash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'package' => ['name' => 'package', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

@@ -10,8 +10,8 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_name' => ['name' => 'nodeName', 'convertToDate' => false],
-        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false],
+        'node_name' => ['name' => 'nodeName', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

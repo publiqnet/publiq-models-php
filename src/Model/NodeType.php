@@ -24,21 +24,21 @@ class NodeType
        return null;
     }
 
-    public static function toString()
+    public static function toString(int $value)
     {
-        switch (self) {
-            case self::miner: return "miner";
-            case self::channel: return "channel";
-            case self::storage: return "storage";
+        switch ($value) {
+            case 0: return "miner";
+            case 1: return "channel";
+            case 2: return "storage";
         }
     } 
 
-    public static function toEnum(string $name)
+    public static function toInt(string $name)
     {
         switch ($name) {
-            case "miner": return NodeType::miner;
-            case "channel": return NodeType::channel;
-            case "storage": return NodeType::storage;
+            case "miner": return 0;
+            case "channel": return 1;
+            case "storage": return 2;
         }
     } 
 

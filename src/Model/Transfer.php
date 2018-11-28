@@ -10,9 +10,9 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'from' => ['name' => 'from', 'convertToDate' => false],
-        'to' => ['name' => 'to', 'convertToDate' => false],
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
+        'from' => ['name' => 'from', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'to' => ['name' => 'to', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'amount' => ['name' => 'amount', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

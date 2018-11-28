@@ -10,7 +10,7 @@ class TransactionDone implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'tx_hash' => ['name' => 'txHash', 'convertToDate' => false],
+        'tx_hash' => ['name' => 'txHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

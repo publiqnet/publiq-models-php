@@ -1,6 +1,7 @@
 <?php
 namespace PubliqAPI\Base;
 
+
 trait RttSerializableTrait
 {
     public function jsonSerialize()
@@ -19,6 +20,8 @@ trait RttSerializableTrait
             $member = (static::class)::getMemberName($name);
             if ($member['convertToDate']) {
                 $vars2[$member['key']] = date("Y-m-d H:i:s", $value);
+            } elseif ($member['isEnam'] != 'NULL') {
+                $vars2[$member['key']] = $member['isEnam'].toString($value);
             } else {
                 $vars2[$member['key']] = $value;
             }
@@ -26,3 +29,4 @@ trait RttSerializableTrait
         return $vars2;
     }
 }
+

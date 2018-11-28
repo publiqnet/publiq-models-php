@@ -10,8 +10,8 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
-        'items' => ['name' => 'items', 'convertToDate' => false],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'items' => ['name' => 'items', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

@@ -10,10 +10,10 @@ class TransactionLog implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'fee' => ['name' => 'fee', 'convertToDate' => false],
-        'action' => ['name' => 'action', 'convertToDate' => false],
-        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
-        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
+        'fee' => ['name' => 'fee', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true, 'isEnum' => 'NULL'],
     ];
 
     /**

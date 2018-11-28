@@ -10,8 +10,8 @@ class NotEnoughBalance implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'balance' => ['name' => 'balance', 'convertToDate' => false],
-        'spending' => ['name' => 'spending', 'convertToDate' => false],
+        'balance' => ['name' => 'balance', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'spending' => ['name' => 'spending', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**

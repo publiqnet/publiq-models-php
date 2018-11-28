@@ -10,11 +10,11 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
-        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
-        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
-        'transactions' => ['name' => 'transactions', 'convertToDate' => false],
+        'authority' => ['name' => 'authority', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true, 'isEnum' => 'NULL'],
+        'rewards' => ['name' => 'rewards', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'transactions' => ['name' => 'transactions', 'convertToDate' => false, 'isEnum' => 'NULL'],
     ];
 
     /**
