@@ -47,7 +47,7 @@ class Contract implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setOwner($data->owner); 
-        $this->setgRole(NodeType.toInt($data->role)); 
+        $this->setRole(NodeType.toInt($data->role)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
