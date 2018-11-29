@@ -10,8 +10,8 @@ class Page implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'channel' => ['name' => 'channel', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'channel' => ['name' => 'channel', 'convertToDate' => false, 'isEnum' => ''],
+        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

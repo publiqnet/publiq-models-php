@@ -10,28 +10,28 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'items' => ['name' => 'items', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'hash' => ['name' => 'hash', 'convertToDate' => false, 'isEnum' => ''],
+        'items' => ['name' => 'items', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
     * @var string
     */ 
-    private $blockHash;
+    private $hash;
     /**
     * @var array
     */ 
     private $items = [];
     /** 
-    * @param string $blockHash
+    * @param string $hash
     */ 
-    public function setBlockHash(string $blockHash) 
+    public function setHash(string $hash) 
     { 
-       $this->blockHash = $blockHash;
+       $this->hash = $hash;
     }
-    public function getBlockHash() 
+    public function getHash() 
     {
-        return $this->blockHash;
+        return $this->hash;
     }
     public function getItems() 
     {
@@ -39,7 +39,7 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setBlockHash($data->block_hash); 
+        $this->setHash($data->hash); 
           foreach ($data->items as $itemsItem) { 
               $itemsItemObj = new StatItem(); 
               $itemsItemObj->validate($itemsItem); 

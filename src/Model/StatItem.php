@@ -10,78 +10,61 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_name' => ['name' => 'nodeName', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'pass_count' => ['name' => 'passCount', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'fail_count' => ['name' => 'failCount', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'node' => ['name' => 'node', 'convertToDate' => false, 'isEnum' => ''],
+        'passed' => ['name' => 'passed', 'convertToDate' => false, 'isEnum' => ''],
+        'failed' => ['name' => 'failed', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
     * @var string
     */ 
-    private $nodeName;
-    /**
-    * @var string
-    */ 
-    private $contentHash;
+    private $node;
     /**
     * @var int
     */ 
-    private $passCount;
+    private $passed;
     /**
     * @var int
     */ 
-    private $failCount;
+    private $failed;
     /** 
-    * @param string $nodeName
+    * @param string $node
     */ 
-    public function setNodeName(string $nodeName) 
+    public function setNode(string $node) 
     { 
-       $this->nodeName = $nodeName;
-    }
-    /** 
-    * @param string $contentHash
-    */ 
-    public function setContentHash(string $contentHash) 
-    { 
-       $this->contentHash = $contentHash;
+       $this->node = $node;
     }
     /** 
-    * @param int $passCount
+    * @param int $passed
     */ 
-    public function setPassCount(int $passCount) 
+    public function setPassed(int $passed) 
     { 
-       $this->passCount = $passCount;
+       $this->passed = $passed;
     }
     /** 
-    * @param int $failCount
+    * @param int $failed
     */ 
-    public function setFailCount(int $failCount) 
+    public function setFailed(int $failed) 
     { 
-       $this->failCount = $failCount;
+       $this->failed = $failed;
     }
-    public function getNodeName() 
+    public function getNode() 
     {
-        return $this->nodeName;
+        return $this->node;
     }
-    public function getContentHash() 
+    public function getPassed() 
     {
-        return $this->contentHash;
+        return $this->passed;
     }
-    public function getPassCount() 
+    public function getFailed() 
     {
-        return $this->passCount;
-    }
-    public function getFailCount() 
-    {
-        return $this->failCount;
+        return $this->failed;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setNodeName($data->node_name); 
-        $this->setContentHash($data->content_hash); 
-        $this->setPassCount($data->pass_count); 
-        $this->setFailCount($data->fail_count); 
+        $this->setNode($data->node); 
+        $this->setPassed($data->passed); 
+        $this->setFailed($data->failed); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

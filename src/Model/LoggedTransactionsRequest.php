@@ -10,8 +10,8 @@ class LoggedTransactionsRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'start_index' => ['name' => 'startIndex', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'max_count' => ['name' => 'maxCount', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'start_index' => ['name' => 'startIndex', 'convertToDate' => false, 'isEnum' => ''],
+        'max_count' => ['name' => 'maxCount', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

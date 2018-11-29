@@ -10,9 +10,9 @@ class Signature implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => ['name' => 'publicKey', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'signature' => ['name' => 'signature', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'package' => ['name' => 'package', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'public_key' => ['name' => 'publicKey', 'convertToDate' => false, 'isEnum' => ''],
+        'signature' => ['name' => 'signature', 'convertToDate' => false, 'isEnum' => ''],
+        'package' => ['name' => 'package', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

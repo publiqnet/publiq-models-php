@@ -10,8 +10,8 @@ class BlockchainRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'blocks_from' => ['name' => 'blocksFrom', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'blocks_to' => ['name' => 'blocksTo', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'blocks_from' => ['name' => 'blocksFrom', 'convertToDate' => false, 'isEnum' => ''],
+        'blocks_to' => ['name' => 'blocksTo', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

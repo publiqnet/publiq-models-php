@@ -10,7 +10,7 @@ class Contract implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'owner' => ['name' => 'owner', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'owner' => ['name' => 'owner', 'convertToDate' => false, 'isEnum' => ''],
         'role' => ['name' => 'role', 'convertToDate' => false,'isEnum' => 'NodeType'],
     ];
 

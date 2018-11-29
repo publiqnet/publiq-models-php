@@ -20,8 +20,11 @@ trait RttSerializableTrait
             $member = (static::class)::getMemberName($name);
             if ($member['convertToDate']) {
                 $vars2[$member['key']] = date("Y-m-d H:i:s", $value);
-            } elseif ($member['isEnam'] != 'NULL') {
-                $vars2[$member['key']] = $member['isEnam'].toString($value);
+            } elseif ($member['isEnam'] != '') {
+                $str = $member['isEnam'];
+                $class = 'Class'.$str;
+                $EnumType = new $class();
+                $vars2[$member['key']] = EnumType.toString($value);
             } else {
                 $vars2[$member['key']] = $value;
             }

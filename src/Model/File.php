@@ -10,8 +10,8 @@ class File implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'uri' => ['name' => 'uri', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'author' => ['name' => 'author', 'convertToDate' => false, 'isEnum' => ''],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

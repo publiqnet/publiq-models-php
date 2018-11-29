@@ -10,8 +10,8 @@ class Coin implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'whole' => ['name' => 'whole', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'fraction' => ['name' => 'fraction', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'whole' => ['name' => 'whole', 'convertToDate' => false, 'isEnum' => ''],
+        'fraction' => ['name' => 'fraction', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

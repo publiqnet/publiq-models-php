@@ -10,10 +10,10 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'creation' => ['name' => 'creation', 'convertToDate' => true, 'isEnum' => 'NULL'],
-        'expiry' => ['name' => 'expiry', 'convertToDate' => true, 'isEnum' => 'NULL'],
-        'fee' => ['name' => 'fee', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'creation' => ['name' => 'creation', 'convertToDate' => true, 'isEnum' => ''],
+        'expiry' => ['name' => 'expiry', 'convertToDate' => true, 'isEnum' => ''],
+        'fee' => ['name' => 'fee', 'convertToDate' => false, 'isEnum' => ''],
+        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

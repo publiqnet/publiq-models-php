@@ -10,9 +10,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'index' => ['name' => 'index', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false, 'isEnum' => ''],
+        'index' => ['name' => 'index', 'convertToDate' => false, 'isEnum' => ''],
+        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

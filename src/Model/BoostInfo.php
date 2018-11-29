@@ -10,9 +10,9 @@ class BoostInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'channel' => ['name' => 'channel', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'author' => ['name' => 'author', 'convertToDate' => false, 'isEnum' => ''],
+        'channel' => ['name' => 'channel', 'convertToDate' => false, 'isEnum' => ''],
+        'content_hash' => ['name' => 'contentHash', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**

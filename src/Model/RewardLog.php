@@ -10,8 +10,8 @@ class RewardLog implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'to' => ['name' => 'to', 'convertToDate' => false, 'isEnum' => 'NULL'],
-        'amount' => ['name' => 'amount', 'convertToDate' => false, 'isEnum' => 'NULL'],
+        'to' => ['name' => 'to', 'convertToDate' => false, 'isEnum' => ''],
+        'amount' => ['name' => 'amount', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
