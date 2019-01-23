@@ -10,15 +10,15 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false, 'isEnum' => ''],
+        'logging_type' => ['name' => 'loggingType', 'convertToDate' => false,'isEnum' => 'LoggingType'],
         'index' => ['name' => 'index', 'convertToDate' => false, 'isEnum' => ''],
         'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
-    * @var bool
+    * @var int 
     */ 
-    private $appliedReverted;
+    private $loggingType;
     /**
     * @var int
     */ 
@@ -28,11 +28,11 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $action;
     /** 
-    * @param bool $appliedReverted
+    * @param int $loggingType
     */ 
-    public function setAppliedReverted(bool $appliedReverted) 
+    public function setLoggingType(int $loggingType) 
     { 
-       $this->appliedReverted = $appliedReverted;
+       $this->loggingType = $loggingType;
     }
     /** 
     * @param int $index
@@ -48,9 +48,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->action = $action;
     }
-    public function getAppliedReverted() 
+    public function getLoggingType() 
     {
-        return $this->appliedReverted;
+        return $this->loggingType;
     }
     public function getIndex() 
     {
@@ -62,9 +62,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
         $this->setAction(Rtt::validate($data->action)); 
+        $this->setLoggingType(LoggingType.toInt($data->logging_type)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

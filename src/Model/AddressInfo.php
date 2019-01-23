@@ -10,44 +10,45 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'owner' => ['name' => 'owner', 'convertToDate' => false, 'isEnum' => ''],
-        'public_address' => ['name' => 'publicAddress', 'convertToDate' => false, 'isEnum' => ''],
+        'node_id' => ['name' => 'nodeId', 'convertToDate' => false, 'isEnum' => ''],
+        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
     * @var string
     */ 
-    private $owner;
+    private $nodeId;
     /**
-    * @var string
+    * @var IPAddress
     */ 
-    private $publicAddress;
+    private $ipAddress;
     /** 
-    * @param string $owner
+    * @param string $nodeId
     */ 
-    public function setOwner(string $owner) 
+    public function setNodeId(string $nodeId) 
     { 
-       $this->owner = $owner;
+       $this->nodeId = $nodeId;
     }
     /** 
-    * @param string $publicAddress
+    * @param IPAddress $ipAddress
     */ 
-    public function setPublicAddress(string $publicAddress) 
+    public function setIpAddress(IPAddress $ipAddress) 
     { 
-       $this->publicAddress = $publicAddress;
+       $this->ipAddress = $ipAddress;
     }
-    public function getOwner() 
+    public function getNodeId() 
     {
-        return $this->owner;
+        return $this->nodeId;
     }
-    public function getPublicAddress() 
+    public function getIpAddress() 
     {
-        return $this->publicAddress;
+        return $this->ipAddress;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setOwner($data->owner); 
-        $this->setPublicAddress($data->public_address); 
+        $this->ipAddress = new IPAddress();
+        $this->ipAddress -> validate($data-> ip_address);
+        $this->setNodeId($data->node_id); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

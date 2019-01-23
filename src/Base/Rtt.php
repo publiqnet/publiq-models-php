@@ -20,7 +20,7 @@ class Rtt
 	13 => 'Page',
 	14 => 'Contract',
 	15 => 'AddressInfo',
-	16 => 'BoostInfo',
+	16 => 'ArticleInfo',
 	17 => 'ContentInfo',
 	18 => 'StatItem',
 	19 => 'StatInfo',
@@ -53,6 +53,10 @@ class Rtt
 	46 => 'RemoteError',
 	47 => 'StorageFile',
 	48 => 'StorageFileAddress',
+	49 => 'IPDestination',
+	50 => 'IPAddress',
+	51 => 'Ping',
+	52 => 'Pong',
   ];
 
 /**

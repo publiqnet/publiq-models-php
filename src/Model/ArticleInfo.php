@@ -4,16 +4,21 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class ContentInfo implements ValidatorInterface, \JsonSerializable
+class ArticleInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'author' => ['name' => 'author', 'convertToDate' => false, 'isEnum' => ''],
         'content' => ['name' => 'content', 'convertToDate' => false, 'isEnum' => ''],
-        'storage' => ['name' => 'storage', 'convertToDate' => false, 'isEnum' => ''],
+        'channel' => ['name' => 'channel', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $author;
     /**
     * @var string
     */ 
@@ -21,7 +26,14 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $storage;
+    private $channel;
+    /** 
+    * @param string $author
+    */ 
+    public function setAuthor(string $author) 
+    { 
+       $this->author = $author;
+    }
     /** 
     * @param string $content
     */ 
@@ -30,24 +42,29 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
        $this->content = $content;
     }
     /** 
-    * @param string $storage
+    * @param string $channel
     */ 
-    public function setStorage(string $storage) 
+    public function setChannel(string $channel) 
     { 
-       $this->storage = $storage;
+       $this->channel = $channel;
+    }
+    public function getAuthor() 
+    {
+        return $this->author;
     }
     public function getContent() 
     {
         return $this->content;
     }
-    public function getStorage() 
+    public function getChannel() 
     {
-        return $this->storage;
+        return $this->channel;
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setAuthor($data->author); 
         $this->setContent($data->content); 
-        $this->setStorage($data->storage); 
+        $this->setChannel($data->channel); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

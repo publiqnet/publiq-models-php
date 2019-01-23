@@ -4,50 +4,50 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class ContentInfo implements ValidatorInterface, \JsonSerializable
+class IPDestination implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'content' => ['name' => 'content', 'convertToDate' => false, 'isEnum' => ''],
-        'storage' => ['name' => 'storage', 'convertToDate' => false, 'isEnum' => ''],
+        'port' => ['name' => 'port', 'convertToDate' => false, 'isEnum' => ''],
+        'address' => ['name' => 'address', 'convertToDate' => false, 'isEnum' => ''],
     ];
 
     /**
-    * @var string
+    * @var int
     */ 
-    private $content;
+    private $port;
     /**
     * @var string
     */ 
-    private $storage;
+    private $address;
     /** 
-    * @param string $content
+    * @param int $port
     */ 
-    public function setContent(string $content) 
+    public function setPort(int $port) 
     { 
-       $this->content = $content;
+       $this->port = $port;
     }
     /** 
-    * @param string $storage
+    * @param string $address
     */ 
-    public function setStorage(string $storage) 
+    public function setAddress(string $address) 
     { 
-       $this->storage = $storage;
+       $this->address = $address;
     }
-    public function getContent() 
+    public function getPort() 
     {
-        return $this->content;
+        return $this->port;
     }
-    public function getStorage() 
+    public function getAddress() 
     {
-        return $this->storage;
+        return $this->address;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setContent($data->content); 
-        $this->setStorage($data->storage); 
+        $this->setPort($data->port); 
+        $this->setAddress($data->address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
