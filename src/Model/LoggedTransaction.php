@@ -10,15 +10,15 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'logging_type' => ['name' => 'loggingType', 'convertToDate' => false,'isEnum' => 'LoggingType'],
-        'index' => ['name' => 'index', 'convertToDate' => false, 'isEnum' => ''],
-        'action' => ['name' => 'action', 'convertToDate' => false, 'isEnum' => ''],
+        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false],
+        'index' => ['name' => 'index', 'convertToDate' => false],
+        'action' => ['name' => 'action', 'convertToDate' => false],
     ];
 
     /**
-    * @var int 
+    * @var bool
     */ 
-    private $loggingType;
+    private $appliedReverted;
     /**
     * @var int
     */ 
@@ -28,11 +28,11 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $action;
     /** 
-    * @param int $loggingType
+    * @param bool $appliedReverted
     */ 
-    public function setLoggingType(int $loggingType) 
+    public function setAppliedReverted(bool $appliedReverted) 
     { 
-       $this->loggingType = $loggingType;
+       $this->appliedReverted = $appliedReverted;
     }
     /** 
     * @param int $index
@@ -48,9 +48,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->action = $action;
     }
-    public function getLoggingType() 
+    public function getAppliedReverted() 
     {
-        return $this->loggingType;
+        return $this->appliedReverted;
     }
     public function getIndex() 
     {
@@ -62,9 +62,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
         $this->setAction(Rtt::validate($data->action)); 
-        $this->setLoggingType(LoggingType.toInt($data->logging_type)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

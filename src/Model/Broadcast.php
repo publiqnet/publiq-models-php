@@ -10,8 +10,8 @@ class Broadcast implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'echoes' => ['name' => 'echoes', 'convertToDate' => false, 'isEnum' => ''],
-        'package' => ['name' => 'package', 'convertToDate' => false, 'isEnum' => ''],
+        'echoes' => ['name' => 'echoes', 'convertToDate' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**

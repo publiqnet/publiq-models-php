@@ -4,26 +4,18 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class Transaction implements ValidatorInterface, \JsonSerializable
+class TransactionInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'creation' => ['name' => 'creation', 'convertToDate' => true],
-        'expiry' => ['name' => 'expiry', 'convertToDate' => true],
         'fee' => ['name' => 'fee', 'convertToDate' => false],
         'action' => ['name' => 'action', 'convertToDate' => false],
+        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
     ];
 
-    /**
-    * @var integer
-    */ 
-    private $creation;
-    /**
-    * @var integer
-    */ 
-    private $expiry;
     /**
     * @var Coin
     */ 
@@ -32,20 +24,14 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     * @var mixed 
     */ 
     private $action;
-    /** 
-    * @param int $creation
+    /**
+    * @var string
     */ 
-    public function setCreation(int $creation) 
-    { 
-       $this->creation = $creation;
-    }
-    /** 
-    * @param int $expiry
+    private $transactionHash;
+    /**
+    * @var integer
     */ 
-    public function setExpiry(int $expiry) 
-    { 
-       $this->expiry = $expiry;
-    }
+    private $timeSigned;
     /** 
     * @param Coin $fee
     */ 
@@ -60,13 +46,19 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->action = $action;
     }
-    public function getCreation() 
-    {
-        return $this->creation;
+    /** 
+    * @param string $transactionHash
+    */ 
+    public function setTransactionHash(string $transactionHash) 
+    { 
+       $this->transactionHash = $transactionHash;
     }
-    public function getExpiry() 
-    {
-        return $this->expiry;
+    /** 
+    * @param int $timeSigned
+    */ 
+    public function setTimeSigned(int $timeSigned) 
+    { 
+       $this->timeSigned = $timeSigned;
     }
     public function getFee() 
     {
@@ -76,12 +68,20 @@ class Transaction implements ValidatorInterface, \JsonSerializable
     {
         return $this->action;
     }
+    public function getTransactionHash() 
+    {
+        return $this->transactionHash;
+    }
+    public function getTimeSigned() 
+    {
+        return $this->timeSigned;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->fee = new Coin();
         $this->fee -> validate($data-> fee);
-        $this->setCreation(strtotime($data->creation)); 
-        $this->setExpiry(strtotime($data->expiry)); 
+        $this->setTransactionHash($data->transaction_hash); 
+        $this->setTimeSigned(strtotime($data->time_signed)); 
         $this->setAction(Rtt::validate($data->action)); 
     } 
     public static function getMemberName(string $camelCaseName)

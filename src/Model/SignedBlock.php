@@ -10,9 +10,9 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false, 'isEnum' => ''],
-        'authority' => ['name' => 'authority', 'convertToDate' => false, 'isEnum' => ''],
-        'signature' => ['name' => 'signature', 'convertToDate' => false, 'isEnum' => ''],
+        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false],
+        'authority' => ['name' => 'authority', 'convertToDate' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false],
     ];
 
     /**

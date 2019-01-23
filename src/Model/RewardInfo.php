@@ -4,50 +4,51 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class KeyPairRequest implements ValidatorInterface, \JsonSerializable
+class RewardInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
-        'index' => ['name' => 'index', 'convertToDate' => false],
+        'to' => ['name' => 'to', 'convertToDate' => false],
+        'amount' => ['name' => 'amount', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $masterKey;
+    private $to;
     /**
-    * @var int
+    * @var Coin
     */ 
-    private $index;
+    private $amount;
     /** 
-    * @param string $masterKey
+    * @param string $to
     */ 
-    public function setMasterKey(string $masterKey) 
+    public function setTo(string $to) 
     { 
-       $this->masterKey = $masterKey;
+       $this->to = $to;
     }
     /** 
-    * @param int $index
+    * @param Coin $amount
     */ 
-    public function setIndex(int $index) 
+    public function setAmount(Coin $amount) 
     { 
-       $this->index = $index;
+       $this->amount = $amount;
     }
-    public function getMasterKey() 
+    public function getTo() 
     {
-        return $this->masterKey;
+        return $this->to;
     }
-    public function getIndex() 
+    public function getAmount() 
     {
-        return $this->index;
+        return $this->amount;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setMasterKey($data->master_key); 
-        $this->setIndex($data->index); 
+        $this->amount = new Coin();
+        $this->amount -> validate($data-> amount);
+        $this->setTo($data->to); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

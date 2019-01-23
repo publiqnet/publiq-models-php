@@ -10,18 +10,13 @@ class StorageFileAddress implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false, 'isEnum' => ''],
-        'node' => ['name' => 'node', 'convertToDate' => false, 'isEnum' => ''],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
     private $uri;
-    /**
-    * @var string
-    */ 
-    private $node;
     /** 
     * @param string $uri
     */ 
@@ -29,25 +24,13 @@ class StorageFileAddress implements ValidatorInterface, \JsonSerializable
     { 
        $this->uri = $uri;
     }
-    /** 
-    * @param string $node
-    */ 
-    public function setNode(string $node) 
-    { 
-       $this->node = $node;
-    }
     public function getUri() 
     {
         return $this->uri;
     }
-    public function getNode() 
-    {
-        return $this->node;
-    }
     public function validate(\stdClass $data) 
     { 
         $this->setUri($data->uri); 
-        $this->setNode($data->node); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
