@@ -12,6 +12,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'authority' => ['name' => 'authority', 'convertToDate' => false],
         'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
+        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
         'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
         'rewards' => ['name' => 'rewards', 'convertToDate' => false],
         'transactions' => ['name' => 'transactions', 'convertToDate' => false],
@@ -25,6 +26,10 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     * @var string
     */ 
     private $blockHash;
+    /**
+    * @var int
+    */ 
+    private $blockNumber;
     /**
     * @var integer
     */ 
@@ -52,6 +57,13 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
        $this->blockHash = $blockHash;
     }
     /** 
+    * @param int $blockNumber
+    */ 
+    public function setBlockNumber(int $blockNumber) 
+    { 
+       $this->blockNumber = $blockNumber;
+    }
+    /** 
     * @param int $timeSigned
     */ 
     public function setTimeSigned(int $timeSigned) 
@@ -65,6 +77,10 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     public function getBlockHash() 
     {
         return $this->blockHash;
+    }
+    public function getBlockNumber() 
+    {
+        return $this->blockNumber;
     }
     public function getTimeSigned() 
     {
@@ -82,6 +98,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->setAuthority($data->authority); 
         $this->setBlockHash($data->block_hash); 
+        $this->setBlockNumber($data->block_number); 
         $this->setTimeSigned(strtotime($data->time_signed)); 
           foreach ($data->rewards as $rewardsItem) { 
               $rewardsItemObj = new RewardInfo(); 
