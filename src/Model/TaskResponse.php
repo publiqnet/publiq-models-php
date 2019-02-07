@@ -4,51 +4,51 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class RewardInfo implements ValidatorInterface, \JsonSerializable
+
+class TaskResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'to' => ['name' => 'to', 'convertToDate' => false],
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false],
+        'task_id' => ['name' => 'taskId', 'convertToDate' => false],
     ];
 
     /**
-    * @var string
+    * @var mixed 
     */ 
-    private $to;
+    private $package;
     /**
-    * @var Coin
+    * @var int
     */ 
-    private $amount;
+    private $taskId;
     /** 
-    * @param string $to
+    * @param mixed $package
     */ 
-    public function setTo(string $to) 
+    public function setPackage( $package) 
     { 
-       $this->to = $to;
+       $this->package = $package;
     }
     /** 
-    * @param Coin $amount
+    * @param int $taskId
     */ 
-    public function setAmount(Coin $amount) 
+    public function setTaskId(int $taskId) 
     { 
-       $this->amount = $amount;
+       $this->taskId = $taskId;
     }
-    public function getTo() 
+    public function getPackage() 
     {
-        return $this->to;
+        return $this->package;
     }
-    public function getAmount() 
+    public function getTaskId() 
     {
-        return $this->amount;
+        return $this->taskId;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->amount = new Coin();
-        $this->amount -> validate($data-> amount);
-        $this->setTo($data->to); 
+        $this->setTaskId($data->task_id); 
+        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

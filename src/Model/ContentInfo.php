@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class File implements ValidatorInterface, \JsonSerializable
+class ContentInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'content' => ['name' => 'content', 'convertToDate' => false],
+        'storage' => ['name' => 'storage', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $author;
+    private $content;
     /**
     * @var string
     */ 
-    private $uri;
+    private $storage;
     /** 
-    * @param string $author
+    * @param string $content
     */ 
-    public function setAuthor(string $author) 
+    public function setContent(string $content) 
     { 
-       $this->author = $author;
+       $this->content = $content;
     }
     /** 
-    * @param string $uri
+    * @param string $storage
     */ 
-    public function setUri(string $uri) 
+    public function setStorage(string $storage) 
     { 
-       $this->uri = $uri;
+       $this->storage = $storage;
     }
-    public function getAuthor() 
+    public function getContent() 
     {
-        return $this->author;
+        return $this->content;
     }
-    public function getUri() 
+    public function getStorage() 
     {
-        return $this->uri;
+        return $this->storage;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setAuthor($data->author); 
-        $this->setUri($data->uri); 
+        $this->setContent($data->content); 
+        $this->setStorage($data->storage); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

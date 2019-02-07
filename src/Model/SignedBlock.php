@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class SignedBlock implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -63,7 +64,7 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->blockDetails = new Block();
-        $this->blockDetails -> validate($data-> block_details);
+        $this->blockDetails->validate($data->block_details);
         $this->setAuthority($data->authority); 
         $this->setSignature($data->signature); 
     } 

@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class DigestRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;

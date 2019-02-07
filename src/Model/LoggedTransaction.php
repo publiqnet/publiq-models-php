@@ -4,21 +4,23 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+use PubliqAPI\Base\LoggingType;
+
 class LoggedTransaction implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'applied_reverted' => ['name' => 'appliedReverted', 'convertToDate' => false],
+        'logging_type' => ['name' => 'loggingType', 'convertToDate' => false],
         'index' => ['name' => 'index', 'convertToDate' => false],
         'action' => ['name' => 'action', 'convertToDate' => false],
     ];
 
     /**
-    * @var bool
+    * @var string 
     */ 
-    private $appliedReverted;
+    private $loggingType;
     /**
     * @var int
     */ 
@@ -28,11 +30,11 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $action;
     /** 
-    * @param bool $appliedReverted
+    * @param string $loggingType
     */ 
-    public function setAppliedReverted(bool $appliedReverted) 
+    public function setLoggingType(string $loggingType) 
     { 
-       $this->appliedReverted = $appliedReverted;
+       $this->loggingType = $loggingType;
     }
     /** 
     * @param int $index
@@ -48,9 +50,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->action = $action;
     }
-    public function getAppliedReverted() 
+    public function getLoggingType() 
     {
-        return $this->appliedReverted;
+        return $this->loggingType;
     }
     public function getIndex() 
     {
@@ -62,9 +64,9 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setAppliedReverted($data->applied_reverted); 
         $this->setIndex($data->index); 
         $this->setAction(Rtt::validate($data->action)); 
+        $this->setLoggingType(LoggingType::validate($data->logging_type)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class Block implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -49,7 +50,7 @@ class Block implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->header = new BlockHeader();
-        $this->header -> validate($data-> header);
+        $this->header->validate($data->header);
           foreach ($data->rewards as $rewardsItem) { 
               $rewardsItemObj = new Reward(); 
               $rewardsItemObj->validate($rewardsItem); 

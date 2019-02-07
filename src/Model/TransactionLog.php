@@ -4,7 +4,8 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class TransactionInfo implements ValidatorInterface, \JsonSerializable
+
+class TransactionLog implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
@@ -14,6 +15,7 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
         'action' => ['name' => 'action', 'convertToDate' => false],
         'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
         'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
+        'transaction_size' => ['name' => 'transactionSize', 'convertToDate' => false],
     ];
 
     /**
@@ -32,6 +34,10 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     * @var integer
     */ 
     private $timeSigned;
+    /**
+    * @var int
+    */ 
+    private $transactionSize;
     /** 
     * @param Coin $fee
     */ 
@@ -60,6 +66,13 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->timeSigned = $timeSigned;
     }
+    /** 
+    * @param int $transactionSize
+    */ 
+    public function setTransactionSize(int $transactionSize) 
+    { 
+       $this->transactionSize = $transactionSize;
+    }
     public function getFee() 
     {
         return $this->fee;
@@ -76,12 +89,17 @@ class TransactionInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->timeSigned;
     }
+    public function getTransactionSize() 
+    {
+        return $this->transactionSize;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->fee = new Coin();
-        $this->fee -> validate($data-> fee);
+        $this->fee->validate($data->fee);
         $this->setTransactionHash($data->transaction_hash); 
         $this->setTimeSigned(strtotime($data->time_signed)); 
+        $this->setTransactionSize($data->transaction_size); 
         $this->setAction(Rtt::validate($data->action)); 
     } 
     public static function getMemberName(string $camelCaseName)

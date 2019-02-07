@@ -4,7 +4,8 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-class BlockInfo implements ValidatorInterface, \JsonSerializable
+
+class BlockLog implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
@@ -13,6 +14,7 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
         'authority' => ['name' => 'authority', 'convertToDate' => false],
         'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
         'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
+        'block_size' => ['name' => 'blockSize', 'convertToDate' => false],
         'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
         'rewards' => ['name' => 'rewards', 'convertToDate' => false],
         'transactions' => ['name' => 'transactions', 'convertToDate' => false],
@@ -30,6 +32,10 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     * @var int
     */ 
     private $blockNumber;
+    /**
+    * @var int
+    */ 
+    private $blockSize;
     /**
     * @var integer
     */ 
@@ -64,6 +70,13 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
        $this->blockNumber = $blockNumber;
     }
     /** 
+    * @param int $blockSize
+    */ 
+    public function setBlockSize(int $blockSize) 
+    { 
+       $this->blockSize = $blockSize;
+    }
+    /** 
     * @param int $timeSigned
     */ 
     public function setTimeSigned(int $timeSigned) 
@@ -82,6 +95,10 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->blockNumber;
     }
+    public function getBlockSize() 
+    {
+        return $this->blockSize;
+    }
     public function getTimeSigned() 
     {
         return $this->timeSigned;
@@ -99,14 +116,15 @@ class BlockInfo implements ValidatorInterface, \JsonSerializable
         $this->setAuthority($data->authority); 
         $this->setBlockHash($data->block_hash); 
         $this->setBlockNumber($data->block_number); 
+        $this->setBlockSize($data->block_size); 
         $this->setTimeSigned(strtotime($data->time_signed)); 
           foreach ($data->rewards as $rewardsItem) { 
-              $rewardsItemObj = new RewardInfo(); 
+              $rewardsItemObj = new RewardLog(); 
               $rewardsItemObj->validate($rewardsItem); 
               $this->rewards[] = $rewardsItemObj;
            } 
           foreach ($data->transactions as $transactionsItem) { 
-              $transactionsItemObj = new TransactionInfo(); 
+              $transactionsItemObj = new TransactionLog(); 
               $transactionsItemObj->validate($transactionsItem); 
               $this->transactions[] = $transactionsItemObj;
            } 

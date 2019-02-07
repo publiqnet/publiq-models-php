@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class SignedTransaction implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -63,7 +64,7 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->transactionDetails = new Transaction();
-        $this->transactionDetails -> validate($data-> transaction_details);
+        $this->transactionDetails->validate($data->transaction_details);
         $this->setAuthority($data->authority); 
         $this->setSignature($data->signature); 
     } 

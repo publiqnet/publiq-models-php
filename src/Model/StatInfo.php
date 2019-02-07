@@ -5,50 +5,47 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class File implements ValidatorInterface, \JsonSerializable
+class StatInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'hash' => ['name' => 'hash', 'convertToDate' => false],
+        'items' => ['name' => 'items', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $author;
+    private $hash;
     /**
-    * @var string
+    * @var array
     */ 
-    private $uri;
+    private $items = [];
     /** 
-    * @param string $author
+    * @param string $hash
     */ 
-    public function setAuthor(string $author) 
+    public function setHash(string $hash) 
     { 
-       $this->author = $author;
+       $this->hash = $hash;
     }
-    /** 
-    * @param string $uri
-    */ 
-    public function setUri(string $uri) 
-    { 
-       $this->uri = $uri;
-    }
-    public function getAuthor() 
+    public function getHash() 
     {
-        return $this->author;
+        return $this->hash;
     }
-    public function getUri() 
+    public function getItems() 
     {
-        return $this->uri;
+        return $this->items;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setAuthor($data->author); 
-        $this->setUri($data->uri); 
+        $this->setHash($data->hash); 
+          foreach ($data->items as $itemsItem) { 
+              $itemsItemObj = new StatItem(); 
+              $itemsItemObj->validate($itemsItem); 
+              $this->items[] = $itemsItemObj;
+           } 
     } 
     public static function getMemberName(string $camelCaseName)
     {

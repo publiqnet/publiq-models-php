@@ -5,31 +5,29 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class StorageFileAddress implements ValidatorInterface, \JsonSerializable
+class StatItem implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
         'node' => ['name' => 'node', 'convertToDate' => false],
+        'passed' => ['name' => 'passed', 'convertToDate' => false],
+        'failed' => ['name' => 'failed', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $uri;
-    /**
-    * @var string
-    */ 
     private $node;
-    /** 
-    * @param string $uri
+    /**
+    * @var int
     */ 
-    public function setUri(string $uri) 
-    { 
-       $this->uri = $uri;
-    }
+    private $passed;
+    /**
+    * @var int
+    */ 
+    private $failed;
     /** 
     * @param string $node
     */ 
@@ -37,18 +35,37 @@ class StorageFileAddress implements ValidatorInterface, \JsonSerializable
     { 
        $this->node = $node;
     }
-    public function getUri() 
-    {
-        return $this->uri;
+    /** 
+    * @param int $passed
+    */ 
+    public function setPassed(int $passed) 
+    { 
+       $this->passed = $passed;
+    }
+    /** 
+    * @param int $failed
+    */ 
+    public function setFailed(int $failed) 
+    { 
+       $this->failed = $failed;
     }
     public function getNode() 
     {
         return $this->node;
     }
+    public function getPassed() 
+    {
+        return $this->passed;
+    }
+    public function getFailed() 
+    {
+        return $this->failed;
+    }
     public function validate(\stdClass $data) 
     { 
-        $this->setUri($data->uri); 
         $this->setNode($data->node); 
+        $this->setPassed($data->passed); 
+        $this->setFailed($data->failed); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

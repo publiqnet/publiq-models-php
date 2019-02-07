@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class Transfer implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -63,7 +64,7 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->amount = new Coin();
-        $this->amount -> validate($data-> amount);
+        $this->amount->validate($data->amount);
         $this->setFrom($data->from); 
         $this->setTo($data->to); 
     } 

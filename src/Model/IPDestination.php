@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class BlockHeaderRequest implements ValidatorInterface, \JsonSerializable
+class IPDestination implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'blocks_from' => ['name' => 'blocksFrom', 'convertToDate' => false],
-        'blocks_to' => ['name' => 'blocksTo', 'convertToDate' => false],
+        'port' => ['name' => 'port', 'convertToDate' => false],
+        'address' => ['name' => 'address', 'convertToDate' => false],
     ];
 
     /**
     * @var int
     */ 
-    private $blocksFrom;
+    private $port;
     /**
-    * @var int
+    * @var string
     */ 
-    private $blocksTo;
+    private $address;
     /** 
-    * @param int $blocksFrom
+    * @param int $port
     */ 
-    public function setBlocksFrom(int $blocksFrom) 
+    public function setPort(int $port) 
     { 
-       $this->blocksFrom = $blocksFrom;
+       $this->port = $port;
     }
     /** 
-    * @param int $blocksTo
+    * @param string $address
     */ 
-    public function setBlocksTo(int $blocksTo) 
+    public function setAddress(string $address) 
     { 
-       $this->blocksTo = $blocksTo;
+       $this->address = $address;
     }
-    public function getBlocksFrom() 
+    public function getPort() 
     {
-        return $this->blocksFrom;
+        return $this->port;
     }
-    public function getBlocksTo() 
+    public function getAddress() 
     {
-        return $this->blocksTo;
+        return $this->address;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setBlocksFrom($data->blocks_from); 
-        $this->setBlocksTo($data->blocks_to); 
+        $this->setPort($data->port); 
+        $this->setAddress($data->address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

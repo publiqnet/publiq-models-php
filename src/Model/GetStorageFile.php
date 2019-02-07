@@ -5,31 +5,24 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class File implements ValidatorInterface, \JsonSerializable
+class GetStorageFile implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false],
         'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'node' => ['name' => 'node', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $author;
+    private $uri;
     /**
     * @var string
     */ 
-    private $uri;
-    /** 
-    * @param string $author
-    */ 
-    public function setAuthor(string $author) 
-    { 
-       $this->author = $author;
-    }
+    private $node;
     /** 
     * @param string $uri
     */ 
@@ -37,18 +30,25 @@ class File implements ValidatorInterface, \JsonSerializable
     { 
        $this->uri = $uri;
     }
-    public function getAuthor() 
-    {
-        return $this->author;
+    /** 
+    * @param string $node
+    */ 
+    public function setNode(string $node) 
+    { 
+       $this->node = $node;
     }
     public function getUri() 
     {
         return $this->uri;
     }
+    public function getNode() 
+    {
+        return $this->node;
+    }
     public function validate(\stdClass $data) 
     { 
-        $this->setAuthor($data->author); 
         $this->setUri($data->uri); 
+        $this->setNode($data->node); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

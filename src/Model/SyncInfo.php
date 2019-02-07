@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class SyncInfo implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -12,7 +13,6 @@ class SyncInfo implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'number' => ['name' => 'number', 'convertToDate' => false],
         'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
     ];
 
     /**
@@ -23,10 +23,6 @@ class SyncInfo implements ValidatorInterface, \JsonSerializable
     * @var int
     */ 
     private $cSum;
-    /**
-    * @var string
-    */ 
-    private $authority;
     /** 
     * @param int $number
     */ 
@@ -41,13 +37,6 @@ class SyncInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->cSum = $cSum;
     }
-    /** 
-    * @param string $authority
-    */ 
-    public function setAuthority(string $authority) 
-    { 
-       $this->authority = $authority;
-    }
     public function getNumber() 
     {
         return $this->number;
@@ -56,15 +45,10 @@ class SyncInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->cSum;
     }
-    public function getAuthority() 
-    {
-        return $this->authority;
-    }
     public function validate(\stdClass $data) 
     { 
         $this->setNumber($data->number); 
         $this->setCSum($data->c_sum); 
-        $this->setAuthority($data->authority); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

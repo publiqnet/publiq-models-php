@@ -5,35 +5,47 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class Signature implements ValidatorInterface, \JsonSerializable
+class TaskRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
         'package' => ['name' => 'package', 'convertToDate' => false],
+        'task_id' => ['name' => 'taskId', 'convertToDate' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
     ];
 
     /**
-    * @var string
+    * @var mixed 
     */ 
-    private $publicKey;
+    private $package;
+    /**
+    * @var int
+    */ 
+    private $taskId;
     /**
     * @var string
     */ 
     private $signature;
     /**
-    * @var mixed 
+    * @var integer
     */ 
-    private $package;
+    private $timeSigned;
     /** 
-    * @param string $publicKey
+    * @param mixed $package
     */ 
-    public function setPublicKey(string $publicKey) 
+    public function setPackage( $package) 
     { 
-       $this->publicKey = $publicKey;
+       $this->package = $package;
+    }
+    /** 
+    * @param int $taskId
+    */ 
+    public function setTaskId(int $taskId) 
+    { 
+       $this->taskId = $taskId;
     }
     /** 
     * @param string $signature
@@ -43,28 +55,33 @@ class Signature implements ValidatorInterface, \JsonSerializable
        $this->signature = $signature;
     }
     /** 
-    * @param mixed $package
+    * @param int $timeSigned
     */ 
-    public function setPackage( $package) 
+    public function setTimeSigned(int $timeSigned) 
     { 
-       $this->package = $package;
-    }
-    public function getPublicKey() 
-    {
-        return $this->publicKey;
-    }
-    public function getSignature() 
-    {
-        return $this->signature;
+       $this->timeSigned = $timeSigned;
     }
     public function getPackage() 
     {
         return $this->package;
     }
+    public function getTaskId() 
+    {
+        return $this->taskId;
+    }
+    public function getSignature() 
+    {
+        return $this->signature;
+    }
+    public function getTimeSigned() 
+    {
+        return $this->timeSigned;
+    }
     public function validate(\stdClass $data) 
     { 
-        $this->setPublicKey($data->public_key); 
+        $this->setTaskId($data->task_id); 
         $this->setSignature($data->signature); 
+        $this->setTimeSigned(strtotime($data->time_signed)); 
         $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)

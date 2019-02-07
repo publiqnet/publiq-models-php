@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+
 class NotEnoughBalance implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
@@ -47,9 +48,9 @@ class NotEnoughBalance implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->balance = new Coin();
-        $this->balance -> validate($data-> balance);
+        $this->balance->validate($data->balance);
         $this->spending = new Coin();
-        $this->spending -> validate($data-> spending);
+        $this->spending->validate($data->spending);
     } 
     public static function getMemberName(string $camelCaseName)
     {

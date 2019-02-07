@@ -5,35 +5,42 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class Signature implements ValidatorInterface, \JsonSerializable
+class Pong implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
+        'nodeid' => ['name' => 'nodeid', 'convertToDate' => false],
+        'stamp' => ['name' => 'stamp', 'convertToDate' => true],
         'signature' => ['name' => 'signature', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $publicKey;
+    private $nodeid;
+    /**
+    * @var integer
+    */ 
+    private $stamp;
     /**
     * @var string
     */ 
     private $signature;
-    /**
-    * @var mixed 
-    */ 
-    private $package;
     /** 
-    * @param string $publicKey
+    * @param string $nodeid
     */ 
-    public function setPublicKey(string $publicKey) 
+    public function setNodeid(string $nodeid) 
     { 
-       $this->publicKey = $publicKey;
+       $this->nodeid = $nodeid;
+    }
+    /** 
+    * @param int $stamp
+    */ 
+    public function setStamp(int $stamp) 
+    { 
+       $this->stamp = $stamp;
     }
     /** 
     * @param string $signature
@@ -42,30 +49,23 @@ class Signature implements ValidatorInterface, \JsonSerializable
     { 
        $this->signature = $signature;
     }
-    /** 
-    * @param mixed $package
-    */ 
-    public function setPackage( $package) 
-    { 
-       $this->package = $package;
-    }
-    public function getPublicKey() 
+    public function getNodeid() 
     {
-        return $this->publicKey;
+        return $this->nodeid;
+    }
+    public function getStamp() 
+    {
+        return $this->stamp;
     }
     public function getSignature() 
     {
         return $this->signature;
     }
-    public function getPackage() 
-    {
-        return $this->package;
-    }
     public function validate(\stdClass $data) 
     { 
-        $this->setPublicKey($data->public_key); 
+        $this->setNodeid($data->nodeid); 
+        $this->setStamp(strtotime($data->stamp)); 
         $this->setSignature($data->signature); 
-        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
