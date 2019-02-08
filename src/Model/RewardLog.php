@@ -48,7 +48,7 @@ class RewardLog implements ValidatorInterface, \JsonSerializable
     */ 
     public function setRewardType(string $rewardType) 
     { 
-        RewardType::validate($reward_type);
+        RewardType::validate($rewardType);
         $this->rewardType = $rewardType;
     }
     public function getTo() 

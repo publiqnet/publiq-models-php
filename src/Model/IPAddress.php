@@ -34,7 +34,7 @@ class IPAddress implements ValidatorInterface, \JsonSerializable
     */ 
     public function setIpType(string $ipType) 
     { 
-        IPType::validate($ip_type);
+        IPType::validate($ipType);
         $this->ipType = $ipType;
     }
     /** 

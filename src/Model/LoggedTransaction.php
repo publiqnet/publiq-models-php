@@ -34,7 +34,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     public function setLoggingType(string $loggingType) 
     { 
-        LoggingType::validate($logging_type);
+        LoggingType::validate($loggingType);
         $this->loggingType = $loggingType;
     }
     /** 
