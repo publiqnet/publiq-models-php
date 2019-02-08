@@ -12,30 +12,23 @@ class Reward implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
         'to' => ['name' => 'to', 'convertToDate' => false],
+        'amount' => ['name' => 'amount', 'convertToDate' => false],
         'reward_type' => ['name' => 'rewardType', 'convertToDate' => false],
     ];
 
-    /**
-    * @var Coin
-    */ 
-    private $amount;
     /**
     * @var string
     */ 
     private $to;
     /**
+    * @var Coin
+    */ 
+    private $amount;
+    /**
     * @var string 
     */ 
     private $rewardType;
-    /** 
-    * @param Coin $amount
-    */ 
-    public function setAmount(Coin $amount) 
-    { 
-       $this->amount = $amount;
-    }
     /** 
     * @param string $to
     */ 
@@ -44,19 +37,26 @@ class Reward implements ValidatorInterface, \JsonSerializable
        $this->to = $to;
     }
     /** 
+    * @param Coin $amount
+    */ 
+    public function setAmount(Coin $amount) 
+    { 
+       $this->amount = $amount;
+    }
+    /** 
     * @param string $rewardType
     */ 
     public function setRewardType(string $rewardType) 
     { 
        $this->rewardType = $rewardType;
     }
-    public function getAmount() 
-    {
-        return $this->amount;
-    }
     public function getTo() 
     {
         return $this->to;
+    }
+    public function getAmount() 
+    {
+        return $this->amount;
     }
     public function getRewardType() 
     {

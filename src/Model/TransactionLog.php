@@ -14,8 +14,8 @@ class TransactionLog implements ValidatorInterface, \JsonSerializable
         'fee' => ['name' => 'fee', 'convertToDate' => false],
         'action' => ['name' => 'action', 'convertToDate' => false],
         'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
-        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
         'transaction_size' => ['name' => 'transactionSize', 'convertToDate' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
     ];
 
     /**
@@ -31,13 +31,13 @@ class TransactionLog implements ValidatorInterface, \JsonSerializable
     */ 
     private $transactionHash;
     /**
-    * @var integer
-    */ 
-    private $timeSigned;
-    /**
     * @var int
     */ 
     private $transactionSize;
+    /**
+    * @var integer
+    */ 
+    private $timeSigned;
     /** 
     * @param Coin $fee
     */ 
@@ -60,18 +60,18 @@ class TransactionLog implements ValidatorInterface, \JsonSerializable
        $this->transactionHash = $transactionHash;
     }
     /** 
-    * @param int $timeSigned
-    */ 
-    public function setTimeSigned(int $timeSigned) 
-    { 
-       $this->timeSigned = $timeSigned;
-    }
-    /** 
     * @param int $transactionSize
     */ 
     public function setTransactionSize(int $transactionSize) 
     { 
        $this->transactionSize = $transactionSize;
+    }
+    /** 
+    * @param int $timeSigned
+    */ 
+    public function setTimeSigned(int $timeSigned) 
+    { 
+       $this->timeSigned = $timeSigned;
     }
     public function getFee() 
     {
@@ -85,21 +85,21 @@ class TransactionLog implements ValidatorInterface, \JsonSerializable
     {
         return $this->transactionHash;
     }
-    public function getTimeSigned() 
-    {
-        return $this->timeSigned;
-    }
     public function getTransactionSize() 
     {
         return $this->transactionSize;
+    }
+    public function getTimeSigned() 
+    {
+        return $this->timeSigned;
     }
     public function validate(\stdClass $data) 
     { 
         $this->fee = new Coin();
         $this->fee->validate($data->fee);
         $this->setTransactionHash($data->transaction_hash); 
-        $this->setTimeSigned(strtotime($data->time_signed)); 
         $this->setTransactionSize($data->transaction_size); 
+        $this->setTimeSigned(strtotime($data->time_signed)); 
         $this->setAction(Rtt::validate($data->action)); 
     } 
     public static function getMemberName(string $camelCaseName)

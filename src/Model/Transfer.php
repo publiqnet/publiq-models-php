@@ -14,6 +14,7 @@ class Transfer implements ValidatorInterface, \JsonSerializable
         'from' => ['name' => 'from', 'convertToDate' => false],
         'to' => ['name' => 'to', 'convertToDate' => false],
         'amount' => ['name' => 'amount', 'convertToDate' => false],
+        'message' => ['name' => 'message', 'convertToDate' => false],
     ];
 
     /**
@@ -28,6 +29,10 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     * @var Coin
     */ 
     private $amount;
+    /**
+    * @var string
+    */ 
+    private $message;
     /** 
     * @param string $from
     */ 
@@ -49,6 +54,13 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     { 
        $this->amount = $amount;
     }
+    /** 
+    * @param string $message
+    */ 
+    public function setMessage(string $message) 
+    { 
+       $this->message = $message;
+    }
     public function getFrom() 
     {
         return $this->from;
@@ -61,12 +73,17 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     {
         return $this->amount;
     }
+    public function getMessage() 
+    {
+        return $this->message;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->amount = new Coin();
         $this->amount->validate($data->amount);
         $this->setFrom($data->from); 
         $this->setTo($data->to); 
+        $this->setMessage($data->message); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
