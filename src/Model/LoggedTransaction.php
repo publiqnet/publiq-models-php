@@ -34,7 +34,8 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     public function setLoggingType(string $loggingType) 
     { 
-       $this->loggingType = $loggingType;
+        LoggingType::validate($logging_type);
+        $this->loggingType = $loggingType;
     }
     /** 
     * @param int $index
@@ -66,7 +67,7 @@ class LoggedTransaction implements ValidatorInterface, \JsonSerializable
     { 
         $this->setIndex($data->index); 
         $this->setAction(Rtt::validate($data->action)); 
-        $this->setLoggingType(LoggingType::validate($data->logging_type)); 
+        $this->setLoggingType($data->logging_type); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

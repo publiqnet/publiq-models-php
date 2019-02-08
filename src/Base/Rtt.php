@@ -83,16 +83,13 @@ public static function validate($jsonObj)
     if (!isset(Rtt::types[$jsonObj->rtt])) {
         return false;
     }
-    try {
-        $className = 'PubliqAPI\\Model\\' . Rtt::types[$jsonObj->rtt];
-        /**
-        * @var ValidatorInterface $class
-        */
-        $class = new $className;
-        $class->validate($jsonObj);
-        return $class;
-        } catch (\Throwable $e) {
-            return $e->getMessage();
-        }
+    $className = 'PubliqAPI\\Model\\' . Rtt::types[$jsonObj->rtt];
+    /**
+    * @var ValidatorInterface $class
+    */
+    $class = new $className;
+    $class->validate($jsonObj);
+    return $class;
+
     }
 }

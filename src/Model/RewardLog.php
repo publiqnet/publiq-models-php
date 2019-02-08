@@ -48,7 +48,8 @@ class RewardLog implements ValidatorInterface, \JsonSerializable
     */ 
     public function setRewardType(string $rewardType) 
     { 
-       $this->rewardType = $rewardType;
+        RewardType::validate($reward_type);
+        $this->rewardType = $rewardType;
     }
     public function getTo() 
     {
@@ -67,7 +68,7 @@ class RewardLog implements ValidatorInterface, \JsonSerializable
         $this->amount = new Coin();
         $this->amount->validate($data->amount);
         $this->setTo($data->to); 
-        $this->setRewardType(RewardType::validate($data->reward_type)); 
+        $this->setRewardType($data->reward_type); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

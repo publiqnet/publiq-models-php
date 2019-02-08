@@ -34,7 +34,8 @@ class IPAddress implements ValidatorInterface, \JsonSerializable
     */ 
     public function setIpType(string $ipType) 
     { 
-       $this->ipType = $ipType;
+        IPType::validate($ip_type);
+        $this->ipType = $ipType;
     }
     /** 
     * @param IPDestination $local
@@ -68,7 +69,7 @@ class IPAddress implements ValidatorInterface, \JsonSerializable
         $this->local->validate($data->local);
         $this->remote = new IPDestination();
         $this->remote->validate($data->remote);
-        $this->setIpType(IPType::validate($data->ip_type)); 
+        $this->setIpType($data->ip_type); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
