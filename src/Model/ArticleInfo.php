@@ -11,11 +11,15 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
         'author' => ['name' => 'author', 'convertToDate' => false],
-        'content' => ['name' => 'content', 'convertToDate' => false],
         'channel' => ['name' => 'channel', 'convertToDate' => false],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $uri;
     /**
     * @var string
     */ 
@@ -23,11 +27,14 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $content;
-    /**
-    * @var string
-    */ 
     private $channel;
+    /** 
+    * @param string $uri
+    */ 
+    public function setUri(string $uri) 
+    { 
+       $this->uri = $uri;
+    }
     /** 
     * @param string $author
     */ 
@@ -36,26 +43,19 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
        $this->author = $author;
     }
     /** 
-    * @param string $content
-    */ 
-    public function setContent(string $content) 
-    { 
-       $this->content = $content;
-    }
-    /** 
     * @param string $channel
     */ 
     public function setChannel(string $channel) 
     { 
        $this->channel = $channel;
     }
+    public function getUri() 
+    {
+        return $this->uri;
+    }
     public function getAuthor() 
     {
         return $this->author;
-    }
-    public function getContent() 
-    {
-        return $this->content;
     }
     public function getChannel() 
     {
@@ -63,8 +63,8 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setUri($data->uri); 
         $this->setAuthor($data->author); 
-        $this->setContent($data->content); 
         $this->setChannel($data->channel); 
     } 
     public static function getMemberName(string $camelCaseName)

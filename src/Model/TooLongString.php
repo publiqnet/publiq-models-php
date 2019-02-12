@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class ContentInfo implements ValidatorInterface, \JsonSerializable
+class TooLongString implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'storage' => ['name' => 'storage', 'convertToDate' => false],
+        'used_string' => ['name' => 'usedString', 'convertToDate' => false],
+        'max_length' => ['name' => 'maxLength', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $uri;
+    private $usedString;
     /**
-    * @var string
+    * @var int
     */ 
-    private $storage;
+    private $maxLength;
     /** 
-    * @param string $uri
+    * @param string $usedString
     */ 
-    public function setUri(string $uri) 
+    public function setUsedString(string $usedString) 
     { 
-       $this->uri = $uri;
+       $this->usedString = $usedString;
     }
     /** 
-    * @param string $storage
+    * @param int $maxLength
     */ 
-    public function setStorage(string $storage) 
+    public function setMaxLength(int $maxLength) 
     { 
-       $this->storage = $storage;
+       $this->maxLength = $maxLength;
     }
-    public function getUri() 
+    public function getUsedString() 
     {
-        return $this->uri;
+        return $this->usedString;
     }
-    public function getStorage() 
+    public function getMaxLength() 
     {
-        return $this->storage;
+        return $this->maxLength;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setUri($data->uri); 
-        $this->setStorage($data->storage); 
+        $this->setUsedString($data->used_string); 
+        $this->setMaxLength($data->max_length); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
