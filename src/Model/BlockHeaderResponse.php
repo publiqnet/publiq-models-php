@@ -24,7 +24,7 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->blockHeaders as $blockHeadersItem) { 
+          foreach ($data->block_headers as $blockHeadersItem) { 
               $blockHeadersItemObj = new BlockHeader(); 
               $blockHeadersItemObj->validate($blockHeadersItem); 
               $this->blockHeaders[] = $blockHeadersItemObj;

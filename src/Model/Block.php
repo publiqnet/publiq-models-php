@@ -56,7 +56,7 @@ class Block implements ValidatorInterface, \JsonSerializable
               $rewardsItemObj->validate($rewardsItem); 
               $this->rewards[] = $rewardsItemObj;
            } 
-          foreach ($data->signedTransactions as $signedTransactionsItem) { 
+          foreach ($data->signed_transactions as $signedTransactionsItem) { 
               $signedTransactionsItemObj = new SignedTransaction(); 
               $signedTransactionsItemObj->validate($signedTransactionsItem); 
               $this->signedTransactions[] = $signedTransactionsItemObj;

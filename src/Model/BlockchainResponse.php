@@ -24,7 +24,7 @@ class BlockchainResponse implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->signedBlocks as $signedBlocksItem) { 
+          foreach ($data->signed_blocks as $signedBlocksItem) { 
               $signedBlocksItemObj = new SignedBlock(); 
               $signedBlocksItemObj->validate($signedBlocksItem); 
               $this->signedBlocks[] = $signedBlocksItemObj;
