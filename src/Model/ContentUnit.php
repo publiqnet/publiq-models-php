@@ -5,17 +5,23 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class Content implements ValidatorInterface, \JsonSerializable
+class ContentUnit implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'author_address' => ['name' => 'authorAddress', 'convertToDate' => false],
         'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'content_unit_uris' => ['name' => 'contentUnitUris', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $authorAddress;
     /**
     * @var string
     */ 
@@ -25,9 +31,20 @@ class Content implements ValidatorInterface, \JsonSerializable
     */ 
     private $contentId;
     /**
+    * @var string
+    */ 
+    private $uri;
+    /**
     * @var array
     */ 
-    private $contentUnitUris = [];
+    private $fileUris = [];
+    /** 
+    * @param string $authorAddress
+    */ 
+    public function setAuthorAddress(string $authorAddress) 
+    { 
+       $this->authorAddress = $authorAddress;
+    }
     /** 
     * @param string $channelAddress
     */ 
@@ -42,6 +59,17 @@ class Content implements ValidatorInterface, \JsonSerializable
     { 
        $this->contentId = $contentId;
     }
+    /** 
+    * @param string $uri
+    */ 
+    public function setUri(string $uri) 
+    { 
+       $this->uri = $uri;
+    }
+    public function getAuthorAddress() 
+    {
+        return $this->authorAddress;
+    }
     public function getChannelAddress() 
     {
         return $this->channelAddress;
@@ -50,23 +78,29 @@ class Content implements ValidatorInterface, \JsonSerializable
     {
         return $this->contentId;
     }
-    public function getContentUnitUris() 
+    public function getUri() 
     {
-        return $this->contentUnitUris;
+        return $this->uri;
+    }
+    public function getFileUris() 
+    {
+        return $this->fileUris;
     }
     /**
-    * @param string $contentUnitUrisItem
+    * @param string $fileUrisItem
     */
-    public function addContentUnitUris(string $contentUnitUrisItem)
+    public function addFileUris(string $fileUrisItem)
     {
-        $this->contentUnitUris[] = $contentUnitUrisItem;
+        $this->fileUris[] = $fileUrisItem;
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setAuthorAddress($data->author_address); 
         $this->setChannelAddress($data->channel_address); 
         $this->setContentId($data->content_id); 
-          foreach ($data->content_unit_uris as $contentUnitUrisItem) { 
-            $this->addContentUnitUris($contentUnitUrisItem);
+        $this->setUri($data->uri); 
+          foreach ($data->file_uris as $fileUrisItem) { 
+            $this->addFileUris($fileUrisItem);
            } 
     } 
     public static function getMemberName(string $camelCaseName)
