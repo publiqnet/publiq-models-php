@@ -11,7 +11,7 @@ class Pong implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'nodeid' => ['name' => 'nodeid', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'stamp' => ['name' => 'stamp', 'convertToDate' => true],
         'signature' => ['name' => 'signature', 'convertToDate' => false],
     ];
@@ -19,7 +19,7 @@ class Pong implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $nodeid;
+    private $nodeAddress;
     /**
     * @var integer
     */ 
@@ -29,11 +29,11 @@ class Pong implements ValidatorInterface, \JsonSerializable
     */ 
     private $signature;
     /** 
-    * @param string $nodeid
+    * @param string $nodeAddress
     */ 
-    public function setNodeid(string $nodeid) 
+    public function setNodeAddress(string $nodeAddress) 
     { 
-       $this->nodeid = $nodeid;
+       $this->nodeAddress = $nodeAddress;
     }
     /** 
     * @param int $stamp
@@ -49,9 +49,9 @@ class Pong implements ValidatorInterface, \JsonSerializable
     { 
        $this->signature = $signature;
     }
-    public function getNodeid() 
+    public function getNodeAddress() 
     {
-        return $this->nodeid;
+        return $this->nodeAddress;
     }
     public function getStamp() 
     {
@@ -63,7 +63,7 @@ class Pong implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setNodeid($data->nodeid); 
+        $this->setNodeAddress($data->node_address); 
         $this->setStamp(strtotime($data->stamp)); 
         $this->setSignature($data->signature); 
     } 

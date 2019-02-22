@@ -18,7 +18,7 @@ class Rtt
 	11 => 'Transfer',
 	12 => 'File',
 	13 => 'Content',
-	14 => 'Contract',
+	14 => 'Role',
 	15 => 'AddressInfo',
 	16 => 'ArticleInfo',
 	17 => 'ContentInfo',

@@ -3,7 +3,7 @@ namespace PubliqAPI\Base;
 
 abstract class NodeType extends BasicEnum
 {
-    const miner = "miner";
+    const blockchain = "blockchain";
     const channel = "channel";
     const storage = "storage";
 } 

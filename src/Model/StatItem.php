@@ -11,7 +11,7 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node' => ['name' => 'node', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'passed' => ['name' => 'passed', 'convertToDate' => false],
         'failed' => ['name' => 'failed', 'convertToDate' => false],
     ];
@@ -19,7 +19,7 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $node;
+    private $nodeAddress;
     /**
     * @var int
     */ 
@@ -29,11 +29,11 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     */ 
     private $failed;
     /** 
-    * @param string $node
+    * @param string $nodeAddress
     */ 
-    public function setNode(string $node) 
+    public function setNodeAddress(string $nodeAddress) 
     { 
-       $this->node = $node;
+       $this->nodeAddress = $nodeAddress;
     }
     /** 
     * @param int $passed
@@ -49,9 +49,9 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     { 
        $this->failed = $failed;
     }
-    public function getNode() 
+    public function getNodeAddress() 
     {
-        return $this->node;
+        return $this->nodeAddress;
     }
     public function getPassed() 
     {
@@ -63,7 +63,7 @@ class StatItem implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setNode($data->node); 
+        $this->setNodeAddress($data->node_address); 
         $this->setPassed($data->passed); 
         $this->setFailed($data->failed); 
     } 

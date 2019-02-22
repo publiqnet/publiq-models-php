@@ -12,8 +12,8 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'author' => ['name' => 'author', 'convertToDate' => false],
-        'channel' => ['name' => 'channel', 'convertToDate' => false],
+        'author_address' => ['name' => 'authorAddress', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
     ];
 
     /**
@@ -23,11 +23,11 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $author;
+    private $authorAddress;
     /**
     * @var string
     */ 
-    private $channel;
+    private $channelAddress;
     /** 
     * @param string $uri
     */ 
@@ -36,36 +36,36 @@ class ArticleInfo implements ValidatorInterface, \JsonSerializable
        $this->uri = $uri;
     }
     /** 
-    * @param string $author
+    * @param string $authorAddress
     */ 
-    public function setAuthor(string $author) 
+    public function setAuthorAddress(string $authorAddress) 
     { 
-       $this->author = $author;
+       $this->authorAddress = $authorAddress;
     }
     /** 
-    * @param string $channel
+    * @param string $channelAddress
     */ 
-    public function setChannel(string $channel) 
+    public function setChannelAddress(string $channelAddress) 
     { 
-       $this->channel = $channel;
+       $this->channelAddress = $channelAddress;
     }
     public function getUri() 
     {
         return $this->uri;
     }
-    public function getAuthor() 
+    public function getAuthorAddress() 
     {
-        return $this->author;
+        return $this->authorAddress;
     }
-    public function getChannel() 
+    public function getChannelAddress() 
     {
-        return $this->channel;
+        return $this->channelAddress;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setUri($data->uri); 
-        $this->setAuthor($data->author); 
-        $this->setChannel($data->channel); 
+        $this->setAuthorAddress($data->author_address); 
+        $this->setChannelAddress($data->channel_address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

@@ -11,24 +11,24 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_id' => ['name' => 'nodeId', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $nodeId;
+    private $nodeAddress;
     /**
     * @var IPAddress
     */ 
     private $ipAddress;
     /** 
-    * @param string $nodeId
+    * @param string $nodeAddress
     */ 
-    public function setNodeId(string $nodeId) 
+    public function setNodeAddress(string $nodeAddress) 
     { 
-       $this->nodeId = $nodeId;
+       $this->nodeAddress = $nodeAddress;
     }
     /** 
     * @param IPAddress $ipAddress
@@ -37,9 +37,9 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->ipAddress = $ipAddress;
     }
-    public function getNodeId() 
+    public function getNodeAddress() 
     {
-        return $this->nodeId;
+        return $this->nodeAddress;
     }
     public function getIpAddress() 
     {
@@ -49,7 +49,7 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->ipAddress = new IPAddress();
         $this->ipAddress->validate($data->ip_address);
-        $this->setNodeId($data->node_id); 
+        $this->setNodeAddress($data->node_address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

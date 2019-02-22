@@ -6,51 +6,51 @@ use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 use PubliqAPI\Base\NodeType;
 
-class Contract implements ValidatorInterface, \JsonSerializable
+class Role implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'owner' => ['name' => 'owner', 'convertToDate' => false],
-        'role' => ['name' => 'role', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
+        'node_type' => ['name' => 'nodeType', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $owner;
+    private $nodeAddress;
     /**
     * @var string 
     */ 
-    private $role;
+    private $nodeType;
     /** 
-    * @param string $owner
+    * @param string $nodeAddress
     */ 
-    public function setOwner(string $owner) 
+    public function setNodeAddress(string $nodeAddress) 
     { 
-       $this->owner = $owner;
+       $this->nodeAddress = $nodeAddress;
     }
     /** 
-    * @param string $role
+    * @param string $nodeType
     */ 
-    public function setRole(string $role) 
+    public function setNodeType(string $nodeType) 
     { 
-        NodeType::validate($role);
-        $this->role = $role;
+        NodeType::validate($nodeType);
+        $this->nodeType = $nodeType;
     }
-    public function getOwner() 
+    public function getNodeAddress() 
     {
-        return $this->owner;
+        return $this->nodeAddress;
     }
-    public function getRole() 
+    public function getNodeType() 
     {
-        return $this->role;
+        return $this->nodeType;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setOwner($data->owner); 
-        $this->setRole($data->role); 
+        $this->setNodeAddress($data->node_address); 
+        $this->setNodeType($data->node_type); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

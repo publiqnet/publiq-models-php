@@ -12,7 +12,7 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'storage' => ['name' => 'storage', 'convertToDate' => false],
+        'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
     ];
 
     /**
@@ -22,7 +22,7 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $storage;
+    private $storageAddress;
     /** 
     * @param string $uri
     */ 
@@ -31,24 +31,24 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
        $this->uri = $uri;
     }
     /** 
-    * @param string $storage
+    * @param string $storageAddress
     */ 
-    public function setStorage(string $storage) 
+    public function setStorageAddress(string $storageAddress) 
     { 
-       $this->storage = $storage;
+       $this->storageAddress = $storageAddress;
     }
     public function getUri() 
     {
         return $this->uri;
     }
-    public function getStorage() 
+    public function getStorageAddress() 
     {
-        return $this->storage;
+        return $this->storageAddress;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setUri($data->uri); 
-        $this->setStorage($data->storage); 
+        $this->setStorageAddress($data->storage_address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

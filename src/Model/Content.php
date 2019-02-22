@@ -11,28 +11,28 @@ class Content implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'channel' => ['name' => 'channel', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $channel;
+    private $channelAddress;
     /**
     * @var array
     */ 
     private $fileUris = [];
     /** 
-    * @param string $channel
+    * @param string $channelAddress
     */ 
-    public function setChannel(string $channel) 
+    public function setChannelAddress(string $channelAddress) 
     { 
-       $this->channel = $channel;
+       $this->channelAddress = $channelAddress;
     }
-    public function getChannel() 
+    public function getChannelAddress() 
     {
-        return $this->channel;
+        return $this->channelAddress;
     }
     public function getFileUris() 
     {
@@ -47,7 +47,7 @@ class Content implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setChannel($data->channel); 
+        $this->setChannelAddress($data->channel_address); 
           foreach ($data->file_uris as $fileUrisItem) { 
             $this->addFileUris($fileUrisItem);
            } 

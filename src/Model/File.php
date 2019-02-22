@@ -11,24 +11,24 @@ class File implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'author' => ['name' => 'author', 'convertToDate' => false],
+        'author_address' => ['name' => 'authorAddress', 'convertToDate' => false],
         'uri' => ['name' => 'uri', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $author;
+    private $authorAddress;
     /**
     * @var string
     */ 
     private $uri;
     /** 
-    * @param string $author
+    * @param string $authorAddress
     */ 
-    public function setAuthor(string $author) 
+    public function setAuthorAddress(string $authorAddress) 
     { 
-       $this->author = $author;
+       $this->authorAddress = $authorAddress;
     }
     /** 
     * @param string $uri
@@ -37,9 +37,9 @@ class File implements ValidatorInterface, \JsonSerializable
     { 
        $this->uri = $uri;
     }
-    public function getAuthor() 
+    public function getAuthorAddress() 
     {
-        return $this->author;
+        return $this->authorAddress;
     }
     public function getUri() 
     {
@@ -47,7 +47,7 @@ class File implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setAuthor($data->author); 
+        $this->setAuthorAddress($data->author_address); 
         $this->setUri($data->uri); 
     } 
     public static function getMemberName(string $camelCaseName)
