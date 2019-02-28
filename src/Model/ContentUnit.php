@@ -11,13 +11,21 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
         'author_address' => ['name' => 'authorAddress', 'convertToDate' => false],
         'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
-        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
         'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $uri;
+    /**
+    * @var int
+    */ 
+    private $contentId;
     /**
     * @var string
     */ 
@@ -27,17 +35,23 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     */ 
     private $channelAddress;
     /**
-    * @var int
-    */ 
-    private $contentId;
-    /**
-    * @var string
-    */ 
-    private $uri;
-    /**
     * @var array
     */ 
     private $fileUris = [];
+    /** 
+    * @param string $uri
+    */ 
+    public function setUri(string $uri) 
+    { 
+       $this->uri = $uri;
+    }
+    /** 
+    * @param int $contentId
+    */ 
+    public function setContentId(int $contentId) 
+    { 
+       $this->contentId = $contentId;
+    }
     /** 
     * @param string $authorAddress
     */ 
@@ -52,19 +66,13 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     { 
        $this->channelAddress = $channelAddress;
     }
-    /** 
-    * @param int $contentId
-    */ 
-    public function setContentId(int $contentId) 
-    { 
-       $this->contentId = $contentId;
+    public function getUri() 
+    {
+        return $this->uri;
     }
-    /** 
-    * @param string $uri
-    */ 
-    public function setUri(string $uri) 
-    { 
-       $this->uri = $uri;
+    public function getContentId() 
+    {
+        return $this->contentId;
     }
     public function getAuthorAddress() 
     {
@@ -73,14 +81,6 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     public function getChannelAddress() 
     {
         return $this->channelAddress;
-    }
-    public function getContentId() 
-    {
-        return $this->contentId;
-    }
-    public function getUri() 
-    {
-        return $this->uri;
     }
     public function getFileUris() 
     {
@@ -95,10 +95,10 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setUri($data->uri); 
+        $this->setContentId($data->content_id); 
         $this->setAuthorAddress($data->author_address); 
         $this->setChannelAddress($data->channel_address); 
-        $this->setContentId($data->content_id); 
-        $this->setUri($data->uri); 
           foreach ($data->file_uris as $fileUrisItem) { 
             $this->addFileUris($fileUrisItem);
            } 

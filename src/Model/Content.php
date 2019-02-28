@@ -11,30 +11,23 @@ class Content implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'content_id' => ['name' => 'contentId', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'content_unit_uris' => ['name' => 'contentUnitUris', 'convertToDate' => false],
     ];
 
-    /**
-    * @var string
-    */ 
-    private $channelAddress;
     /**
     * @var int
     */ 
     private $contentId;
     /**
+    * @var string
+    */ 
+    private $channelAddress;
+    /**
     * @var array
     */ 
     private $contentUnitUris = [];
-    /** 
-    * @param string $channelAddress
-    */ 
-    public function setChannelAddress(string $channelAddress) 
-    { 
-       $this->channelAddress = $channelAddress;
-    }
     /** 
     * @param int $contentId
     */ 
@@ -42,13 +35,20 @@ class Content implements ValidatorInterface, \JsonSerializable
     { 
        $this->contentId = $contentId;
     }
-    public function getChannelAddress() 
-    {
-        return $this->channelAddress;
+    /** 
+    * @param string $channelAddress
+    */ 
+    public function setChannelAddress(string $channelAddress) 
+    { 
+       $this->channelAddress = $channelAddress;
     }
     public function getContentId() 
     {
         return $this->contentId;
+    }
+    public function getChannelAddress() 
+    {
+        return $this->channelAddress;
     }
     public function getContentUnitUris() 
     {
@@ -63,8 +63,8 @@ class Content implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setChannelAddress($data->channel_address); 
         $this->setContentId($data->content_id); 
+        $this->setChannelAddress($data->channel_address); 
           foreach ($data->content_unit_uris as $contentUnitUrisItem) { 
             $this->addContentUnitUris($contentUnitUrisItem);
            } 

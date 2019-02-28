@@ -11,24 +11,48 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'status' => ['name' => 'status', 'convertToDate' => false],
+        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
     ];
 
     /**
+    * @var int
+    */ 
+    private $status;
+    /**
+    * @var int
+    */ 
+    private $contentId;
+    /**
     * @var string
     */ 
-    private $uri;
+    private $channelAddress;
     /**
     * @var string
     */ 
     private $storageAddress;
     /** 
-    * @param string $uri
+    * @param int $status
     */ 
-    public function setUri(string $uri) 
+    public function setStatus(int $status) 
     { 
-       $this->uri = $uri;
+       $this->status = $status;
+    }
+    /** 
+    * @param int $contentId
+    */ 
+    public function setContentId(int $contentId) 
+    { 
+       $this->contentId = $contentId;
+    }
+    /** 
+    * @param string $channelAddress
+    */ 
+    public function setChannelAddress(string $channelAddress) 
+    { 
+       $this->channelAddress = $channelAddress;
     }
     /** 
     * @param string $storageAddress
@@ -37,9 +61,17 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->storageAddress = $storageAddress;
     }
-    public function getUri() 
+    public function getStatus() 
     {
-        return $this->uri;
+        return $this->status;
+    }
+    public function getContentId() 
+    {
+        return $this->contentId;
+    }
+    public function getChannelAddress() 
+    {
+        return $this->channelAddress;
     }
     public function getStorageAddress() 
     {
@@ -47,7 +79,9 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setUri($data->uri); 
+        $this->setStatus($data->status); 
+        $this->setContentId($data->content_id); 
+        $this->setChannelAddress($data->channel_address); 
         $this->setStorageAddress($data->storage_address); 
     } 
     public static function getMemberName(string $camelCaseName)
