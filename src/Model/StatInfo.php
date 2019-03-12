@@ -11,10 +11,15 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'reporter_address' => ['name' => 'reporterAddress', 'convertToDate' => false],
         'hash' => ['name' => 'hash', 'convertToDate' => false],
         'items' => ['name' => 'items', 'convertToDate' => false],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $reporterAddress;
     /**
     * @var string
     */ 
@@ -24,11 +29,22 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $items = [];
     /** 
+    * @param string $reporterAddress
+    */ 
+    public function setReporterAddress(string $reporterAddress) 
+    { 
+       $this->reporterAddress = $reporterAddress;
+    }
+    /** 
     * @param string $hash
     */ 
     public function setHash(string $hash) 
     { 
        $this->hash = $hash;
+    }
+    public function getReporterAddress() 
+    {
+        return $this->reporterAddress;
     }
     public function getHash() 
     {
@@ -40,6 +56,7 @@ class StatInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setReporterAddress($data->reporter_address); 
         $this->setHash($data->hash); 
           foreach ($data->items as $itemsItem) { 
               $itemsItemObj = new StatItem(); 

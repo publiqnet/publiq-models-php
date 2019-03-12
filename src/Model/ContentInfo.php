@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+use PubliqAPI\Base\InfoType;
 
 class ContentInfo implements ValidatorInterface, \JsonSerializable
 {
@@ -18,7 +19,7 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     ];
 
     /**
-    * @var int
+    * @var string 
     */ 
     private $status;
     /**
@@ -34,11 +35,12 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $storageAddress;
     /** 
-    * @param int $status
+    * @param string $status
     */ 
-    public function setStatus(int $status) 
+    public function setStatus(string $status) 
     { 
-       $this->status = $status;
+        InfoType::validate($status);
+        $this->status = $status;
     }
     /** 
     * @param int $contentId
@@ -79,10 +81,10 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setStatus($data->status); 
         $this->setContentId($data->content_id); 
         $this->setChannelAddress($data->channel_address); 
         $this->setStorageAddress($data->storage_address); 
+        $this->setStatus($data->status); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
