@@ -5,14 +5,14 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class File implements ValidatorInterface, \JsonSerializable
+class StorageFileRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
         'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'author_addresses' => ['name' => 'authorAddresses', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
     ];
 
     /**
@@ -20,9 +20,9 @@ class File implements ValidatorInterface, \JsonSerializable
     */ 
     private $uri;
     /**
-    * @var array
+    * @var string
     */ 
-    private $authorAddresses = [];
+    private $channelAddress;
     /** 
     * @param string $uri
     */ 
@@ -30,27 +30,25 @@ class File implements ValidatorInterface, \JsonSerializable
     { 
        $this->uri = $uri;
     }
+    /** 
+    * @param string $channelAddress
+    */ 
+    public function setChannelAddress(string $channelAddress) 
+    { 
+       $this->channelAddress = $channelAddress;
+    }
     public function getUri() 
     {
         return $this->uri;
     }
-    public function getAuthorAddresses() 
+    public function getChannelAddress() 
     {
-        return $this->authorAddresses;
-    }
-    /**
-    * @param string $authorAddressesItem
-    */
-    public function addAuthorAddresses(string $authorAddressesItem)
-    {
-        $this->authorAddresses[] = $authorAddressesItem;
+        return $this->channelAddress;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setUri($data->uri); 
-          foreach ($data->author_addresses as $authorAddressesItem) { 
-            $this->addAuthorAddresses($authorAddressesItem);
-           } 
+        $this->setChannelAddress($data->channel_address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

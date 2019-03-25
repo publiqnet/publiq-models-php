@@ -5,14 +5,14 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignedTransaction implements ValidatorInterface, \JsonSerializable
+class TransactionBroadcastRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
         'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false],
-        'authorizations' => ['name' => 'authorizations', 'convertToDate' => false],
+        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
     ];
 
     /**
@@ -20,9 +20,9 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     */ 
     private $transactionDetails;
     /**
-    * @var array
+    * @var string
     */ 
-    private $authorizations = [];
+    private $privateKey;
     /** 
     * @param Transaction $transactionDetails
     */ 
@@ -30,23 +30,26 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     { 
        $this->transactionDetails = $transactionDetails;
     }
+    /** 
+    * @param string $privateKey
+    */ 
+    public function setPrivateKey(string $privateKey) 
+    { 
+       $this->privateKey = $privateKey;
+    }
     public function getTransactionDetails() 
     {
         return $this->transactionDetails;
     }
-    public function getAuthorizations() 
+    public function getPrivateKey() 
     {
-        return $this->authorizations;
+        return $this->privateKey;
     }
     public function validate(\stdClass $data) 
     { 
         $this->transactionDetails = new Transaction();
         $this->transactionDetails->validate($data->transaction_details);
-          foreach ($data->authorizations as $authorizationsItem) { 
-              $authorizationsItemObj = new Authority(); 
-              $authorizationsItemObj->validate($authorizationsItem); 
-              $this->authorizations[] = $authorizationsItemObj;
-           } 
+        $this->setPrivateKey($data->private_key); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

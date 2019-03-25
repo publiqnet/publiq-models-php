@@ -5,30 +5,34 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
+class IncompleteTransactionItem implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_headers' => ['name' => 'blockHeaders', 'convertToDate' => false],
+        'signed_transaction' => ['name' => 'signedTransaction', 'convertToDate' => false],
     ];
 
     /**
-    * @var array
+    * @var SignedTransaction
     */ 
-    private $blockHeaders = [];
-    public function getBlockHeaders() 
+    private $signedTransaction;
+    /** 
+    * @param SignedTransaction $signedTransaction
+    */ 
+    public function setSignedTransaction(SignedTransaction $signedTransaction) 
+    { 
+       $this->signedTransaction = $signedTransaction;
+    }
+    public function getSignedTransaction() 
     {
-        return $this->blockHeaders;
+        return $this->signedTransaction;
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->block_headers as $blockHeadersItem) { 
-              $blockHeadersItemObj = new BlockHeaderExtended(); 
-              $blockHeadersItemObj->validate($blockHeadersItem); 
-              $this->blockHeaders[] = $blockHeadersItemObj;
-           } 
+        $this->signedTransaction = new SignedTransaction();
+        $this->signedTransaction->validate($data->signed_transaction);
     } 
     public static function getMemberName(string $camelCaseName)
     {

@@ -12,8 +12,7 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'block_details' => ['name' => 'blockDetails', 'convertToDate' => false],
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'authorization' => ['name' => 'authorization', 'convertToDate' => false],
     ];
 
     /**
@@ -21,13 +20,9 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     */ 
     private $blockDetails;
     /**
-    * @var string
+    * @var Authority
     */ 
-    private $authority;
-    /**
-    * @var string
-    */ 
-    private $signature;
+    private $authorization;
     /** 
     * @param Block $blockDetails
     */ 
@@ -36,37 +31,26 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
        $this->blockDetails = $blockDetails;
     }
     /** 
-    * @param string $authority
+    * @param Authority $authorization
     */ 
-    public function setAuthority(string $authority) 
+    public function setAuthorization(Authority $authorization) 
     { 
-       $this->authority = $authority;
-    }
-    /** 
-    * @param string $signature
-    */ 
-    public function setSignature(string $signature) 
-    { 
-       $this->signature = $signature;
+       $this->authorization = $authorization;
     }
     public function getBlockDetails() 
     {
         return $this->blockDetails;
     }
-    public function getAuthority() 
+    public function getAuthorization() 
     {
-        return $this->authority;
-    }
-    public function getSignature() 
-    {
-        return $this->signature;
+        return $this->authorization;
     }
     public function validate(\stdClass $data) 
     { 
         $this->blockDetails = new Block();
         $this->blockDetails->validate($data->block_details);
-        $this->setAuthority($data->authority); 
-        $this->setSignature($data->signature); 
+        $this->authorization = new Authority();
+        $this->authorization->validate($data->authorization);
     } 
     public static function getMemberName(string $camelCaseName)
     {

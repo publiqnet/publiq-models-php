@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SyncInfo implements ValidatorInterface, \JsonSerializable
+class ServiceStatisticsItem implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'number' => ['name' => 'number', 'convertToDate' => false],
-        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
+        'peer_address' => ['name' => 'peerAddress', 'convertToDate' => false],
+        'count' => ['name' => 'count', 'convertToDate' => false],
     ];
 
     /**
-    * @var int
+    * @var string
     */ 
-    private $number;
+    private $peerAddress;
     /**
     * @var int
     */ 
-    private $cSum;
+    private $count;
     /** 
-    * @param int $number
+    * @param string $peerAddress
     */ 
-    public function setNumber(int $number) 
+    public function setPeerAddress(string $peerAddress) 
     { 
-       $this->number = $number;
+       $this->peerAddress = $peerAddress;
     }
     /** 
-    * @param int $cSum
+    * @param int $count
     */ 
-    public function setCSum(int $cSum) 
+    public function setCount(int $count) 
     { 
-       $this->cSum = $cSum;
+       $this->count = $count;
     }
-    public function getNumber() 
+    public function getPeerAddress() 
     {
-        return $this->number;
+        return $this->peerAddress;
     }
-    public function getCSum() 
+    public function getCount() 
     {
-        return $this->cSum;
+        return $this->count;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setNumber($data->number); 
-        $this->setCSum($data->c_sum); 
+        $this->setPeerAddress($data->peer_address); 
+        $this->setCount($data->count); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

@@ -4,17 +4,16 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-use PubliqAPI\Base\InfoType;
+use PubliqAPI\Base\UpdateType;
 
-class ContentInfo implements ValidatorInterface, \JsonSerializable
+class StorageUpdate implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
         'status' => ['name' => 'status', 'convertToDate' => false],
-        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
         'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
     ];
 
@@ -23,13 +22,9 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $status;
     /**
-    * @var int
-    */ 
-    private $contentId;
-    /**
     * @var string
     */ 
-    private $channelAddress;
+    private $uri;
     /**
     * @var string
     */ 
@@ -39,22 +34,15 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     */ 
     public function setStatus(string $status) 
     { 
-        InfoType::validate($status);
+        UpdateType::validate($status);
         $this->status = $status;
     }
     /** 
-    * @param int $contentId
+    * @param string $uri
     */ 
-    public function setContentId(int $contentId) 
+    public function setUri(string $uri) 
     { 
-       $this->contentId = $contentId;
-    }
-    /** 
-    * @param string $channelAddress
-    */ 
-    public function setChannelAddress(string $channelAddress) 
-    { 
-       $this->channelAddress = $channelAddress;
+       $this->uri = $uri;
     }
     /** 
     * @param string $storageAddress
@@ -67,13 +55,9 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->status;
     }
-    public function getContentId() 
+    public function getUri() 
     {
-        return $this->contentId;
-    }
-    public function getChannelAddress() 
-    {
-        return $this->channelAddress;
+        return $this->uri;
     }
     public function getStorageAddress() 
     {
@@ -81,8 +65,7 @@ class ContentInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setContentId($data->content_id); 
-        $this->setChannelAddress($data->channel_address); 
+        $this->setUri($data->uri); 
         $this->setStorageAddress($data->storage_address); 
         $this->setStatus($data->status); 
     } 

@@ -13,7 +13,7 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'uri' => ['name' => 'uri', 'convertToDate' => false],
         'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'author_address' => ['name' => 'authorAddress', 'convertToDate' => false],
+        'author_addresses' => ['name' => 'authorAddresses', 'convertToDate' => false],
         'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
         'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
     ];
@@ -27,9 +27,9 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     */ 
     private $contentId;
     /**
-    * @var string
+    * @var array
     */ 
-    private $authorAddress;
+    private $authorAddresses = [];
     /**
     * @var string
     */ 
@@ -53,13 +53,6 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
        $this->contentId = $contentId;
     }
     /** 
-    * @param string $authorAddress
-    */ 
-    public function setAuthorAddress(string $authorAddress) 
-    { 
-       $this->authorAddress = $authorAddress;
-    }
-    /** 
     * @param string $channelAddress
     */ 
     public function setChannelAddress(string $channelAddress) 
@@ -74,9 +67,9 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     {
         return $this->contentId;
     }
-    public function getAuthorAddress() 
+    public function getAuthorAddresses() 
     {
-        return $this->authorAddress;
+        return $this->authorAddresses;
     }
     public function getChannelAddress() 
     {
@@ -85,6 +78,13 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     public function getFileUris() 
     {
         return $this->fileUris;
+    }
+    /**
+    * @param string $authorAddressesItem
+    */
+    public function addAuthorAddresses(string $authorAddressesItem)
+    {
+        $this->authorAddresses[] = $authorAddressesItem;
     }
     /**
     * @param string $fileUrisItem
@@ -97,8 +97,10 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     { 
         $this->setUri($data->uri); 
         $this->setContentId($data->content_id); 
-        $this->setAuthorAddress($data->author_address); 
         $this->setChannelAddress($data->channel_address); 
+          foreach ($data->author_addresses as $authorAddressesItem) { 
+            $this->addAuthorAddresses($authorAddressesItem);
+           } 
           foreach ($data->file_uris as $fileUrisItem) { 
             $this->addFileUris($fileUrisItem);
            } 

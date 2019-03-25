@@ -11,62 +11,46 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'number' => ['name' => 'number', 'convertToDate' => false],
-        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
-        'sync_info' => ['name' => 'syncInfo', 'convertToDate' => false],
+        'own_header' => ['name' => 'ownHeader', 'convertToDate' => false],
+        'promised_header' => ['name' => 'promisedHeader', 'convertToDate' => false],
     ];
 
     /**
-    * @var int
+    * @var BlockHeaderExtended
     */ 
-    private $number;
+    private $ownHeader;
     /**
-    * @var int
+    * @var BlockHeaderExtended
     */ 
-    private $cSum;
-    /**
-    * @var SyncInfo
-    */ 
-    private $syncInfo;
+    private $promisedHeader;
     /** 
-    * @param int $number
+    * @param BlockHeaderExtended $ownHeader
     */ 
-    public function setNumber(int $number) 
+    public function setOwnHeader(BlockHeaderExtended $ownHeader) 
     { 
-       $this->number = $number;
+       $this->ownHeader = $ownHeader;
     }
     /** 
-    * @param int $cSum
+    * @param BlockHeaderExtended $promisedHeader
     */ 
-    public function setCSum(int $cSum) 
+    public function setPromisedHeader(BlockHeaderExtended $promisedHeader) 
     { 
-       $this->cSum = $cSum;
+       $this->promisedHeader = $promisedHeader;
     }
-    /** 
-    * @param SyncInfo $syncInfo
-    */ 
-    public function setSyncInfo(SyncInfo $syncInfo) 
-    { 
-       $this->syncInfo = $syncInfo;
-    }
-    public function getNumber() 
+    public function getOwnHeader() 
     {
-        return $this->number;
+        return $this->ownHeader;
     }
-    public function getCSum() 
+    public function getPromisedHeader() 
     {
-        return $this->cSum;
-    }
-    public function getSyncInfo() 
-    {
-        return $this->syncInfo;
+        return $this->promisedHeader;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->syncInfo = new SyncInfo();
-        $this->syncInfo->validate($data->sync_info);
-        $this->setNumber($data->number); 
-        $this->setCSum($data->c_sum); 
+        $this->ownHeader = new BlockHeaderExtended();
+        $this->ownHeader->validate($data->own_header);
+        $this->promisedHeader = new BlockHeaderExtended();
+        $this->promisedHeader->validate($data->promised_header);
     } 
     public static function getMemberName(string $camelCaseName)
     {

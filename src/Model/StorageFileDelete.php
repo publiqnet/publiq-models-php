@@ -5,30 +5,33 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
+class StorageFileDelete implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_headers' => ['name' => 'blockHeaders', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
     ];
 
     /**
-    * @var array
+    * @var string
     */ 
-    private $blockHeaders = [];
-    public function getBlockHeaders() 
+    private $uri;
+    /** 
+    * @param string $uri
+    */ 
+    public function setUri(string $uri) 
+    { 
+       $this->uri = $uri;
+    }
+    public function getUri() 
     {
-        return $this->blockHeaders;
+        return $this->uri;
     }
     public function validate(\stdClass $data) 
     { 
-          foreach ($data->block_headers as $blockHeadersItem) { 
-              $blockHeadersItemObj = new BlockHeaderExtended(); 
-              $blockHeadersItemObj->validate($blockHeadersItem); 
-              $this->blockHeaders[] = $blockHeadersItemObj;
-           } 
+        $this->setUri($data->uri); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
