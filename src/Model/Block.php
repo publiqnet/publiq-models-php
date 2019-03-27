@@ -47,6 +47,20 @@ class Block implements ValidatorInterface, \JsonSerializable
     {
         return $this->signedTransactions;
     }
+    /**
+    * @param Reward $rewardsItem
+    */
+    public function addRewards(Reward $rewardsItem)
+    {
+        $this->rewards[] = $rewardsItem;
+    }
+    /**
+    * @param SignedTransaction $signedTransactionsItem
+    */
+    public function addSignedTransactions(SignedTransaction $signedTransactionsItem)
+    {
+        $this->signedTransactions[] = $signedTransactionsItem;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->header = new BlockHeader();

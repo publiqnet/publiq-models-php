@@ -22,6 +22,13 @@ class IncompleteTransactions implements ValidatorInterface, \JsonSerializable
     {
         return $this->incompleteSignedTransactions;
     }
+    /**
+    * @param IncompleteTransactionItem $incompleteSignedTransactionsItem
+    */
+    public function addIncompleteSignedTransactions(IncompleteTransactionItem $incompleteSignedTransactionsItem)
+    {
+        $this->incompleteSignedTransactions[] = $incompleteSignedTransactionsItem;
+    }
     public function validate(\stdClass $data) 
     { 
           foreach ($data->incomplete_signed_transactions as $incompleteSignedTransactionsItem) { 

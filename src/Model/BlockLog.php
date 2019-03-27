@@ -111,6 +111,20 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     {
         return $this->transactions;
     }
+    /**
+    * @param RewardLog $rewardsItem
+    */
+    public function addRewards(RewardLog $rewardsItem)
+    {
+        $this->rewards[] = $rewardsItem;
+    }
+    /**
+    * @param TransactionLog $transactionsItem
+    */
+    public function addTransactions(TransactionLog $transactionsItem)
+    {
+        $this->transactions[] = $transactionsItem;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->setAuthority($data->authority); 

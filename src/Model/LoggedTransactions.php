@@ -22,6 +22,13 @@ class LoggedTransactions implements ValidatorInterface, \JsonSerializable
     {
         return $this->actions;
     }
+    /**
+    * @param LoggedTransaction $actionsItem
+    */
+    public function addActions(LoggedTransaction $actionsItem)
+    {
+        $this->actions[] = $actionsItem;
+    }
     public function validate(\stdClass $data) 
     { 
           foreach ($data->actions as $actionsItem) { 

@@ -54,6 +54,13 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     {
         return $this->statItems;
     }
+    /**
+    * @param ServiceStatisticsItem $statItemsItem
+    */
+    public function addStatItems(ServiceStatisticsItem $statItemsItem)
+    {
+        $this->statItems[] = $statItemsItem;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->setServerAddress($data->server_address); 

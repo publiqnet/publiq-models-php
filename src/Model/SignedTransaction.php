@@ -38,6 +38,13 @@ class SignedTransaction implements ValidatorInterface, \JsonSerializable
     {
         return $this->authorizations;
     }
+    /**
+    * @param Authority $authorizationsItem
+    */
+    public function addAuthorizations(Authority $authorizationsItem)
+    {
+        $this->authorizations[] = $authorizationsItem;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->transactionDetails = new Transaction();
