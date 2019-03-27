@@ -11,24 +11,24 @@ class SignedTransactionBroadcastRequest implements ValidatorInterface, \JsonSeri
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false],
+        'signed_transaction' => ['name' => 'signedTransaction', 'convertToDate' => false],
         'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
     ];
 
     /**
-    * @var Transaction
+    * @var SignedTransaction
     */ 
-    private $transactionDetails;
+    private $signedTransaction;
     /**
     * @var string
     */ 
     private $privateKey;
     /** 
-    * @param Transaction $transactionDetails
+    * @param SignedTransaction $signedTransaction
     */ 
-    public function setTransactionDetails(Transaction $transactionDetails) 
+    public function setSignedTransaction(SignedTransaction $signedTransaction) 
     { 
-       $this->transactionDetails = $transactionDetails;
+       $this->signedTransaction = $signedTransaction;
     }
     /** 
     * @param string $privateKey
@@ -37,9 +37,9 @@ class SignedTransactionBroadcastRequest implements ValidatorInterface, \JsonSeri
     { 
        $this->privateKey = $privateKey;
     }
-    public function getTransactionDetails() 
+    public function getSignedTransaction() 
     {
-        return $this->transactionDetails;
+        return $this->signedTransaction;
     }
     public function getPrivateKey() 
     {
@@ -47,8 +47,8 @@ class SignedTransactionBroadcastRequest implements ValidatorInterface, \JsonSeri
     }
     public function validate(\stdClass $data) 
     { 
-        $this->transactionDetails = new Transaction();
-        $this->transactionDetails->validate($data->transaction_details);
+        $this->signedTransaction = new SignedTransaction();
+        $this->signedTransaction->validate($data->signed_transaction);
         $this->setPrivateKey($data->private_key); 
     } 
     public static function getMemberName(string $camelCaseName)
