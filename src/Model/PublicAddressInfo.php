@@ -11,15 +11,15 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'ip_destination' => ['name' => 'ipDestination', 'convertToDate' => false],
+        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
         'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'seconds_since_checked' => ['name' => 'secondsSinceChecked', 'convertToDate' => false],
     ];
 
     /**
-    * @var IPDestination
+    * @var IPAddress
     */ 
-    private $ipDestination;
+    private $ipAddress;
     /**
     * @var string
     */ 
@@ -29,11 +29,11 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     */ 
     private $secondsSinceChecked;
     /** 
-    * @param IPDestination $ipDestination
+    * @param IPAddress $ipAddress
     */ 
-    public function setIpDestination(IPDestination $ipDestination) 
+    public function setIpAddress(IPAddress $ipAddress) 
     { 
-       $this->ipDestination = $ipDestination;
+       $this->ipAddress = $ipAddress;
     }
     /** 
     * @param string $nodeAddress
@@ -49,9 +49,9 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->secondsSinceChecked = $secondsSinceChecked;
     }
-    public function getIpDestination() 
+    public function getIpAddress() 
     {
-        return $this->ipDestination;
+        return $this->ipAddress;
     }
     public function getNodeAddress() 
     {
@@ -63,8 +63,8 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->ipDestination = new IPDestination();
-        $this->ipDestination->validate($data->ip_destination);
+        $this->ipAddress = new IPAddress();
+        $this->ipAddress->validate($data->ip_address);
         $this->setNodeAddress($data->node_address); 
         $this->setSecondsSinceChecked($data->seconds_since_checked); 
     } 
