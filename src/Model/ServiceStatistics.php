@@ -11,23 +11,30 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
         'server_address' => ['name' => 'serverAddress', 'convertToDate' => false],
-        'file_uri' => ['name' => 'fileUri', 'convertToDate' => false],
-        'stat_items' => ['name' => 'statItems', 'convertToDate' => false],
+        'file_items' => ['name' => 'fileItems', 'convertToDate' => false],
     ];
 
+    /**
+    * @var int
+    */ 
+    private $blockNumber;
     /**
     * @var string
     */ 
     private $serverAddress;
     /**
-    * @var string
-    */ 
-    private $fileUri;
-    /**
     * @var array
     */ 
-    private $statItems = [];
+    private $fileItems = [];
+    /** 
+    * @param int $blockNumber
+    */ 
+    public function setBlockNumber(int $blockNumber) 
+    { 
+       $this->blockNumber = $blockNumber;
+    }
     /** 
     * @param string $serverAddress
     */ 
@@ -35,40 +42,33 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     { 
        $this->serverAddress = $serverAddress;
     }
-    /** 
-    * @param string $fileUri
-    */ 
-    public function setFileUri(string $fileUri) 
-    { 
-       $this->fileUri = $fileUri;
+    public function getBlockNumber() 
+    {
+        return $this->blockNumber;
     }
     public function getServerAddress() 
     {
         return $this->serverAddress;
     }
-    public function getFileUri() 
+    public function getFileItems() 
     {
-        return $this->fileUri;
-    }
-    public function getStatItems() 
-    {
-        return $this->statItems;
+        return $this->fileItems;
     }
     /**
-    * @param ServiceStatisticsItem $statItemsItem
+    * @param ServiceStatisticsFile $fileItemsItem
     */
-    public function addStatItems(ServiceStatisticsItem $statItemsItem)
+    public function addFileItems(ServiceStatisticsFile $fileItemsItem)
     {
-        $this->statItems[] = $statItemsItem;
+        $this->fileItems[] = $fileItemsItem;
     }
     public function validate(\stdClass $data) 
     { 
+        $this->setBlockNumber($data->block_number); 
         $this->setServerAddress($data->server_address); 
-        $this->setFileUri($data->file_uri); 
-          foreach ($data->stat_items as $statItemsItem) { 
-              $statItemsItemObj = new ServiceStatisticsItem(); 
-              $statItemsItemObj->validate($statItemsItem); 
-              $this->statItems[] = $statItemsItemObj;
+          foreach ($data->file_items as $fileItemsItem) { 
+              $fileItemsItemObj = new ServiceStatisticsFile(); 
+              $fileItemsItemObj->validate($fileItemsItem); 
+              $this->fileItems[] = $fileItemsItemObj;
            } 
     } 
     public static function getMemberName(string $camelCaseName)

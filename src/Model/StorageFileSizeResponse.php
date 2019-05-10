@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class ServiceStatisticsItem implements ValidatorInterface, \JsonSerializable
+class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'peer_address' => ['name' => 'peerAddress', 'convertToDate' => false],
-        'count' => ['name' => 'count', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'size' => ['name' => 'size', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $peerAddress;
+    private $uri;
     /**
     * @var int
     */ 
-    private $count;
+    private $size;
     /** 
-    * @param string $peerAddress
+    * @param string $uri
     */ 
-    public function setPeerAddress(string $peerAddress) 
+    public function setUri(string $uri) 
     { 
-       $this->peerAddress = $peerAddress;
+       $this->uri = $uri;
     }
     /** 
-    * @param int $count
+    * @param int $size
     */ 
-    public function setCount(int $count) 
+    public function setSize(int $size) 
     { 
-       $this->count = $count;
+       $this->size = $size;
     }
-    public function getPeerAddress() 
+    public function getUri() 
     {
-        return $this->peerAddress;
+        return $this->uri;
     }
-    public function getCount() 
+    public function getSize() 
     {
-        return $this->count;
+        return $this->size;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPeerAddress($data->peer_address); 
-        $this->setCount($data->count); 
+        $this->setUri($data->uri); 
+        $this->setSize($data->size); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

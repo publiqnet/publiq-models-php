@@ -4,23 +4,18 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-use PubliqAPI\Base\UpdateType;
 
-class StorageUpdate implements ValidatorInterface, \JsonSerializable
+class ServiceStatisticsFile implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'status' => ['name' => 'status', 'convertToDate' => false],
         'file_uri' => ['name' => 'fileUri', 'convertToDate' => false],
-        'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
+        'unit_uri' => ['name' => 'unitUri', 'convertToDate' => false],
+        'count_items' => ['name' => 'countItems', 'convertToDate' => false],
     ];
 
-    /**
-    * @var string 
-    */ 
-    private $status;
     /**
     * @var string
     */ 
@@ -28,15 +23,11 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $storageAddress;
-    /** 
-    * @param string $status
+    private $unitUri;
+    /**
+    * @var array
     */ 
-    public function setStatus(string $status) 
-    { 
-        UpdateType::validate($status);
-        $this->status = $status;
-    }
+    private $countItems = [];
     /** 
     * @param string $fileUri
     */ 
@@ -45,29 +36,40 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
        $this->fileUri = $fileUri;
     }
     /** 
-    * @param string $storageAddress
+    * @param string $unitUri
     */ 
-    public function setStorageAddress(string $storageAddress) 
+    public function setUnitUri(string $unitUri) 
     { 
-       $this->storageAddress = $storageAddress;
-    }
-    public function getStatus() 
-    {
-        return $this->status;
+       $this->unitUri = $unitUri;
     }
     public function getFileUri() 
     {
         return $this->fileUri;
     }
-    public function getStorageAddress() 
+    public function getUnitUri() 
     {
-        return $this->storageAddress;
+        return $this->unitUri;
+    }
+    public function getCountItems() 
+    {
+        return $this->countItems;
+    }
+    /**
+    * @param ServiceStatisticsCount $countItemsItem
+    */
+    public function addCountItems(ServiceStatisticsCount $countItemsItem)
+    {
+        $this->countItems[] = $countItemsItem;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setFileUri($data->file_uri); 
-        $this->setStorageAddress($data->storage_address); 
-        $this->setStatus($data->status); 
+        $this->setUnitUri($data->unit_uri); 
+          foreach ($data->count_items as $countItemsItem) { 
+              $countItemsItemObj = new ServiceStatisticsCount(); 
+              $countItemsItemObj->validate($countItemsItem); 
+              $this->countItems[] = $countItemsItemObj;
+           } 
     } 
     public static function getMemberName(string $camelCaseName)
     {

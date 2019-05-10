@@ -23,16 +23,16 @@ class IncompleteTransactions implements ValidatorInterface, \JsonSerializable
         return $this->incompleteSignedTransactions;
     }
     /**
-    * @param IncompleteTransactionItem $incompleteSignedTransactionsItem
+    * @param SignedTransaction $incompleteSignedTransactionsItem
     */
-    public function addIncompleteSignedTransactions(IncompleteTransactionItem $incompleteSignedTransactionsItem)
+    public function addIncompleteSignedTransactions(SignedTransaction $incompleteSignedTransactionsItem)
     {
         $this->incompleteSignedTransactions[] = $incompleteSignedTransactionsItem;
     }
     public function validate(\stdClass $data) 
     { 
           foreach ($data->incomplete_signed_transactions as $incompleteSignedTransactionsItem) { 
-              $incompleteSignedTransactionsItemObj = new IncompleteTransactionItem(); 
+              $incompleteSignedTransactionsItemObj = new SignedTransaction(); 
               $incompleteSignedTransactionsItemObj->validate($incompleteSignedTransactionsItem); 
               $this->incompleteSignedTransactions[] = $incompleteSignedTransactionsItemObj;
            } 

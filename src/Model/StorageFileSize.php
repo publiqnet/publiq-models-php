@@ -5,34 +5,33 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class IncompleteTransactionItem implements ValidatorInterface, \JsonSerializable
+class StorageFileSize implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'signed_transaction' => ['name' => 'signedTransaction', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false],
     ];
 
     /**
-    * @var SignedTransaction
+    * @var string
     */ 
-    private $signedTransaction;
+    private $uri;
     /** 
-    * @param SignedTransaction $signedTransaction
+    * @param string $uri
     */ 
-    public function setSignedTransaction(SignedTransaction $signedTransaction) 
+    public function setUri(string $uri) 
     { 
-       $this->signedTransaction = $signedTransaction;
+       $this->uri = $uri;
     }
-    public function getSignedTransaction() 
+    public function getUri() 
     {
-        return $this->signedTransaction;
+        return $this->uri;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->signedTransaction = new SignedTransaction();
-        $this->signedTransaction->validate($data->signed_transaction);
+        $this->setUri($data->uri); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

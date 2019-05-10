@@ -4,23 +4,18 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
-use PubliqAPI\Base\UpdateType;
 
-class StorageUpdate implements ValidatorInterface, \JsonSerializable
+class Served implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'status' => ['name' => 'status', 'convertToDate' => false],
         'file_uri' => ['name' => 'fileUri', 'convertToDate' => false],
-        'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
+        'content_unit_uri' => ['name' => 'contentUnitUri', 'convertToDate' => false],
+        'peer_address' => ['name' => 'peerAddress', 'convertToDate' => false],
     ];
 
-    /**
-    * @var string 
-    */ 
-    private $status;
     /**
     * @var string
     */ 
@@ -28,15 +23,11 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
     /**
     * @var string
     */ 
-    private $storageAddress;
-    /** 
-    * @param string $status
+    private $contentUnitUri;
+    /**
+    * @var string
     */ 
-    public function setStatus(string $status) 
-    { 
-        UpdateType::validate($status);
-        $this->status = $status;
-    }
+    private $peerAddress;
     /** 
     * @param string $fileUri
     */ 
@@ -45,29 +36,36 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
        $this->fileUri = $fileUri;
     }
     /** 
-    * @param string $storageAddress
+    * @param string $contentUnitUri
     */ 
-    public function setStorageAddress(string $storageAddress) 
+    public function setContentUnitUri(string $contentUnitUri) 
     { 
-       $this->storageAddress = $storageAddress;
+       $this->contentUnitUri = $contentUnitUri;
     }
-    public function getStatus() 
-    {
-        return $this->status;
+    /** 
+    * @param string $peerAddress
+    */ 
+    public function setPeerAddress(string $peerAddress) 
+    { 
+       $this->peerAddress = $peerAddress;
     }
     public function getFileUri() 
     {
         return $this->fileUri;
     }
-    public function getStorageAddress() 
+    public function getContentUnitUri() 
     {
-        return $this->storageAddress;
+        return $this->contentUnitUri;
+    }
+    public function getPeerAddress() 
+    {
+        return $this->peerAddress;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setFileUri($data->file_uri); 
-        $this->setStorageAddress($data->storage_address); 
-        $this->setStatus($data->status); 
+        $this->setContentUnitUri($data->content_unit_uri); 
+        $this->setPeerAddress($data->peer_address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
