@@ -11,15 +11,10 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
         'server_address' => ['name' => 'serverAddress', 'convertToDate' => false],
         'file_items' => ['name' => 'fileItems', 'convertToDate' => false],
     ];
 
-    /**
-    * @var int
-    */ 
-    private $blockNumber;
     /**
     * @var string
     */ 
@@ -29,22 +24,11 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     */ 
     private $fileItems = [];
     /** 
-    * @param int $blockNumber
-    */ 
-    public function setBlockNumber(int $blockNumber) 
-    { 
-       $this->blockNumber = $blockNumber;
-    }
-    /** 
     * @param string $serverAddress
     */ 
     public function setServerAddress(string $serverAddress) 
     { 
        $this->serverAddress = $serverAddress;
-    }
-    public function getBlockNumber() 
-    {
-        return $this->blockNumber;
     }
     public function getServerAddress() 
     {
@@ -63,7 +47,6 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setBlockNumber($data->block_number); 
         $this->setServerAddress($data->server_address); 
           foreach ($data->file_items as $fileItemsItem) { 
               $fileItemsItemObj = new ServiceStatisticsFile(); 
