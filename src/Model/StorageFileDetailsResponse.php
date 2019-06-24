@@ -5,13 +5,14 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
+class StorageFileDetailsResponse implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
         'uri' => ['name' => 'uri', 'convertToDate' => false],
+        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false],
         'size' => ['name' => 'size', 'convertToDate' => false],
     ];
 
@@ -19,6 +20,10 @@ class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
     * @var string
     */ 
     private $uri;
+    /**
+    * @var string
+    */ 
+    private $mimeType;
     /**
     * @var int
     */ 
@@ -31,6 +36,13 @@ class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
        $this->uri = $uri;
     }
     /** 
+    * @param string $mimeType
+    */ 
+    public function setMimeType(string $mimeType) 
+    { 
+       $this->mimeType = $mimeType;
+    }
+    /** 
     * @param int $size
     */ 
     public function setSize(int $size) 
@@ -41,6 +53,10 @@ class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
     {
         return $this->uri;
     }
+    public function getMimeType() 
+    {
+        return $this->mimeType;
+    }
     public function getSize() 
     {
         return $this->size;
@@ -48,6 +64,7 @@ class StorageFileSizeResponse implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setUri($data->uri); 
+        $this->setMimeType($data->mime_type); 
         $this->setSize($data->size); 
     } 
     public static function getMemberName(string $camelCaseName)

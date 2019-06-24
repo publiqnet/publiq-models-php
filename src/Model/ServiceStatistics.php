@@ -12,6 +12,8 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'server_address' => ['name' => 'serverAddress', 'convertToDate' => false],
+        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true],
+        'end_time_point' => ['name' => 'endTimePoint', 'convertToDate' => true],
         'file_items' => ['name' => 'fileItems', 'convertToDate' => false],
     ];
 
@@ -19,6 +21,14 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     * @var string
     */ 
     private $serverAddress;
+    /**
+    * @var integer
+    */ 
+    private $startTimePoint;
+    /**
+    * @var integer
+    */ 
+    private $endTimePoint;
     /**
     * @var array
     */ 
@@ -30,9 +40,31 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     { 
        $this->serverAddress = $serverAddress;
     }
+    /** 
+    * @param int $startTimePoint
+    */ 
+    public function setStartTimePoint(int $startTimePoint) 
+    { 
+       $this->startTimePoint = $startTimePoint;
+    }
+    /** 
+    * @param int $endTimePoint
+    */ 
+    public function setEndTimePoint(int $endTimePoint) 
+    { 
+       $this->endTimePoint = $endTimePoint;
+    }
     public function getServerAddress() 
     {
         return $this->serverAddress;
+    }
+    public function getStartTimePoint() 
+    {
+        return $this->startTimePoint;
+    }
+    public function getEndTimePoint() 
+    {
+        return $this->endTimePoint;
     }
     public function getFileItems() 
     {
@@ -48,6 +80,8 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     public function validate(\stdClass $data) 
     { 
         $this->setServerAddress($data->server_address); 
+        $this->setStartTimePoint(strtotime($data->start_time_point)); 
+        $this->setEndTimePoint(strtotime($data->end_time_point)); 
           foreach ($data->file_items as $fileItemsItem) { 
               $fileItemsItemObj = new ServiceStatisticsFile(); 
               $fileItemsItemObj->validate($fileItemsItem); 
