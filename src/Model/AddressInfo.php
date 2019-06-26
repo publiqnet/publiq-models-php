@@ -13,6 +13,7 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
+        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false],
     ];
 
     /**
@@ -23,6 +24,10 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     * @var IPAddress
     */ 
     private $ipAddress;
+    /**
+    * @var IPAddress
+    */ 
+    private $sslIpAddress;
     /** 
     * @param string $nodeAddress
     */ 
@@ -37,6 +42,13 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     { 
        $this->ipAddress = $ipAddress;
     }
+    /** 
+    * @param IPAddress $sslIpAddress
+    */ 
+    public function setSslIpAddress(IPAddress $sslIpAddress) 
+    { 
+       $this->sslIpAddress = $sslIpAddress;
+    }
     public function getNodeAddress() 
     {
         return $this->nodeAddress;
@@ -45,10 +57,16 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->ipAddress;
     }
+    public function getSslIpAddress() 
+    {
+        return $this->sslIpAddress;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->ipAddress = new IPAddress();
         $this->ipAddress->validate($data->ip_address);
+        $this->sslIpAddress = new IPAddress();
+        $this->sslIpAddress->validate($data->ssl_ip_address);
         $this->setNodeAddress($data->node_address); 
     } 
     public static function getMemberName(string $camelCaseName)

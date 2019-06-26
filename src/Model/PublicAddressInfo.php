@@ -12,6 +12,7 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
+        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false],
         'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
         'seconds_since_checked' => ['name' => 'secondsSinceChecked', 'convertToDate' => false],
     ];
@@ -20,6 +21,10 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     * @var IPAddress
     */ 
     private $ipAddress;
+    /**
+    * @var IPAddress
+    */ 
+    private $sslIpAddress;
     /**
     * @var string
     */ 
@@ -34,6 +39,13 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     public function setIpAddress(IPAddress $ipAddress) 
     { 
        $this->ipAddress = $ipAddress;
+    }
+    /** 
+    * @param IPAddress $sslIpAddress
+    */ 
+    public function setSslIpAddress(IPAddress $sslIpAddress) 
+    { 
+       $this->sslIpAddress = $sslIpAddress;
     }
     /** 
     * @param string $nodeAddress
@@ -53,6 +65,10 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     {
         return $this->ipAddress;
     }
+    public function getSslIpAddress() 
+    {
+        return $this->sslIpAddress;
+    }
     public function getNodeAddress() 
     {
         return $this->nodeAddress;
@@ -65,6 +81,8 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     { 
         $this->ipAddress = new IPAddress();
         $this->ipAddress->validate($data->ip_address);
+        $this->sslIpAddress = new IPAddress();
+        $this->sslIpAddress->validate($data->ssl_ip_address);
         $this->setNodeAddress($data->node_address); 
         $this->setSecondsSinceChecked($data->seconds_since_checked); 
     } 
