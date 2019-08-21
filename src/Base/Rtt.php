@@ -85,7 +85,7 @@ class Rtt
 	78 => 'IncompleteTransactionsRequest',
 	79 => 'IncompleteTransactions',
 	80 => 'Served',
-	81 => 'ApiReserve5',
+	81 => 'ContentUnitImpactLog',
 	82 => 'ApiReserve6',
 	83 => 'ApiReserve7',
 	84 => 'ApiReserve8',

@@ -18,6 +18,7 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
         'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
         'rewards' => ['name' => 'rewards', 'convertToDate' => false],
         'transactions' => ['name' => 'transactions', 'convertToDate' => false],
+        'unit_uri_impacts' => ['name' => 'unitUriImpacts', 'convertToDate' => false],
     ];
 
     /**
@@ -48,6 +49,10 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     * @var array
     */ 
     private $transactions = [];
+    /**
+    * @var array
+    */ 
+    private $unitUriImpacts = [];
     /** 
     * @param string $authority
     */ 
@@ -111,6 +116,10 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     {
         return $this->transactions;
     }
+    public function getUnitUriImpacts() 
+    {
+        return $this->unitUriImpacts;
+    }
     /**
     * @param RewardLog $rewardsItem
     */
@@ -124,6 +133,13 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     public function addTransactions(TransactionLog $transactionsItem)
     {
         $this->transactions[] = $transactionsItem;
+    }
+    /**
+    * @param ContentUnitImpactLog $unitUriImpactsItem
+    */
+    public function addUnitUriImpacts(ContentUnitImpactLog $unitUriImpactsItem)
+    {
+        $this->unitUriImpacts[] = $unitUriImpactsItem;
     }
     public function validate(\stdClass $data) 
     { 
@@ -141,6 +157,11 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
               $transactionsItemObj = new TransactionLog(); 
               $transactionsItemObj->validate($transactionsItem); 
               $this->transactions[] = $transactionsItemObj;
+           } 
+          foreach ($data->unit_uri_impacts as $unitUriImpactsItem) { 
+              $unitUriImpactsItemObj = new ContentUnitImpactLog(); 
+              $unitUriImpactsItemObj->validate($unitUriImpactsItem); 
+              $this->unitUriImpacts[] = $unitUriImpactsItemObj;
            } 
     } 
     public static function getMemberName(string $camelCaseName)
