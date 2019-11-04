@@ -12,7 +12,7 @@ class ContentUnitImpactLog implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'content_unit_uri' => ['name' => 'contentUnitUri', 'convertToDate' => false],
-        'view_count' => ['name' => 'viewCount', 'convertToDate' => false],
+        'views_per_channel' => ['name' => 'viewsPerChannel', 'convertToDate' => false],
     ];
 
     /**
@@ -20,9 +20,9 @@ class ContentUnitImpactLog implements ValidatorInterface, \JsonSerializable
     */ 
     private $contentUnitUri;
     /**
-    * @var int
+    * @var array
     */ 
-    private $viewCount;
+    private $viewsPerChannel = [];
     /** 
     * @param string $contentUnitUri
     */ 
@@ -30,25 +30,29 @@ class ContentUnitImpactLog implements ValidatorInterface, \JsonSerializable
     { 
        $this->contentUnitUri = $contentUnitUri;
     }
-    /** 
-    * @param int $viewCount
-    */ 
-    public function setViewCount(int $viewCount) 
-    { 
-       $this->viewCount = $viewCount;
-    }
     public function getContentUnitUri() 
     {
         return $this->contentUnitUri;
     }
-    public function getViewCount() 
+    public function getViewsPerChannel() 
     {
-        return $this->viewCount;
+        return $this->viewsPerChannel;
+    }
+    /**
+    * @param ContentUnitImpactPerChannel $viewsPerChannelItem
+    */
+    public function addViewsPerChannel(ContentUnitImpactPerChannel $viewsPerChannelItem)
+    {
+        $this->viewsPerChannel[] = $viewsPerChannelItem;
     }
     public function validate(\stdClass $data) 
     { 
         $this->setContentUnitUri($data->content_unit_uri); 
-        $this->setViewCount($data->view_count); 
+          foreach ($data->views_per_channel as $viewsPerChannelItem) { 
+              $viewsPerChannelItemObj = new ContentUnitImpactPerChannel(); 
+              $viewsPerChannelItemObj->validate($viewsPerChannelItem); 
+              $this->viewsPerChannel[] = $viewsPerChannelItemObj;
+           } 
     } 
     public static function getMemberName(string $camelCaseName)
     {
