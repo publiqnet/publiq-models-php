@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignRequest implements ValidatorInterface, \JsonSerializable
+class KeyPairRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
+        'index' => ['name' => 'index', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $privateKey;
+    private $masterKey;
     /**
-    * @var mixed 
+    * @var int
     */ 
-    private $package;
+    private $index;
     /** 
-    * @param string $privateKey
+    * @param string $masterKey
     */ 
-    public function setPrivateKey(string $privateKey) 
+    public function setMasterKey(string $masterKey) 
     { 
-       $this->privateKey = $privateKey;
+       $this->masterKey = $masterKey;
     }
     /** 
-    * @param mixed $package
+    * @param int $index
     */ 
-    public function setPackage( $package) 
+    public function setIndex(int $index) 
     { 
-       $this->package = $package;
+       $this->index = $index;
     }
-    public function getPrivateKey() 
+    public function getMasterKey() 
     {
-        return $this->privateKey;
+        return $this->masterKey;
     }
-    public function getPackage() 
+    public function getIndex() 
     {
-        return $this->package;
+        return $this->index;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPrivateKey($data->private_key); 
-        $this->setPackage(Rtt::validate($data->package)); 
+        $this->setMasterKey($data->master_key); 
+        $this->setIndex($data->index); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

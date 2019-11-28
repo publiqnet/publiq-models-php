@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignRequest implements ValidatorInterface, \JsonSerializable
+class TooLongString implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'used_string' => ['name' => 'usedString', 'convertToDate' => false],
+        'max_length' => ['name' => 'maxLength', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $privateKey;
+    private $usedString;
     /**
-    * @var mixed 
+    * @var int
     */ 
-    private $package;
+    private $maxLength;
     /** 
-    * @param string $privateKey
+    * @param string $usedString
     */ 
-    public function setPrivateKey(string $privateKey) 
+    public function setUsedString(string $usedString) 
     { 
-       $this->privateKey = $privateKey;
+       $this->usedString = $usedString;
     }
     /** 
-    * @param mixed $package
+    * @param int $maxLength
     */ 
-    public function setPackage( $package) 
+    public function setMaxLength(int $maxLength) 
     { 
-       $this->package = $package;
+       $this->maxLength = $maxLength;
     }
-    public function getPrivateKey() 
+    public function getUsedString() 
     {
-        return $this->privateKey;
+        return $this->usedString;
     }
-    public function getPackage() 
+    public function getMaxLength() 
     {
-        return $this->package;
+        return $this->maxLength;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPrivateKey($data->private_key); 
-        $this->setPackage(Rtt::validate($data->package)); 
+        $this->setUsedString($data->used_string); 
+        $this->setMaxLength($data->max_length); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

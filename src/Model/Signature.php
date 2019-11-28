@@ -5,30 +5,42 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignRequest implements ValidatorInterface, \JsonSerializable
+class Signature implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
+        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false],
         'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $privateKey;
+    private $publicKey;
+    /**
+    * @var string
+    */ 
+    private $signature;
     /**
     * @var mixed 
     */ 
     private $package;
     /** 
-    * @param string $privateKey
+    * @param string $publicKey
     */ 
-    public function setPrivateKey(string $privateKey) 
+    public function setPublicKey(string $publicKey) 
     { 
-       $this->privateKey = $privateKey;
+       $this->publicKey = $publicKey;
+    }
+    /** 
+    * @param string $signature
+    */ 
+    public function setSignature(string $signature) 
+    { 
+       $this->signature = $signature;
     }
     /** 
     * @param mixed $package
@@ -37,9 +49,13 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     { 
        $this->package = $package;
     }
-    public function getPrivateKey() 
+    public function getPublicKey() 
     {
-        return $this->privateKey;
+        return $this->publicKey;
+    }
+    public function getSignature() 
+    {
+        return $this->signature;
     }
     public function getPackage() 
     {
@@ -47,7 +63,8 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPrivateKey($data->private_key); 
+        $this->setPublicKey($data->public_key); 
+        $this->setSignature($data->signature); 
         $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)

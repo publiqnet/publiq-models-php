@@ -5,24 +5,31 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignRequest implements ValidatorInterface, \JsonSerializable
+class TransactionBroadcastRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false],
         'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
     ];
 
+    /**
+    * @var Transaction
+    */ 
+    private $transactionDetails;
     /**
     * @var string
     */ 
     private $privateKey;
-    /**
-    * @var mixed 
+    /** 
+    * @param Transaction $transactionDetails
     */ 
-    private $package;
+    public function setTransactionDetails(Transaction $transactionDetails) 
+    { 
+       $this->transactionDetails = $transactionDetails;
+    }
     /** 
     * @param string $privateKey
     */ 
@@ -30,25 +37,19 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     { 
        $this->privateKey = $privateKey;
     }
-    /** 
-    * @param mixed $package
-    */ 
-    public function setPackage( $package) 
-    { 
-       $this->package = $package;
+    public function getTransactionDetails() 
+    {
+        return $this->transactionDetails;
     }
     public function getPrivateKey() 
     {
         return $this->privateKey;
     }
-    public function getPackage() 
-    {
-        return $this->package;
-    }
     public function validate(\stdClass $data) 
     { 
+        $this->transactionDetails = new Transaction();
+        $this->transactionDetails->validate($data->transaction_details);
         $this->setPrivateKey($data->private_key); 
-        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

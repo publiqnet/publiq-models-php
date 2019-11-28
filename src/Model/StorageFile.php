@@ -5,50 +5,50 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignRequest implements ValidatorInterface, \JsonSerializable
+class StorageFile implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false],
+        'data' => ['name' => 'data', 'convertToDate' => false],
     ];
 
     /**
     * @var string
     */ 
-    private $privateKey;
+    private $mimeType;
     /**
-    * @var mixed 
+    * @var string
     */ 
-    private $package;
+    private $data;
     /** 
-    * @param string $privateKey
+    * @param string $mimeType
     */ 
-    public function setPrivateKey(string $privateKey) 
+    public function setMimeType(string $mimeType) 
     { 
-       $this->privateKey = $privateKey;
+       $this->mimeType = $mimeType;
     }
     /** 
-    * @param mixed $package
+    * @param string $data
     */ 
-    public function setPackage( $package) 
+    public function setData(string $data) 
     { 
-       $this->package = $package;
+       $this->data = $data;
     }
-    public function getPrivateKey() 
+    public function getMimeType() 
     {
-        return $this->privateKey;
+        return $this->mimeType;
     }
-    public function getPackage() 
+    public function getData() 
     {
-        return $this->package;
+        return $this->data;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->setPrivateKey($data->private_key); 
-        $this->setPackage(Rtt::validate($data->package)); 
+        $this->setMimeType($data->mime_type); 
+        $this->setData($data->data); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
