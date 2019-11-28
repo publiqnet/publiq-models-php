@@ -12,7 +12,7 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
  
     CONST  memberNames = [
         'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'order' => ['name' => 'order', 'convertToDate' => false],
     ];
 
     /**
@@ -20,9 +20,9 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
     */ 
     private $privateKey;
     /**
-    * @var mixed 
+    * @var StorageOrder
     */ 
-    private $package;
+    private $order;
     /** 
     * @param string $privateKey
     */ 
@@ -31,24 +31,25 @@ class SignRequest implements ValidatorInterface, \JsonSerializable
        $this->privateKey = $privateKey;
     }
     /** 
-    * @param mixed $package
+    * @param StorageOrder $order
     */ 
-    public function setPackage( $package) 
+    public function setOrder(StorageOrder $order) 
     { 
-       $this->package = $package;
+       $this->order = $order;
     }
     public function getPrivateKey() 
     {
         return $this->privateKey;
     }
-    public function getPackage() 
+    public function getOrder() 
     {
-        return $this->package;
+        return $this->order;
     }
     public function validate(\stdClass $data) 
     { 
+        $this->order = new StorageOrder();
+        $this->order->validate($data->order);
         $this->setPrivateKey($data->private_key); 
-        $this->setPackage(Rtt::validate($data->package)); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

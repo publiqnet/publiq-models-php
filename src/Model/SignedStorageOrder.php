@@ -5,30 +5,30 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class SignedBlock implements ValidatorInterface, \JsonSerializable
+class SignedStorageOrder implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false],
+        'order' => ['name' => 'order', 'convertToDate' => false],
         'authorization' => ['name' => 'authorization', 'convertToDate' => false],
     ];
 
     /**
-    * @var Block
+    * @var StorageOrder
     */ 
-    private $blockDetails;
+    private $order;
     /**
     * @var Authority
     */ 
     private $authorization;
     /** 
-    * @param Block $blockDetails
+    * @param StorageOrder $order
     */ 
-    public function setBlockDetails(Block $blockDetails) 
+    public function setOrder(StorageOrder $order) 
     { 
-       $this->blockDetails = $blockDetails;
+       $this->order = $order;
     }
     /** 
     * @param Authority $authorization
@@ -37,9 +37,9 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     { 
        $this->authorization = $authorization;
     }
-    public function getBlockDetails() 
+    public function getOrder() 
     {
-        return $this->blockDetails;
+        return $this->order;
     }
     public function getAuthorization() 
     {
@@ -47,8 +47,8 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     }
     public function validate(\stdClass $data) 
     { 
-        $this->blockDetails = new Block();
-        $this->blockDetails->validate($data->block_details);
+        $this->order = new StorageOrder();
+        $this->order->validate($data->order);
         $this->authorization = new Authority();
         $this->authorization->validate($data->authorization);
     } 
