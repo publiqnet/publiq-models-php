@@ -1,5 +1,5 @@
 {
-    "name": "publiq/publiq-api",
+    "name": "publiq/publiq-models-php",
     "description": "Common interfaces for simple caching",
     "keywords": ["publiq", "api"],
     "license": "MIT",
