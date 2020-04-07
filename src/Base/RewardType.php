@@ -9,4 +9,5 @@ abstract class RewardType extends BasicEnum
     const channel = "channel";
     const storage = "storage";
     const sponsored_return = "sponsored_return";
+    const sponsored_grant = "sponsored_grant";
 } 
