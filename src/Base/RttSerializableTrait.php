@@ -18,6 +18,9 @@ trait RttSerializableTrait
         foreach ($vars as  $name => $value)
         {
             $member = (static::class)::getMemberName($name);
+            if ($member['removeIfNull'] === true && $value === null) {
+                continue;
+            }
             if ($member['convertToDate']) {
                 $vars2[$member['key']] = date("Y-m-d H:i:s", $value);
             } else {
@@ -27,4 +30,6 @@ trait RttSerializableTrait
         return $vars2;
     }
 }
+
+
 

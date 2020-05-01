@@ -11,8 +11,8 @@ class ContentUnitImpactLog implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'content_unit_uri' => ['name' => 'contentUnitUri', 'convertToDate' => false],
-        'views_per_channel' => ['name' => 'viewsPerChannel', 'convertToDate' => false],
+        'content_unit_uri' => ['name' => 'contentUnitUri', 'convertToDate' => false, 'removeIfNull' => false],
+        'views_per_channel' => ['name' => 'viewsPerChannel', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

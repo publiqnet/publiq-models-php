@@ -11,8 +11,8 @@ class SyncResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'own_header' => ['name' => 'ownHeader', 'convertToDate' => false],
-        'promised_header' => ['name' => 'promisedHeader', 'convertToDate' => false],
+        'own_header' => ['name' => 'ownHeader', 'convertToDate' => false, 'removeIfNull' => false],
+        'promised_header' => ['name' => 'promisedHeader', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

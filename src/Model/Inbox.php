@@ -11,7 +11,7 @@ class Inbox implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'items' => ['name' => 'items', 'convertToDate' => false],
+        'items' => ['name' => 'items', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

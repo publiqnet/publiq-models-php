@@ -11,9 +11,9 @@ class Letter implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'from' => ['name' => 'from', 'convertToDate' => false],
-        'to' => ['name' => 'to', 'convertToDate' => false],
-        'message' => ['name' => 'message', 'convertToDate' => false],
+        'from' => ['name' => 'from', 'convertToDate' => false, 'removeIfNull' => false],
+        'to' => ['name' => 'to', 'convertToDate' => false, 'removeIfNull' => false],
+        'message' => ['name' => 'message', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

@@ -11,8 +11,8 @@ class StorageFileRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'storage_order_token' => ['name' => 'storageOrderToken', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'storage_order_token' => ['name' => 'storageOrderToken', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

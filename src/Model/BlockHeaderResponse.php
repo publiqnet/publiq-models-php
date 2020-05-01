@@ -11,7 +11,7 @@ class BlockHeaderResponse implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_headers' => ['name' => 'blockHeaders', 'convertToDate' => false],
+        'block_headers' => ['name' => 'blockHeaders', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

@@ -11,7 +11,7 @@ class FileUris implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
+        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

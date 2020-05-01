@@ -11,8 +11,8 @@ class IPDestination implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'port' => ['name' => 'port', 'convertToDate' => false],
-        'address' => ['name' => 'address', 'convertToDate' => false],
+        'port' => ['name' => 'port', 'convertToDate' => false, 'removeIfNull' => false],
+        'address' => ['name' => 'address', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

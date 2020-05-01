@@ -11,8 +11,8 @@ class KeyPairRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
-        'index' => ['name' => 'index', 'convertToDate' => false],
+        'master_key' => ['name' => 'masterKey', 'convertToDate' => false, 'removeIfNull' => false],
+        'index' => ['name' => 'index', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

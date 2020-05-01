@@ -11,9 +11,9 @@ class AddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
-        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
-        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

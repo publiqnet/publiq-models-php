@@ -11,13 +11,13 @@ class BlockHeaderExtended implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
-        'delta' => ['name' => 'delta', 'convertToDate' => false],
-        'c_sum' => ['name' => 'cSum', 'convertToDate' => false],
-        'c_const' => ['name' => 'cConst', 'convertToDate' => false],
-        'prev_hash' => ['name' => 'prevHash', 'convertToDate' => false],
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
-        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
+        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false, 'removeIfNull' => false],
+        'delta' => ['name' => 'delta', 'convertToDate' => false, 'removeIfNull' => false],
+        'c_sum' => ['name' => 'cSum', 'convertToDate' => false, 'removeIfNull' => false],
+        'c_const' => ['name' => 'cConst', 'convertToDate' => false, 'removeIfNull' => false],
+        'prev_hash' => ['name' => 'prevHash', 'convertToDate' => false, 'removeIfNull' => false],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false, 'removeIfNull' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true, 'removeIfNull' => false],
     ];
 
     /**

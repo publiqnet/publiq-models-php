@@ -11,15 +11,15 @@ class BlockLog implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'authority' => ['name' => 'authority', 'convertToDate' => false],
-        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false],
-        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false],
-        'block_size' => ['name' => 'blockSize', 'convertToDate' => false],
-        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true],
-        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
-        'transactions' => ['name' => 'transactions', 'convertToDate' => false],
-        'unit_uri_impacts' => ['name' => 'unitUriImpacts', 'convertToDate' => false],
-        'applied_sponsor_items' => ['name' => 'appliedSponsorItems', 'convertToDate' => false],
+        'authority' => ['name' => 'authority', 'convertToDate' => false, 'removeIfNull' => false],
+        'block_hash' => ['name' => 'blockHash', 'convertToDate' => false, 'removeIfNull' => false],
+        'block_number' => ['name' => 'blockNumber', 'convertToDate' => false, 'removeIfNull' => false],
+        'block_size' => ['name' => 'blockSize', 'convertToDate' => false, 'removeIfNull' => false],
+        'time_signed' => ['name' => 'timeSigned', 'convertToDate' => true, 'removeIfNull' => false],
+        'rewards' => ['name' => 'rewards', 'convertToDate' => false, 'removeIfNull' => false],
+        'transactions' => ['name' => 'transactions', 'convertToDate' => false, 'removeIfNull' => false],
+        'unit_uri_impacts' => ['name' => 'unitUriImpacts', 'convertToDate' => false, 'removeIfNull' => false],
+        'applied_sponsor_items' => ['name' => 'appliedSponsorItems', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

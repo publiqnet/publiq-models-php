@@ -11,9 +11,9 @@ class ServiceStatisticsFile implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'file_uri' => ['name' => 'fileUri', 'convertToDate' => false],
-        'unit_uri' => ['name' => 'unitUri', 'convertToDate' => false],
-        'count_items' => ['name' => 'countItems', 'convertToDate' => false],
+        'file_uri' => ['name' => 'fileUri', 'convertToDate' => false, 'removeIfNull' => false],
+        'unit_uri' => ['name' => 'unitUri', 'convertToDate' => false, 'removeIfNull' => false],
+        'count_items' => ['name' => 'countItems', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

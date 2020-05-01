@@ -11,9 +11,9 @@ class Pong implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
-        'stamp' => ['name' => 'stamp', 'convertToDate' => true],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'stamp' => ['name' => 'stamp', 'convertToDate' => true, 'removeIfNull' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

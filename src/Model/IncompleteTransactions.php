@@ -11,7 +11,7 @@ class IncompleteTransactions implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'incomplete_signed_transactions' => ['name' => 'incompleteSignedTransactions', 'convertToDate' => false],
+        'incomplete_signed_transactions' => ['name' => 'incompleteSignedTransactions', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

@@ -11,8 +11,8 @@ class TooLongString implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'used_string' => ['name' => 'usedString', 'convertToDate' => false],
-        'max_length' => ['name' => 'maxLength', 'convertToDate' => false],
+        'used_string' => ['name' => 'usedString', 'convertToDate' => false, 'removeIfNull' => false],
+        'max_length' => ['name' => 'maxLength', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

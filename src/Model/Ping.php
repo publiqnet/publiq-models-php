@@ -11,10 +11,27 @@ class Ping implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
+        'address' => ['name' => 'address', 'convertToDate' => false, 'removeIfNull' => true],
     ];
 
+    /**
+    * @var string
+    */ 
+    private $address;
+    /** 
+    * @param string $address
+    */ 
+    public function setAddress(string $address) 
+    { 
+       $this->address = $address;
+    }
+    public function getAddress() 
+    {
+        return $this->address;
+    }
     public function validate(\stdClass $data) 
     { 
+        $this->setAddress($data->address); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

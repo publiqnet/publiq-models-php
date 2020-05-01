@@ -11,8 +11,8 @@ class ContentUnitImpactPerChannel implements ValidatorInterface, \JsonSerializab
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
-        'view_count' => ['name' => 'viewCount', 'convertToDate' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'view_count' => ['name' => 'viewCount', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

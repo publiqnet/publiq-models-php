@@ -11,8 +11,8 @@ class ServiceStatisticsCount implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'count' => ['name' => 'count', 'convertToDate' => false],
-        'peer_address' => ['name' => 'peerAddress', 'convertToDate' => false],
+        'count' => ['name' => 'count', 'convertToDate' => false, 'removeIfNull' => false],
+        'peer_address' => ['name' => 'peerAddress', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

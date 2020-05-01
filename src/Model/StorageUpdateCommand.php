@@ -12,10 +12,10 @@ class StorageUpdateCommand implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'status' => ['name' => 'status', 'convertToDate' => false],
-        'file_uri' => ['name' => 'fileUri', 'convertToDate' => false],
-        'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false],
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
+        'status' => ['name' => 'status', 'convertToDate' => false, 'removeIfNull' => false],
+        'file_uri' => ['name' => 'fileUri', 'convertToDate' => false, 'removeIfNull' => false],
+        'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

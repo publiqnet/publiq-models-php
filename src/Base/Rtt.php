@@ -44,7 +44,7 @@ class Rtt
 	37 => 'ServiceStatisticsCount',
 	38 => 'SponsorContentUnit',
 	39 => 'CancelSponsorContentUnit',
-	40 => 'SponsorContentUnitEx',
+	40 => 'TransactionReserve18',
 	41 => 'TransactionReserve19',
 	42 => 'TransactionReserve20',
 	43 => 'TransactionReserve21',

@@ -11,8 +11,8 @@ class SignedBlock implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false],
-        'authorization' => ['name' => 'authorization', 'convertToDate' => false],
+        'block_details' => ['name' => 'blockDetails', 'convertToDate' => false, 'removeIfNull' => false],
+        'authorization' => ['name' => 'authorization', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

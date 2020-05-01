@@ -12,9 +12,9 @@ class IPAddress implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'ip_type' => ['name' => 'ipType', 'convertToDate' => false],
-        'local' => ['name' => 'local', 'convertToDate' => false],
-        'remote' => ['name' => 'remote', 'convertToDate' => false],
+        'ip_type' => ['name' => 'ipType', 'convertToDate' => false, 'removeIfNull' => false],
+        'local' => ['name' => 'local', 'convertToDate' => false, 'removeIfNull' => false],
+        'remote' => ['name' => 'remote', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

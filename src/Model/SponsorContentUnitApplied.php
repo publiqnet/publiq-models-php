@@ -11,8 +11,8 @@ class SponsorContentUnitApplied implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
-        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
+        'amount' => ['name' => 'amount', 'convertToDate' => false, 'removeIfNull' => false],
+        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

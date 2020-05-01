@@ -11,7 +11,7 @@ class PublicAddressesInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'addresses_info' => ['name' => 'addressesInfo', 'convertToDate' => false],
+        'addresses_info' => ['name' => 'addressesInfo', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

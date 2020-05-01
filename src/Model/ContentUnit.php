@@ -11,11 +11,11 @@ class ContentUnit implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'author_addresses' => ['name' => 'authorAddresses', 'convertToDate' => false],
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
-        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'content_id' => ['name' => 'contentId', 'convertToDate' => false, 'removeIfNull' => false],
+        'author_addresses' => ['name' => 'authorAddresses', 'convertToDate' => false, 'removeIfNull' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'file_uris' => ['name' => 'fileUris', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

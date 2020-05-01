@@ -11,10 +11,10 @@ class ServiceStatistics implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'server_address' => ['name' => 'serverAddress', 'convertToDate' => false],
-        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true],
-        'end_time_point' => ['name' => 'endTimePoint', 'convertToDate' => true],
-        'file_items' => ['name' => 'fileItems', 'convertToDate' => false],
+        'server_address' => ['name' => 'serverAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true, 'removeIfNull' => false],
+        'end_time_point' => ['name' => 'endTimePoint', 'convertToDate' => true, 'removeIfNull' => false],
+        'file_items' => ['name' => 'fileItems', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

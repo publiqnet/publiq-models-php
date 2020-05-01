@@ -11,8 +11,8 @@ class Authority implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'address' => ['name' => 'address', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
+        'address' => ['name' => 'address', 'convertToDate' => false, 'removeIfNull' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

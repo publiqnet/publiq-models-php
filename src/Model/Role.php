@@ -12,8 +12,8 @@ class Role implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
-        'node_type' => ['name' => 'nodeType', 'convertToDate' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'node_type' => ['name' => 'nodeType', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

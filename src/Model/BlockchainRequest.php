@@ -11,8 +11,8 @@ class BlockchainRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'blocks_from' => ['name' => 'blocksFrom', 'convertToDate' => false],
-        'blocks_to' => ['name' => 'blocksTo', 'convertToDate' => false],
+        'blocks_from' => ['name' => 'blocksFrom', 'convertToDate' => false, 'removeIfNull' => false],
+        'blocks_to' => ['name' => 'blocksTo', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

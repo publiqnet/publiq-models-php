@@ -4,6 +4,7 @@ use PubliqAPI\Base\RttSerializableTrait;
 use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
+use PubliqAPI\Base\SponsoringScope;
 
 class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
 {
@@ -11,11 +12,12 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true],
-        'hours' => ['name' => 'hours', 'convertToDate' => false],
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
+        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true, 'removeIfNull' => false],
+        'hours' => ['name' => 'hours', 'convertToDate' => false, 'removeIfNull' => false],
+        'amount' => ['name' => 'amount', 'convertToDate' => false, 'removeIfNull' => false],
+        'scope' => ['name' => 'scope', 'convertToDate' => false, 'removeIfNull' => true],
     ];
 
     /**
@@ -38,6 +40,10 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
     * @var Coin
     */ 
     private $amount;
+    /**
+    * @var string 
+    */ 
+    private $scope;
     /** 
     * @param string $sponsorAddress
     */ 
@@ -73,6 +79,14 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
     { 
        $this->amount = $amount;
     }
+    /** 
+    * @param string $scope
+    */ 
+    public function setScope(string $scope) 
+    { 
+        SponsoringScope::validate($scope);
+        $this->scope = $scope;
+    }
     public function getSponsorAddress() 
     {
         return $this->sponsorAddress;
@@ -93,6 +107,10 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
     {
         return $this->amount;
     }
+    public function getScope() 
+    {
+        return $this->scope;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->amount = new Coin();
@@ -101,6 +119,7 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
         $this->setUri($data->uri); 
         $this->setStartTimePoint(strtotime($data->start_time_point)); 
         $this->setHours($data->hours); 
+        $this->setScope($data->scope); 
     } 
     public static function getMemberName(string $camelCaseName)
     {
