@@ -11,9 +11,9 @@ class Block implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'header' => ['name' => 'header', 'convertToDate' => false],
-        'rewards' => ['name' => 'rewards', 'convertToDate' => false],
-        'signed_transactions' => ['name' => 'signedTransactions', 'convertToDate' => false],
+        'header' => ['name' => 'header', 'convertToDate' => false, 'removeIfNull' => false],
+        'rewards' => ['name' => 'rewards', 'convertToDate' => false, 'removeIfNull' => false],
+        'signed_transactions' => ['name' => 'signedTransactions', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

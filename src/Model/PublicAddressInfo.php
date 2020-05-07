@@ -11,10 +11,10 @@ class PublicAddressInfo implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false],
-        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false],
-        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false],
-        'seconds_since_checked' => ['name' => 'secondsSinceChecked', 'convertToDate' => false],
+        'ip_address' => ['name' => 'ipAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'ssl_ip_address' => ['name' => 'sslIpAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'node_address' => ['name' => 'nodeAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'seconds_since_checked' => ['name' => 'secondsSinceChecked', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

@@ -11,7 +11,7 @@ class IncompleteTransactionsRequest implements ValidatorInterface, \JsonSerializ
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'address' => ['name' => 'address', 'convertToDate' => false],
+        'address' => ['name' => 'address', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

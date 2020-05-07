@@ -5,33 +5,16 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class Served implements ValidatorInterface, \JsonSerializable
+class FileUrisRequest implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'storage_order_token' => ['name' => 'storageOrderToken', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
-    /**
-    * @var string
-    */ 
-    private $storageOrderToken;
-    /** 
-    * @param string $storageOrderToken
-    */ 
-    public function setStorageOrderToken(string $storageOrderToken) 
-    { 
-       $this->storageOrderToken = $storageOrderToken;
-    }
-    public function getStorageOrderToken() 
-    {
-        return $this->storageOrderToken;
-    }
     public function validate(\stdClass $data) 
     { 
-        $this->setStorageOrderToken($data->storage_order_token); 
     } 
     public static function getMemberName(string $camelCaseName)
     {

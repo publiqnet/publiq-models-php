@@ -11,9 +11,9 @@ class Content implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'content_id' => ['name' => 'contentId', 'convertToDate' => false],
-        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false],
-        'content_unit_uris' => ['name' => 'contentUnitUris', 'convertToDate' => false],
+        'content_id' => ['name' => 'contentId', 'convertToDate' => false, 'removeIfNull' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'content_unit_uris' => ['name' => 'contentUnitUris', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

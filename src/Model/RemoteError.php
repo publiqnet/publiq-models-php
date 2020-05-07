@@ -11,7 +11,7 @@ class RemoteError implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'message' => ['name' => 'message', 'convertToDate' => false],
+        'message' => ['name' => 'message', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

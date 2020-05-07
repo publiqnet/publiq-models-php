@@ -11,9 +11,9 @@ class Signature implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
-        'signature' => ['name' => 'signature', 'convertToDate' => false],
-        'package' => ['name' => 'package', 'convertToDate' => false],
+        'public_key' => ['name' => 'publicKey', 'convertToDate' => false, 'removeIfNull' => false],
+        'signature' => ['name' => 'signature', 'convertToDate' => false, 'removeIfNull' => false],
+        'package' => ['name' => 'package', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

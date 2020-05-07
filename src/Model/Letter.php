@@ -5,7 +5,7 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class Transfer implements ValidatorInterface, \JsonSerializable
+class Letter implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
@@ -13,7 +13,6 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     CONST  memberNames = [
         'from' => ['name' => 'from', 'convertToDate' => false, 'removeIfNull' => false],
         'to' => ['name' => 'to', 'convertToDate' => false, 'removeIfNull' => false],
-        'amount' => ['name' => 'amount', 'convertToDate' => false, 'removeIfNull' => false],
         'message' => ['name' => 'message', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
@@ -25,10 +24,6 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     * @var string
     */ 
     private $to;
-    /**
-    * @var Coin
-    */ 
-    private $amount;
     /**
     * @var string
     */ 
@@ -48,13 +43,6 @@ class Transfer implements ValidatorInterface, \JsonSerializable
        $this->to = $to;
     }
     /** 
-    * @param Coin $amount
-    */ 
-    public function setAmount(Coin $amount) 
-    { 
-       $this->amount = $amount;
-    }
-    /** 
     * @param string $message
     */ 
     public function setMessage(string $message) 
@@ -69,18 +57,12 @@ class Transfer implements ValidatorInterface, \JsonSerializable
     {
         return $this->to;
     }
-    public function getAmount() 
-    {
-        return $this->amount;
-    }
     public function getMessage() 
     {
         return $this->message;
     }
     public function validate(\stdClass $data) 
     { 
-        $this->amount = new Coin();
-        $this->amount->validate($data->amount);
         $this->setFrom($data->from); 
         $this->setTo($data->to); 
         $this->setMessage($data->message); 

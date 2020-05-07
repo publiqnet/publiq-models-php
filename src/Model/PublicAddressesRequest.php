@@ -12,7 +12,7 @@ class PublicAddressesRequest implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'address_type' => ['name' => 'addressType', 'convertToDate' => false],
+        'address_type' => ['name' => 'addressType', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

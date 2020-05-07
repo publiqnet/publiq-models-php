@@ -11,7 +11,7 @@ class InvalidPublicKey implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'public_key' => ['name' => 'publicKey', 'convertToDate' => false],
+        'public_key' => ['name' => 'publicKey', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

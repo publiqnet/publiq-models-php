@@ -11,7 +11,7 @@ class MasterKey implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'master_key' => ['name' => 'masterKey', 'convertToDate' => false],
+        'master_key' => ['name' => 'masterKey', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

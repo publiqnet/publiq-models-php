@@ -11,8 +11,8 @@ class StorageFile implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false],
-        'data' => ['name' => 'data', 'convertToDate' => false],
+        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false, 'removeIfNull' => false],
+        'data' => ['name' => 'data', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

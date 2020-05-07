@@ -11,11 +11,11 @@ class SponsorContentUnit implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true],
-        'hours' => ['name' => 'hours', 'convertToDate' => false],
-        'amount' => ['name' => 'amount', 'convertToDate' => false],
+        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'start_time_point' => ['name' => 'startTimePoint', 'convertToDate' => true, 'removeIfNull' => false],
+        'hours' => ['name' => 'hours', 'convertToDate' => false, 'removeIfNull' => false],
+        'amount' => ['name' => 'amount', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

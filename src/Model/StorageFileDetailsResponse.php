@@ -11,9 +11,9 @@ class StorageFileDetailsResponse implements ValidatorInterface, \JsonSerializabl
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false],
-        'size' => ['name' => 'size', 'convertToDate' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'mime_type' => ['name' => 'mimeType', 'convertToDate' => false, 'removeIfNull' => false],
+        'size' => ['name' => 'size', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

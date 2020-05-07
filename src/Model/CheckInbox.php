@@ -5,7 +5,7 @@ use PubliqAPI\Base\RttToJsonTrait;
 use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 
-class ResponseCodeReserve1 implements ValidatorInterface, \JsonSerializable
+class CheckInbox implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;

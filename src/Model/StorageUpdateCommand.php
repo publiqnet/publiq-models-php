@@ -6,7 +6,7 @@ use PubliqAPI\Base\ValidatorInterface;
 use PubliqAPI\Base\Rtt;
 use PubliqAPI\Base\UpdateType;
 
-class StorageUpdate implements ValidatorInterface, \JsonSerializable
+class StorageUpdateCommand implements ValidatorInterface, \JsonSerializable
 {
     use RttSerializableTrait;
     use RttToJsonTrait;
@@ -15,6 +15,7 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
         'status' => ['name' => 'status', 'convertToDate' => false, 'removeIfNull' => false],
         'file_uri' => ['name' => 'fileUri', 'convertToDate' => false, 'removeIfNull' => false],
         'storage_address' => ['name' => 'storageAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'channel_address' => ['name' => 'channelAddress', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**
@@ -29,6 +30,10 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
     * @var string
     */ 
     private $storageAddress;
+    /**
+    * @var string
+    */ 
+    private $channelAddress;
     /** 
     * @param string $status
     */ 
@@ -51,6 +56,13 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
     { 
        $this->storageAddress = $storageAddress;
     }
+    /** 
+    * @param string $channelAddress
+    */ 
+    public function setChannelAddress(string $channelAddress) 
+    { 
+       $this->channelAddress = $channelAddress;
+    }
     public function getStatus() 
     {
         return $this->status;
@@ -63,10 +75,15 @@ class StorageUpdate implements ValidatorInterface, \JsonSerializable
     {
         return $this->storageAddress;
     }
+    public function getChannelAddress() 
+    {
+        return $this->channelAddress;
+    }
     public function validate(\stdClass $data) 
     { 
         $this->setFileUri($data->file_uri); 
         $this->setStorageAddress($data->storage_address); 
+        $this->setChannelAddress($data->channel_address); 
         $this->setStatus($data->status); 
     } 
     public static function getMemberName(string $camelCaseName)

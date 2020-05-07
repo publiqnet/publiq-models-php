@@ -11,8 +11,8 @@ class TransactionBroadcastRequest implements ValidatorInterface, \JsonSerializab
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false],
-        'private_key' => ['name' => 'privateKey', 'convertToDate' => false],
+        'transaction_details' => ['name' => 'transactionDetails', 'convertToDate' => false, 'removeIfNull' => false],
+        'private_key' => ['name' => 'privateKey', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**

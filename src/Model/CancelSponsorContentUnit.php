@@ -11,9 +11,9 @@ class CancelSponsorContentUnit implements ValidatorInterface, \JsonSerializable
     use RttToJsonTrait;
  
     CONST  memberNames = [
-        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false],
-        'uri' => ['name' => 'uri', 'convertToDate' => false],
-        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false],
+        'sponsor_address' => ['name' => 'sponsorAddress', 'convertToDate' => false, 'removeIfNull' => false],
+        'uri' => ['name' => 'uri', 'convertToDate' => false, 'removeIfNull' => false],
+        'transaction_hash' => ['name' => 'transactionHash', 'convertToDate' => false, 'removeIfNull' => false],
     ];
 
     /**
